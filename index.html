@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>MyCard遊蹤管理系統</title>
+<link rel="stylesheet" href="css/L.css">
+<link rel="stylesheet" href="css/LM.css" media="only screen and (min-width:1381px) and (max-width:1680px)">
+<link rel="stylesheet" href="css/LMM.css" media="only screen and (min-width:1025px) and (max-width:1380px)">
+<link rel="stylesheet" href="css/M.css" media="only screen and (min-width:600px) and (max-width:1024px)">
+<link rel="stylesheet" href="css/S.css" media="only screen and (max-width:599px)">
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="css/motion.css"
+	
+<!-- jquery引入檔 -->
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/sidebar.js"></script>
+
+
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="hamburger">&#9776;</span>
+	<span class="hamburger2">&#9776;</span>
+    <span class="logo">MyCard遊蹤管理系統</span>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="profile">
+      <div class="avatar"></div>
+      <div>
+        <div class="profile-name">SW運推_商嘉</div>
+        <div class="profile-sub">修改密碼</div>
+      </div>
+      <button class="logout-btn">登出</button>
+    </div>
+
+    <div class="nav-item active-top">遊戲資料</div>
+    <div class="nav-item">取消案件回應 <span class="arrow">▸</span></div>
+    <div class="nav-item">公司資料維護 <span class="arrow">▸</span></div>
+    <div class="nav-item">使用者資料維護 <span class="arrow">▸</span></div>
+    <div class="nav-item">交易明細及產經資料查詢 <span class="arrow">▸</span></div>
+    <div class="nav-item">取消交易資訊 <span class="arrow">▸</span></div>
+    <div class="nav-item">廠商客服專用宣傳 <span class="arrow">▸</span></div>
+    <div class="nav-item">電註業合意未提款資料查詢 <span class="arrow">▸</span></div>
+  </div>
+
+  <div class="main">
+
+    <!-- ============ PAGE: 功能首頁 ============ -->
+    <div id="page-home">
+      <div class="page-header-row">
+        <div class="page-header-text">
+          <h1>維護您的遊戲資料</h1>
+          <p>自主填寫遊戲資料完成，審核過後即可讓您的遊戲資訊在官網曝光</p>
+        </div>
+        <button class="btn-add-game" id="btnAddGame">＋ 新增遊戲</button>
+      </div>
+
+      <div class="search-row">
+        <div class="search-box">🔍 <input type="text" placeholder="搜尋遊戲名稱或 GameID"></div>
+        <button class="btn-search">搜尋</button>
+      </div>
+
+      <div class="list-header">
+        <h2>我的遊戲清單</h2>
+        <p>在這裡查看您所建立過的遊戲資料</p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>遊戲名稱</th>
+            <th>服務名稱/代號</th>
+            <th>遊戲代號</th>
+            <th>狀態</th>
+            <th>首次上架時間</th>
+            <th>狀態更新時間 ▾</th>
+			<th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="game-name">星際爭霸戰：重生</td>
+            <td>星際爭霸戰 / starwar</td>
+            <td>GM10245</td>
+            <td><span class="badge">待發佈</span></td>
+            <td>2026/06/25 09:00:00</td>
+            <td>2026/07/11 09:18:47</td>
+			<td><span class="btn-copy">複製</span></td>
+          </tr>
+          <tr>
+            <td class="game-name">劍與魔法傳說</td>
+            <td>小兵來對決 / fight</td>
+            <td>GM10231</td>
+            <td><span class="badge">待發佈</span></td>
+            <td>2026/06/20 10:00:00</td>
+            <td>2026/07/10 14:32:05</td>
+			<td><span class="btn-copy">複製</span></td>
+          </tr>
+          <tr>
+            <td class="game-name">勇者物語 Online</td>
+            <td>勇者物語 / hero</td>
+            <td>GM10198</td>
+            <td><span class="badge">待發佈</span></td>
+            <td>2026/06/15 12:00:00</td>
+            <td>2026/07/09 21:05:12</td>
+			<td><span class="btn-copy">複製</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-footer">
+        <span>共 3 筆資料</span>
+        <div class="pager">
+          <button>‹</button>
+          <button class="active">1</button>
+          <button>›</button>
+        </div>
+      </div>
+
+      <div class="footer-note">©Soft-World Corp. All Rights Reserved.</div>
+    </div>
+
+    <!-- ============ PAGE: 填寫流程（Wizard） ============ -->
+    <div id="page-wizard" style="display:none;">
+      <div class="page-inner">
+
+        <div class="page-header-row">
+          <div class="page-header-text">
+            <h1>開始填寫您的遊戲資料</h1>
+            <p>您可以在這裡自行填寫及更新遊戲資料，完成後提交 MyCard 審核，審核通過後就會公開於官網首頁。跟著填寫流程完成 5 個區塊即可。</p>
+            <p class="notice-text">注意：填寫過程中如果需要先離開，記得先儲存目前資料；確認都填寫完成後，再送出審核。審核通過後，MyCard 將協助您將遊戲資料公開於官網。</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn-ghost" id="btnWithdraw">撤回審核</button>
+            <button class="btn-ghost primary-ghost" id="btnSave">儲存草稿</button>
+            <button class="btn-ghost primary-ghost" id="btnSaveTop">送出審核</button>
+          </div>
+        </div>
+
+        <div class="proto-demo-toggle" id="protoDemoToggleWrap" style="display:none;">
+          <label>
+            <input type="checkbox" id="simulateFailToggle">
+            原型測試用：勾選以模擬「儲存草稿」失敗狀態
+          </label>
+        </div>
+
+        <div class="stepper" id="stepper">
+          <div class="step-node current" data-step="1">
+            <div class="step-circle">1<span class="status-badge warn">!</span></div>
+            <span class="step-label">遊戲基本識別資料</span>
+          </div>
+          <div class="step-line"></div>
+
+          <div class="step-node" data-step="2">
+            <div class="step-circle">2<span class="status-badge warn">!</span></div>
+            <span class="step-label">遊戲介紹</span>
+          </div>
+          <div class="step-line"></div>
+
+          <div class="step-node" data-step="3">
+            <div class="step-circle">3<span class="status-badge warn">!</span></div>
+            <span class="step-label">儲值入口</span>
+          </div>
+          <div class="step-line"></div>
+
+          <div class="step-node" data-step="4">
+            <div class="step-circle">4<span class="status-badge warn">!</span></div>
+            <span class="step-label">官方與社群連結</span>
+          </div>
+          <div class="step-line"></div>
+
+          <div class="step-node" data-step="5">
+            <div class="step-circle">5<span class="status-badge warn">!</span></div>
+            <span class="step-label">期望上架時間</span>
+          </div>
+        </div>
+
+        <div class="content-card">
+
+          <!-- Step 1: 遊戲基本識別資料 -->
+          <div class="step-content" id="step-content-1">
+            <h2 class="block-title">遊戲基本識別資料</h2>
+            <p class="block-desc">填寫遊戲所對應的公司、服務及遊戲代號</p>
+
+            <div class="field-group" id="field-company">
+              <div class="field-label-row">
+                <span class="field-label">公司名稱</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">請填寫貴公司或工作室的正式名稱，用於後台核對身分，不會顯示於網站。</div>
+                </span>
+              </div>
+              <div class="field-caption">請填寫合約上的完整公司名稱</div>
+              <input class="field-input" type="text" id="field-company-input" placeholder="公司名稱">
+              <div class="field-error-msg" style="display:none;">⚠ 公司名稱為必填</div>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">服務名稱/代號</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">由貴公司與 MyCard 合作窗口約定的服務代號，用於系統比對資料，如不清楚請洽合作窗口。</div>
+                </span>
+              </div>
+              <div class="field-caption">選擇此遊戲所套用的 FacServiceId 及服務名稱，作為系統及帳務報表的識別資訊，不會顯示於網站。</div>
+              <div class="select-wrap">
+                <input class="field-input" type="text" id="field-service-input" placeholder="服務名稱/代號" readonly>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">遊戲代號</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">用於系統比對遊戲資料，請填寫正確的遊戲代號；若不清楚請洽 MyCard 窗口取得。</div>
+                </span>
+              </div>
+              <div class="field-caption">填寫此款遊戲代號，須與您在串接時回傳的 FacGameId 相同。此代號會顯示於網站專屬頁面的網址中。</div>
+              <input class="field-input" type="text" id="field-gamecode-input" placeholder="遊戲代號">
+            </div>
+          </div>
+
+          <!-- Step 2: 遊戲介紹 -->
+          <div class="step-content" id="step-content-2" style="display:none;">
+            <h2 class="block-title">遊戲介紹</h2>
+            <p class="block-desc">提供遊戲名稱、圖片及文字介紹，供 MyCard 用戶於網站查看，支援依語系分別設定</p>
+
+            <div class="lang-tab-row">
+              <div class="lang-tabs" id="langTabs">
+                <div class="lang-tab active" data-lang="zh">中文（預設）</div>
+                <div class="lang-tab" data-lang="en" data-label="English">English <span class="lang-tab-delete" data-lang="en">×</span></div>
+                <div class="lang-tab-add-new" id="langAddBtn"><span class="plus-icon">+</span> 新增語系
+                  <div class="lang-add-menu" id="langAddMenu">
+                    <div class="lang-add-item" data-lang="ja" data-label="日本語">日本語</div>
+                    <div class="lang-add-item" data-lang="ko" data-label="한국어">한국어</div>
+                    <div class="lang-add-item" data-lang="th" data-label="ภาษาไทย">ภาษาไทย</div>
+                    <div class="lang-add-item" data-lang="vi" data-label="Tiếng Việt">Tiếng Việt</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="lang-field-box">
+              <div class="field-group">
+                <div class="field-label-row">
+                  <span class="field-label">遊戲名稱</span>
+                  <span class="required-star">*</span>
+                  <span class="tooltip-wrap">
+                    <button class="tooltip-icon" type="button">?</button>
+                    <div class="tooltip-popover">填寫此語系下您希望公開的遊戲名稱，將顯示於官網頁面。</div>
+                  </span>
+                </div>
+                <div class="field-caption">填寫您希望公開顯示的遊戲名稱。</div>
+                <input class="field-input" type="text" id="field-gamename-input" placeholder="遊戲名稱">
+              </div>
+
+              <div class="field-group">
+                <div class="field-label-row">
+                  <span class="field-label">文字介紹</span>
+                  <span class="required-star">*</span>
+                  <span class="tooltip-wrap">
+                    <button class="tooltip-icon" type="button">?</button>
+                    <div class="tooltip-popover">建議 100–300 字，描述遊戲玩法與特色，將顯示於官網遊戲頁面。</div>
+                  </span>
+                </div>
+                <div class="field-caption">填寫遊戲介紹內容，供用戶了解您的遊戲。</div>
+                <div class="rt-toolbar">
+                  <span><b>B</b></span><span><i>I</i></span><span><u>U</u></span><span><s>S</s></span><span>HTML</span><span>•</span><span>1.</span><span>&lt;&gt;</span>
+                </div>
+                <textarea class="rt-textarea" id="field-desc-input" placeholder="遊戲介紹內容"></textarea>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">遊戲簡稱</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">簡短好記的名稱，玩家可用此名稱快速搜尋到您的遊戲。</div>
+                </span>
+              </div>
+              <div class="field-caption">填寫遊戲簡稱，MyCard 用戶可透過此簡稱搜尋您的遊戲；如無簡稱，可不填寫。</div>
+              <input class="field-input" type="text" id="field-shortname-input" placeholder="遊戲簡稱">
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">遊戲Icon圖片</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">建議尺寸 512×512px，PNG格式，檔案大小 2MB 以內。</div>
+                </span>
+              </div>
+              <div class="field-caption">您上傳的遊戲 Icon 圖片將顯示於網站的遊戲選擇頁面。</div>
+              <div class="upload-row">
+                <div class="upload-box" id="iconUpload">
+                  <div class="upload-container" id="dropZone">
+                    <input
+                      type="file"
+                      id="fileInput"
+                      accept="image/png,image/jpeg,image/webp"
+                      hidden
+                    />
+
+                    <div class="upload-content" id="uploadContent">
+                    <div class="upload-icon">☁</div>
+                    <h3>拖曳圖片至此上傳</h3>
+                    <p>支援JPG/PNG/WEBP格式</p>
+
+                    <button type="button" class="upload-btn">
+                      選擇圖片
+                    </button>
+                  </div>
+
+                  <img id="preview" class="preview" alt="圖片預覽" hidden />
+                  </div>  
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">遊戲輪播圖片</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">建議尺寸 1280×720px，最多6張，至少上傳1張即可送出。</div>
+                </span>
+              </div>
+              <div class="field-caption">上傳您希望公開顯示的遊戲主視覺輪播圖片。</div>
+              <div class="upload-row" id="carouselRow">
+                <div class="upload-box carousel-box">
+                  <div class="upload-container" id="dropZone1">
+                    <input
+                      type="file"
+                      id="fileInput"
+                      accept="image/png,image/jpeg,image/webp"
+                      hidden
+                    />
+
+                    <div class="upload-content" id="uploadContent">
+                    <div class="upload-icon">☁</div>
+                    <h3>拖曳圖片至此上傳</h3>
+                    <p>支援JPG/PNG/WEBP格式</p>
+
+                    <button type="button" class="upload-btn">
+                      選擇圖片
+                    </button>
+                  </div>
+
+                  <img id="preview" class="preview" alt="圖片預覽" hidden />
+                  </div>
+                </div>
+				<div class="upload-box carousel-box">
+                  <div class="upload-container" id="dropZone2">
+                    <input
+                      type="file"
+                      id="fileInput"
+                      accept="image/png,image/jpeg,image/webp"
+                      hidden
+                    />
+
+                    <div class="upload-content" id="uploadContent">
+                    <div class="upload-icon">☁</div>
+                    <h3>拖曳圖片至此上傳</h3>
+                    <p>支援JPG/PNG/WEBP格式</p>
+
+                    <button type="button" class="upload-btn">
+                      選擇圖片
+                    </button>
+                  </div>
+
+                  <img id="preview" class="preview" alt="圖片預覽" hidden />
+                  </div>
+                </div> 
+				<div class="upload-box carousel-box">
+                  <div class="upload-container" id="dropZone3">
+                    <input
+                      type="file"
+                      id="fileInput"
+                      accept="image/png,image/jpeg,image/webp"
+                      hidden
+                    />
+
+                    <div class="upload-content" id="uploadContent">
+                    <div class="upload-icon">☁</div>
+                    <h3>拖曳圖片至此上傳</h3>
+                    <p>支援JPG/PNG/WEBP格式</p>
+
+                    <button type="button" class="upload-btn">
+                      選擇圖片
+                    </button>
+                  </div>
+
+                  <img id="preview" class="preview" alt="圖片預覽" hidden />
+                  </div>
+                </div>
+				<div class="upload-box carousel-box">
+                  <div class="upload-container" id="dropZone4">
+                    <input
+                      type="file"
+                      id="fileInput"
+                      accept="image/png,image/jpeg,image/webp"
+                      hidden
+                    />
+
+                    <div class="upload-content" id="uploadContent">
+                    <div class="upload-icon">☁</div>
+                    <h3>拖曳圖片至此上傳</h3>
+                    <p>支援JPG/PNG/WEBP格式</p>
+
+                    <button type="button" class="upload-btn">
+                      選擇圖片
+                    </button>
+                  </div>
+
+                  <img id="preview" class="preview" alt="圖片預覽" hidden />
+                  </div>
+                </div>
+				<div class="upload-box carousel-box">
+                  <div class="upload-container" id="dropZone5">
+                    <input
+                      type="file"
+                      id="fileInput"
+                      accept="image/png,image/jpeg,image/webp"
+                      hidden
+                    />
+
+                    <div class="upload-content" id="uploadContent">
+                    <div class="upload-icon">☁</div>
+                    <h3>拖曳圖片至此上傳</h3>
+                    <p>支援JPG/PNG/WEBP格式</p>
+
+                    <button type="button" class="upload-btn">
+                      選擇圖片
+                    </button>
+                  </div>
+
+                  <img id="preview" class="preview" alt="圖片預覽" hidden />
+                  </div>
+                </div>
+				<div class="upload-box carousel-box">
+                  <div class="upload-container" id="dropZone6">
+                    <input
+                      type="file"
+                      id="fileInput"
+                      accept="image/png,image/jpeg,image/webp"
+                      hidden
+                    />
+
+                    <div class="upload-content" id="uploadContent">
+                    <div class="upload-icon">☁</div>
+                    <h3>拖曳圖片至此上傳</h3>
+                    <p>支援JPG/PNG/WEBP格式</p>
+
+                    <button type="button" class="upload-btn">
+                      選擇圖片
+                    </button>
+                  </div>
+
+                  <img id="preview" class="preview" alt="圖片預覽" hidden />
+                  </div>
+                </div>
+              </div>
+			  
+			
+			
+			 
+              <div class="upload-caption">至少上傳1張即可，不需要6張全部上傳</div>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">遊戲標籤</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">選擇符合遊戲類型的標籤，最多可選5個。</div>
+                </span>
+              </div>
+              <div class="field-caption">設定遊戲標籤，方便用戶依標籤找到您的遊戲。</div>
+              <div class="tag-row">
+                <input class="field-input tag-input" type="text" id="field-tags-input" placeholder="遊戲標籤" readonly>
+                <button class="btn-tag-select" type="button" id="btnTagSelect">選擇標籤</button>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">遊玩裝置</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">可複選，請勾選此遊戲支援的所有遊玩裝置。</div>
+                </span>
+              </div>
+              <div class="field-caption">選擇您的遊戲支援的遊玩裝置。</div>
+              <div class="checkbox-row">
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="mobile"><span class="checkbox-box"></span><span>手機</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="pc"><span class="checkbox-box"></span><span>電腦</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="xbox"><span class="checkbox-box"></span><span>Xbox</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="playstation"><span class="checkbox-box"></span><span>PlayStation</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="switch"><span class="checkbox-box"></span><span>Switch/Switch2</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="steam"><span class="checkbox-box"></span><span>Steam</span></label>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">遊戲分級</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">請依據數位發展部公告之遊戲分級標準選擇對應級別。</div>
+                </span>
+              </div>
+              <div class="field-caption">依據數位發展部相關規定，請選擇適用的遊戲分級。</div>
+              <div class="select-wrap">
+                <select class="field-input" id="field-rating-select" required>
+                  <option value="" disabled selected>遊戲分級</option>
+                  <option value="general">普遍級</option>
+                  <option value="protect">保護級</option>
+                  <option value="guide12">輔導級12+</option>
+                  <option value="guide15">輔導級15+</option>
+                  <option value="restricted">限制級</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: 儲值入口 -->
+          <div class="step-content" id="step-content-3" style="display:none;">
+            <h2 class="block-title">儲值入口</h2>
+            <p class="block-desc">提供玩家使用 MyCard 儲值所需的相關連結</p>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">儲值方式</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">可複選，請勾選此遊戲提供的 MyCard 儲值方式，勾選後將顯示對應的填寫欄位。</div>
+                </span>
+              </div>
+              <div class="field-caption">選擇此遊戲提供的MyCard 儲值方式</div>
+              <div class="checkbox-row">
+                <label class="checkbox-option"><input type="checkbox" id="topup-web" name="topupMethod" value="web"><span class="checkbox-box"></span><span>網頁儲值</span></label>
+                <label class="checkbox-option"><input type="checkbox" id="topup-mobile" name="topupMethod" value="mobile"><span class="checkbox-box"></span><span>手機內儲值</span></label>
+                <label class="checkbox-option"><input type="checkbox" id="topup-pc" name="topupMethod" value="pc"><span class="checkbox-box"></span><span>PC儲值</span></label>
+              </div>
+            </div>
+
+            <!-- 網頁儲值 -->
+            <div id="topup-section-web" class="topup-method-box method-web" style="display:none;">
+              <div class="topup-method-title-row">
+                <span class="topup-method-tag">網頁儲值</span>
+              </div>
+              <div class="field-group">
+                <div class="field-label-row">
+                  <span class="field-label">web shop 連結</span>
+                  <span class="required-star">*</span>
+                  <span class="tooltip-wrap">
+                    <button class="tooltip-icon" type="button">?</button>
+                    <div class="tooltip-popover">請貼上完整網址，需以 https:// 開頭。</div>
+                  </span>
+                </div>
+                <div class="field-caption">提供含MyCard 儲值功能的網頁商店連結</div>
+                <input class="field-input" type="text" id="field-webshop-input" placeholder="https://">
+              </div>
+            </div>
+
+            <!-- 手機內儲值 -->
+            <div id="topup-section-mobile" class="topup-method-box method-mobile" style="display:none;">
+              <div class="topup-method-title-row">
+                <span class="topup-method-tag">手機內儲值</span>
+              </div>
+              <div class="field-group">
+                <div class="field-label-row">
+                  <span class="field-label">Android APK 連結</span>
+                  <span class="required-star">*</span>
+                  <span class="tooltip-wrap">
+                    <button class="tooltip-icon" type="button">?</button>
+                    <div class="tooltip-popover">請提供可直接下載 APK 安裝檔的網址。</div>
+                  </span>
+                </div>
+                <div class="field-caption">提供含MyCard 儲值功能的APK安裝包供用戶下載</div>
+                <input class="field-input" type="text" id="field-androidapk-input" placeholder="https://">
+              </div>
+
+              <div class="field-group">
+                <div class="field-label-row">
+                  <span class="field-label">iOS App Store 連結</span>
+                  <span class="tooltip-wrap">
+                    <button class="tooltip-icon" type="button">?</button>
+                    <div class="tooltip-popover">請貼上完整的 App Store 商店網址，需以 https:// 開頭。</div>
+                  </span>
+                </div>
+                <div class="field-caption">如iOS 版提供MyCard儲值入口，請填寫App Store下載連結</div>
+                <input class="field-input" type="text" id="field-iosappstore-input" placeholder="https://">
+              </div>
+            </div>
+
+            <!-- PC儲值 -->
+            <div id="topup-section-pc" class="topup-method-box method-pc" style="display:none;">
+              <div class="topup-method-title-row">
+                <span class="topup-method-tag">PC儲值</span>
+              </div>
+              <div class="field-group">
+                <div class="field-label-row">
+                  <span class="field-label">PC版 連結</span>
+                  <span class="required-star">*</span>
+                  <span class="tooltip-wrap">
+                    <button class="tooltip-icon" type="button">?</button>
+                    <div class="tooltip-popover">請提供 PC 版下載或啟動網址。</div>
+                  </span>
+                </div>
+                <div class="field-caption">提供支援 MyCard 儲值的 PC 版遊戲安裝連結</div>
+                <input class="field-input" type="text" id="field-pcstore-input" placeholder="https://">
+              </div>
+            </div>
+
+            <!-- 帳號不相通（所有欄位最下方，非必填） -->
+            <div class="field-group" id="topup-account-not-shared-group">
+              <div class="field-label-row">
+                <span class="field-label">帳號不相通</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">請確認用戶是否可使用同一遊戲帳號，在不同裝置（如網頁／手機／PC）間繼續遊玩進度。</div>
+                </span>
+              </div>
+              <div class="field-caption warn">注意！若您勾選"是"，代表用戶無法使用同一遊戲帳號在不同裝置遊玩</div>
+              <div class="radio-row">
+                <label class="radio-option"><input type="radio" name="accountNotShared" value="yes"><span class="radio-dot"></span><span>是</span></label>
+                <label class="radio-option"><input type="radio" name="accountNotShared" value="no"><span class="radio-dot"></span><span>否</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: 官方與社群連結 -->
+          <div class="step-content" id="step-content-4" style="display:none;">
+            <h2 class="block-title">官方與社群連結</h2>
+            <p class="block-desc">提供用戶更多遊戲相關資訊及官方動態</p>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">官方網站連結</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">請貼上完整的官方網站網址，需以 https:// 開頭。</div>
+                </span>
+              </div>
+              <div class="field-caption">提供遊戲官方網站連結，方便用戶查看遊戲相關資訊</div>
+              <input class="field-input" type="text" id="field-website-input" placeholder="https://">
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">粉絲團連結</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">請貼上完整的粉絲專頁或社群網址，需以 https:// 開頭。</div>
+                </span>
+              </div>
+              <div class="field-caption">提供遊戲官方粉絲團連結，方便用戶查看遊戲最新消息</div>
+              <input class="field-input" type="text" id="field-fanpage-input" placeholder="https://">
+            </div>
+          </div>
+
+          <!-- Step 5: 期望上架時間 -->
+          <div class="step-content" id="step-content-5" style="display:none;">
+            <h2 class="block-title">期望上架時間</h2>
+            <p class="block-desc">填寫您期望的上架時間，供 MyCard 審核及安排上架作業時參考。</p>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">期望上架時間</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">點擊欄位開啟時間選擇器，選擇您期望曝光的日期與時間（精確到分鐘）。</div>
+                </span>
+              </div>
+              <div class="datetime-wrap">
+                <input class="field-input" type="text" id="field-datetime-input" placeholder="2026/09/11 15:30" readonly>
+                <div class="dt-picker" id="dtPicker">
+                  <div class="dt-cal-header">
+                    <button type="button" class="dt-nav" id="dtPrevMonth">‹</button>
+                    <span class="dt-cal-title" id="dtCalTitle">2026年9月</span>
+                    <button type="button" class="dt-nav" id="dtNextMonth">›</button>
+                  </div>
+                  <div class="dt-weekdays"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
+                  <div class="dt-days" id="dtDays"></div>
+                  <div class="dt-time-row">
+                    <span class="dt-time-label">時間</span>
+                    <select id="dtHour"></select>
+                    <span>:</span>
+                    <select id="dtMinute"></select>
+                  </div>
+                  <div class="dt-actions">
+                    <button type="button" class="dt-cancel" id="dtCancel">取消</button>
+                    <button type="button" class="dt-confirm" id="dtConfirm">確定</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="page-footer">
+          <a class="btn-ghost" id="prevBtn" style="text-decoration:none;display:none;align-items:center;">‹ 上一步</a>
+          <span class="step-count" id="stepCountText">Step 1 of 5</span>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <button class="btn-ghost primary-ghost" id="btnPreview" style="display:none;">預覽</button>
+            <button class="btn-next" id="nextBtn">下一步 ›</button>
+            <button class="btn-submit" id="btnSubmit" style="display:none;">送出審核</button>
+          </div>
+        </div>
+
+        <div class="footer-note">©Soft-World Corp. All Rights Reserved.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Tag selection modal -->
+<div class="tag-modal-overlay" id="tagModalOverlay">
+  <div class="tag-modal-box">
+    <div class="tag-modal-header">
+      <h3>選擇標籤</h3>
+      <button class="tag-modal-close" id="tagModalClose" type="button">✕</button>
+    </div>
+    <div class="tag-modal-body" id="tagModalBody"></div>
+    <div class="tag-modal-footer">
+      <span class="tag-modal-status" id="tagModalStatus"></span>
+      <button class="tag-modal-done" id="tagModalDone" type="button">完成</button>
+    </div>
+  </div>
+</div>
+
+<!-- Result modal (save / submit) -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-icon" id="modalIcon">
+      <span class="icon-check" id="iconCheck">✓</span>
+      <span class="icon-x" id="iconX">✕</span>
+    </div>
+    <p class="modal-message" id="modalMessage"></p>
+    <p class="modal-note" id="modalNote"></p>
+    <button class="modal-confirm-btn" id="modalConfirmBtn">確定</button>
+  </div>
+</div>
+
+<script>
+  /* ============================================================
+     Page navigation state
+     ============================================================ */
+  let currentStep = 1;
+  const TOTAL_STEPS = 5;
+  const stepComplete = {1:false, 2:false, 3:false, 4:false, 5:false};
+
+  const homeEl = document.getElementById('page-home');
+  const wizardEl = document.getElementById('page-wizard');
+
+  function showPage(page){
+    if(page === 'home'){
+      homeEl.style.display = '';
+      wizardEl.style.display = 'none';
+    } else {
+      homeEl.style.display = 'none';
+      wizardEl.style.display = '';
+    }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function showStepContent(step){
+    for(let i=1;i<=TOTAL_STEPS;i++){
+      document.getElementById('step-content-'+i).style.display = (i===step) ? '' : 'none';
+    }
+    document.getElementById('stepCountText').textContent = 'Step ' + step + ' of ' + TOTAL_STEPS;
+    document.getElementById('prevBtn').style.display = (step===1) ? 'none' : 'inline-flex';
+    document.getElementById('nextBtn').style.display = (step===TOTAL_STEPS) ? 'none' : '';
+    document.getElementById('btnSubmit').style.display = (step===TOTAL_STEPS) ? '' : 'none';
+    document.getElementById('btnPreview').style.display = (step===1) ? 'none' : 'inline-block';
+    document.getElementById('protoDemoToggleWrap').style.display = (step===TOTAL_STEPS) ? '' : 'none';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function updateStepperUI(){
+    for(let i=1;i<=TOTAL_STEPS;i++){
+      const node = document.querySelector('.step-node[data-step="'+i+'"]');
+      const badge = node.querySelector('.status-badge');
+      node.classList.remove('current','done');
+      if(i === currentStep) node.classList.add('current');
+      if(stepComplete[i]){
+        node.classList.add('done');
+        badge.classList.remove('warn');
+        badge.classList.add('ok');
+        badge.textContent = '✓';
+      } else {
+        badge.classList.remove('ok');
+        badge.classList.add('warn');
+        badge.textContent = '!';
+      }
+    }
+    const lines = document.querySelectorAll('#stepper .step-line');
+    lines.forEach((line, idx)=>{
+      const stepBefore = idx + 1;
+      line.style.background = stepComplete[stepBefore] ? 'var(--green)' : '#dcdde1';
+    });
+  }
+
+  /* ============================================================
+     Required-field completion checks per step
+     ============================================================ */
+  function checkStep1Complete(){
+    const company = document.getElementById('field-company-input').value.trim();
+    const service = document.getElementById('field-service-input').value.trim();
+    const gamecode = document.getElementById('field-gamecode-input').value.trim();
+    return !!(company && service && gamecode);
+  }
+
+  function checkStep2Complete(){
+    const zh = langData.zh;
+    const iconFilled = document.getElementById('iconUpload').classList.contains('filled');
+    const anyCarouselFilled = Array.from(document.querySelectorAll('.carousel-box')).some(b=>b.classList.contains('filled'));
+    const tagsFilled = document.getElementById('field-tags-input').value.trim();
+    const deviceFilled = Array.from(document.querySelectorAll('input[name="playDevice"]')).some(cb=>cb.checked);
+    const ratingFilled = document.getElementById('field-rating-select').value;
+    return !!(zh.name.trim() && zh.desc.trim() && iconFilled && anyCarouselFilled && tagsFilled && deviceFilled && ratingFilled);
+  }
+
+  function checkStep5Complete(){
+    return !!document.getElementById('field-datetime-input').value.trim();
+  }
+
+  function checkStep3Complete(){
+    const wantsWeb = document.getElementById('topup-web').checked;
+    const wantsMobile = document.getElementById('topup-mobile').checked;
+    const wantsPC = document.getElementById('topup-pc').checked;
+
+    if(wantsWeb){
+      if(!document.getElementById('field-webshop-input').value.trim()) return false;
+    }
+    if(wantsMobile){
+      const apk = document.getElementById('field-androidapk-input').value.trim();
+      if(!apk) return false;
+    }
+    if(wantsPC){
+      if(!document.getElementById('field-pcstore-input').value.trim()) return false;
+    }
+    return true;
+  }
+
+  function evaluateStepComplete(step){
+    if(step === 1) return checkStep1Complete();
+    if(step === 2){ saveCurrentLangData(); return checkStep2Complete(); }
+    if(step === 3) return checkStep3Complete();
+    if(step === 4) return true;  // 本區塊皆為非必填
+    if(step === 5) return checkStep5Complete();
+    return false;
+  }
+
+  function evaluateAndMarkCurrentStep(){
+    stepComplete[currentStep] = evaluateStepComplete(currentStep);
+  }
+
+  /* ============================================================
+     Next / Prev / Stepper navigation
+     規則：不論該頁必填是否完成，都可以點擊上一步/下一步/流程節點切換頁面，
+     但流程圖上的圖示會依照當頁必填完成狀況顯示綠色打勾或橘色驚嘆號。
+     ============================================================ */
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    evaluateAndMarkCurrentStep();
+    currentStep = Math.min(currentStep + 1, TOTAL_STEPS);
+    showStepContent(currentStep);
+    updateStepperUI();
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', ()=>{
+    evaluateAndMarkCurrentStep();
+    currentStep = Math.max(currentStep - 1, 1);
+    showStepContent(currentStep);
+    updateStepperUI();
+  });
+
+  document.querySelectorAll('.step-node').forEach(node=>{
+    node.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const target = parseInt(node.getAttribute('data-step'), 10);
+      if(target === currentStep){
+        document.querySelector('.content-card').scrollIntoView({behavior:'smooth', block:'start'});
+        return;
+      }
+      evaluateAndMarkCurrentStep();
+      currentStep = target;
+      showStepContent(currentStep);
+      updateStepperUI();
+    });
+  });
+
+  /* ============================================================
+     Home -> Wizard entry / reset
+     ============================================================ */
+  function resetWizardForm(){
+    // step1
+    document.getElementById('field-company-input').value = '';
+    document.getElementById('field-service-input').value = '';
+    document.getElementById('field-gamecode-input').value = '';
+    document.getElementById('field-company').classList.remove('error');
+    document.querySelector('#field-company .field-error-msg').style.display = 'none';
+
+    // step2 — remove any extra language tabs, keep zh & en
+    document.querySelectorAll('.lang-tab').forEach(tab=>{
+      const lang = tab.getAttribute('data-lang');
+      if(lang !== 'zh' && lang !== 'en') tab.remove();
+    });
+    document.getElementById('langAddMenu').innerHTML = LANG_ADD_MENU_DEFAULT_HTML;
+    Object.keys(langData).forEach(k=>delete langData[k]);
+    langData.zh = {name:'', desc:''};
+    langData.en = {name:'', desc:''};
+    currentLang = 'zh';
+    document.querySelectorAll('.lang-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelector('.lang-tab[data-lang="zh"]').classList.add('active');
+    loadLangData('zh');
+    document.getElementById('field-shortname-input').value = '';
+
+    document.getElementById('iconUpload').classList.remove('filled');
+    document.querySelectorAll('.carousel-box').forEach(b=>b.classList.remove('filled'));
+    document.getElementById('field-tags-input').value = '';
+    TAG_CATEGORIES.forEach(cat=>tagSelections[cat.key].clear());
+    document.querySelectorAll('input[name="playDevice"]').forEach(cb=>cb.checked=false);
+    document.getElementById('field-rating-select').value = '';
+
+    // step3 (儲值入口)
+    document.querySelectorAll('input[name="topupMethod"]').forEach(cb=>cb.checked=false);
+    document.getElementById('field-webshop-input').value = '';
+    document.getElementById('field-androidapk-input').value = '';
+    document.getElementById('field-iosappstore-input').value = '';
+    document.getElementById('field-pcstore-input').value = '';
+    document.querySelectorAll('input[name="accountNotShared"]').forEach(r=>r.checked=false);
+    updateTopupSections();
+
+    // step4
+    document.getElementById('field-website-input').value = '';
+    document.getElementById('field-fanpage-input').value = '';
+
+    // step5
+    document.getElementById('field-datetime-input').value = '';
+    selectedDate = null;
+    document.getElementById('simulateFailToggle').checked = false;
+
+    stepComplete[1]=stepComplete[2]=stepComplete[3]=stepComplete[4]=stepComplete[5]=false;
+  }
+
+  function enterWizard(){
+    resetWizardForm();
+    currentStep = 1;
+    showPage('wizard');
+    showStepContent(1);
+    updateStepperUI();
+  }
+
+  document.getElementById('btnAddGame').addEventListener('click', enterWizard);
+
+  /* ============================================================
+     Tooltip toggle (global)
+     ============================================================ */
+  document.querySelectorAll('.tooltip-icon').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const wrap = btn.closest('.tooltip-wrap');
+      const wasOpen = wrap.classList.contains('open');
+      document.querySelectorAll('.tooltip-wrap.open').forEach(w=>w.classList.remove('open'));
+      if(!wasOpen) wrap.classList.add('open');
+    });
+  });
+  document.addEventListener('click', ()=>{
+    document.querySelectorAll('.tooltip-wrap.open').forEach(w=>w.classList.remove('open'));
+    document.getElementById('langAddMenu').classList.remove('open');
+  });
+
+  // demo: allow clicking the readonly select-style input to fill a sample value
+  document.getElementById('field-service-input').addEventListener('click', function(){
+    this.value = '小兵來對決 / binfight';
+    this.readOnly = true;
+  });
+
+  /* ============================================================
+     Step 2: Language tabs
+     ============================================================ */
+  const langData = { zh:{name:'', desc:''}, en:{name:'', desc:''} };
+  let currentLang = 'zh';
+  const LANG_ADD_MENU_DEFAULT_HTML = document.getElementById('langAddMenu').innerHTML;
+
+  const nameInput = document.getElementById('field-gamename-input');
+  const shortInput = document.getElementById('field-shortname-input');
+  const descInput = document.getElementById('field-desc-input');
+
+  function saveCurrentLangData(){
+    langData[currentLang] = { name: nameInput.value, desc: descInput.value };
+  }
+  function loadLangData(lang){
+    const d = langData[lang] || {name:'',desc:''};
+    nameInput.value = d.name;
+    descInput.value = d.desc;
+  }
+  function switchLang(lang){
+    if(lang === currentLang) return;
+    saveCurrentLangData();
+    currentLang = lang;
+    loadLangData(lang);
+    document.querySelectorAll('.lang-tab').forEach(t=>t.classList.remove('active'));
+    const targetTab = document.querySelector('.lang-tab[data-lang="'+lang+'"]');
+    if(targetTab) targetTab.classList.add('active');
+  }
+
+  document.getElementById('langTabs').addEventListener('click', (e)=>{
+    const delBtn = e.target.closest('.lang-tab-delete');
+    if(delBtn){
+      e.stopPropagation();
+      const lang = delBtn.getAttribute('data-lang');
+      const tabEl = delBtn.closest('.lang-tab');
+      const label = tabEl.getAttribute('data-label') || tabEl.textContent.replace('×','').trim();
+      const sure = confirm('確定要刪除語系「' + label + '」嗎？此語系下已填寫的內容將會一併移除。');
+      if(!sure) return;
+      delete langData[lang];
+      tabEl.remove();
+      if(currentLang === lang){
+        currentLang = 'zh';
+        loadLangData('zh');
+        document.querySelectorAll('.lang-tab').forEach(t=>t.classList.remove('active'));
+        document.querySelector('.lang-tab[data-lang="zh"]').classList.add('active');
+      }
+      return;
+    }
+    const tab = e.target.closest('.lang-tab');
+    if(tab) switchLang(tab.getAttribute('data-lang'));
+  });
+
+  const langAddBtn = document.getElementById('langAddBtn');
+  const langAddMenu = document.getElementById('langAddMenu');
+  langAddBtn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    langAddMenu.classList.toggle('open');
+  });
+  langAddMenu.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const item = e.target.closest('.lang-add-item');
+    if(!item) return;
+    const lang = item.getAttribute('data-lang');
+    const label = item.getAttribute('data-label');
+    langAddMenu.classList.remove('open');
+
+    if(document.querySelector('.lang-tab[data-lang="'+lang+'"]')){
+      switchLang(lang);
+      return;
+    }
+    langData[lang] = {name:'', desc:''};
+    const newTab = document.createElement('div');
+    newTab.className = 'lang-tab';
+    newTab.setAttribute('data-lang', lang);
+    newTab.setAttribute('data-label', label);
+    newTab.innerHTML = label + ' <span class="lang-tab-delete" data-lang="' + lang + '">×</span>';
+    document.getElementById('langTabs').insertBefore(newTab, langAddBtn);
+    switchLang(lang);
+    item.remove();
+  });
+
+  /* ============================================================
+     Step 2: Upload boxes
+     ============================================================ */
+  function wireUploadBox(box){
+    box.addEventListener('click', ()=>{
+      if(box.classList.contains('filled')){
+        box.classList.remove('filled');
+        setTimeout(()=>{ box.classList.add('filled'); }, 50);
+      } else {
+        box.classList.add('filled');
+      }
+    });
+  }
+  wireUploadBox(document.getElementById('iconUpload'));
+  document.querySelectorAll('.carousel-box').forEach(box=>wireUploadBox(box));
+
+  /* ============================================================
+     Step 3: 儲值入口 — 依「儲值方式」勾選狀態顯示對應欄位
+     ============================================================ */
+  const topupWeb = document.getElementById('topup-web');
+  const topupMobile = document.getElementById('topup-mobile');
+  const topupPC = document.getElementById('topup-pc');
+  const topupSectionWeb = document.getElementById('topup-section-web');
+  const topupSectionMobile = document.getElementById('topup-section-mobile');
+  const topupSectionPC = document.getElementById('topup-section-pc');
+
+  function updateTopupSections(){
+    topupSectionWeb.style.display = topupWeb.checked ? 'block' : 'none';
+    topupSectionMobile.style.display = topupMobile.checked ? 'block' : 'none';
+    topupSectionPC.style.display = topupPC.checked ? 'block' : 'none';
+  }
+  [topupWeb, topupMobile, topupPC].forEach(cb=>{
+    cb.addEventListener('change', updateTopupSections);
+  });
+
+  /* ============================================================
+     Step 2: Tag selection modal
+     ============================================================ */
+  const TAG_CATEGORIES = [
+    { key: 'product', name: '產品分類', options: ['手機遊戲','主機遊戲','PC遊戲','網頁遊戲','卡牌遊戲','桌遊'] },
+    { key: 'genre', name: '遊戲類型', options: ['RPG','動作','策略','射擊','模擬','益智','運動','競速','恐怖','卡牌對戰'] },
+    { key: 'story', name: '故事題材', options: ['奇幻','科幻','武俠','校園','都市','歷史','末日','偵探','戀愛','恐怖驚悚'] },
+    { key: 'gameplay', name: '遊戲玩法', options: ['開放世界','回合制','即時戰鬥','生存','建造經營','多人連線','單機','塔防','Roguelike','卡牌構築'] }
+  ];
+  const MAX_PER_CATEGORY = 3;
+  const tagSelections = {};
+  TAG_CATEGORIES.forEach(cat => tagSelections[cat.key] = new Set());
+
+  const tagModalOverlay = document.getElementById('tagModalOverlay');
+  const tagModalBody = document.getElementById('tagModalBody');
+  const tagModalStatus = document.getElementById('tagModalStatus');
+
+  function renderTagModal(){
+    tagModalBody.innerHTML = '';
+    TAG_CATEGORIES.forEach(cat=>{
+      const catDiv = document.createElement('div');
+      catDiv.className = 'tag-category';
+      const head = document.createElement('div');
+      head.className = 'tag-category-head';
+      head.innerHTML = '<span class="tag-category-name">' + cat.name + '</span>' +
+        '<span class="tag-category-error" id="err-' + cat.key + '"></span>';
+      catDiv.appendChild(head);
+
+      const row = document.createElement('div');
+      row.className = 'tag-pill-row';
+      cat.options.forEach(opt=>{
+        const pill = document.createElement('div');
+        pill.className = 'tag-pill';
+        if(tagSelections[cat.key].has(opt)) pill.classList.add('selected');
+        pill.innerHTML = '<span class="tag-pill-dot"></span><span>' + opt + '</span>';
+        pill.addEventListener('click', ()=> toggleTag(cat.key, opt));
+        row.appendChild(pill);
+      });
+      catDiv.appendChild(row);
+      tagModalBody.appendChild(catDiv);
+    });
+    updateTagStatus();
+  }
+
+  function showCategoryError(key, message){
+    const el = document.getElementById('err-' + key);
+    if(!el) return;
+    el.textContent = message;
+    el.classList.add('show');
+  }
+  function clearCategoryError(key){
+    const el = document.getElementById('err-' + key);
+    if(!el) return;
+    el.textContent = '';
+    el.classList.remove('show');
+  }
+
+  function toggleTag(key, label){
+    const set = tagSelections[key];
+    if(set.has(label)){
+      set.delete(label);
+      clearCategoryError(key);
+    } else {
+      if(set.size >= MAX_PER_CATEGORY){
+        showCategoryError(key, '每項標籤類別最多3項');
+        return;
+      }
+      set.add(label);
+      clearCategoryError(key);
+    }
+    renderTagModal();
+  }
+
+  function updateTagStatus(){
+    const allFilled = TAG_CATEGORIES.every(cat => tagSelections[cat.key].size > 0);
+    if(allFilled){
+      tagModalStatus.textContent = '已完成所有分類的標籤選擇';
+      tagModalStatus.classList.add('ok');
+    } else {
+      tagModalStatus.textContent = '請至少為每個分類選擇1個標籤';
+      tagModalStatus.classList.remove('ok');
+    }
+  }
+
+  function openTagModal(){
+    renderTagModal();
+    tagModalOverlay.classList.add('open');
+  }
+  function closeTagModal(){
+    tagModalOverlay.classList.remove('open');
+  }
+
+  document.getElementById('btnTagSelect').addEventListener('click', openTagModal);
+  document.getElementById('tagModalClose').addEventListener('click', closeTagModal);
+  tagModalOverlay.addEventListener('click', (e)=>{ if(e.target === tagModalOverlay) closeTagModal(); });
+
+  document.getElementById('tagModalDone').addEventListener('click', ()=>{
+    let hasError = false;
+    TAG_CATEGORIES.forEach(cat=>{
+      if(tagSelections[cat.key].size === 0){
+        showCategoryError(cat.key, '至少需要選擇1個標籤選項');
+        hasError = true;
+      }
+    });
+    if(hasError) return;
+    const allTags = [];
+    TAG_CATEGORIES.forEach(cat=>{ tagSelections[cat.key].forEach(t => allTags.push(t)); });
+    document.getElementById('field-tags-input').value = allTags.join('、');
+    closeTagModal();
+  });
+
+  /* ============================================================
+     Step 5: Datetime picker
+     ============================================================ */
+  const dtInput = document.getElementById('field-datetime-input');
+  const dtPicker = document.getElementById('dtPicker');
+  const dtCalTitle = document.getElementById('dtCalTitle');
+  const dtDays = document.getElementById('dtDays');
+  const dtHour = document.getElementById('dtHour');
+  const dtMinute = document.getElementById('dtMinute');
+
+  const today = new Date();
+  let viewYear = today.getFullYear();
+  let viewMonth = today.getMonth();
+  let selectedDate = null;
+
+  for(let h=0; h<24; h++){
+    const opt = document.createElement('option');
+    opt.value = h; opt.textContent = String(h).padStart(2,'0');
+    dtHour.appendChild(opt);
+  }
+  for(let m=0; m<60; m++){
+    const opt = document.createElement('option');
+    opt.value = m; opt.textContent = String(m).padStart(2,'0');
+    dtMinute.appendChild(opt);
+  }
+  dtHour.value = 12;
+  dtMinute.value = 0;
+
+  function renderCalendar(){
+    dtCalTitle.textContent = viewYear + '年' + (viewMonth+1) + '月';
+    dtDays.innerHTML = '';
+    const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+    const daysInMonth = new Date(viewYear, viewMonth+1, 0).getDate();
+    for(let i=0; i<firstDay; i++){
+      const blank = document.createElement('span');
+      blank.className = 'dt-day dt-day-blank';
+      dtDays.appendChild(blank);
+    }
+    for(let d=1; d<=daysInMonth; d++){
+      const cell = document.createElement('span');
+      cell.className = 'dt-day';
+      cell.textContent = d;
+      if(selectedDate && selectedDate.y===viewYear && selectedDate.m===viewMonth && selectedDate.d===d){
+        cell.classList.add('selected');
+      }
+      const isToday = (viewYear===today.getFullYear() && viewMonth===today.getMonth() && d===today.getDate());
+      if(isToday) cell.classList.add('today');
+      cell.addEventListener('click', ()=>{
+        selectedDate = {y:viewYear, m:viewMonth, d:d};
+        renderCalendar();
+      });
+      dtDays.appendChild(cell);
+    }
+  }
+  renderCalendar();
+
+  document.getElementById('dtPrevMonth').addEventListener('click', (e)=>{
+    e.stopPropagation();
+    viewMonth--; if(viewMonth<0){ viewMonth=11; viewYear--; }
+    renderCalendar();
+  });
+  document.getElementById('dtNextMonth').addEventListener('click', (e)=>{
+    e.stopPropagation();
+    viewMonth++; if(viewMonth>11){ viewMonth=0; viewYear++; }
+    renderCalendar();
+  });
+
+  function openPicker(){ dtPicker.classList.add('open'); }
+  function closePicker(){ dtPicker.classList.remove('open'); }
+
+  dtInput.addEventListener('click', (e)=>{ e.stopPropagation(); openPicker(); });
+  dtPicker.addEventListener('click', (e)=> e.stopPropagation());
+  document.addEventListener('click', ()=>{ closePicker(); });
+
+  document.getElementById('dtCancel').addEventListener('click', ()=>{ closePicker(); });
+
+  document.getElementById('dtConfirm').addEventListener('click', ()=>{
+    if(!selectedDate){ alert('請先在日曆上選擇日期'); return; }
+    const y = selectedDate.y;
+    const m = String(selectedDate.m+1).padStart(2,'0');
+    const d = String(selectedDate.d).padStart(2,'0');
+    const h = String(dtHour.value).padStart(2,'0');
+    const min = String(dtMinute.value).padStart(2,'0');
+    dtInput.value = y + '/' + m + '/' + d + '  ' + h + ':' + min;
+    closePicker();
+  });
+
+  /* ============================================================
+     Result modal (shared by save-draft / submit)
+     ============================================================ */
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalIcon = document.getElementById('modalIcon');
+  const modalMessage = document.getElementById('modalMessage');
+  const modalNote = document.getElementById('modalNote');
+  const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+  let modalOnConfirm = null;
+
+  function showModal(isSuccess, message, noteHTML, onConfirm){
+    modalIcon.className = 'modal-icon ' + (isSuccess ? 'success' : 'fail');
+    modalMessage.textContent = message;
+    modalNote.innerHTML = noteHTML || '';
+    modalOnConfirm = onConfirm || null;
+    modalOverlay.classList.add('open');
+  }
+  function closeModal(){ modalOverlay.classList.remove('open'); }
+  modalConfirmBtn.addEventListener('click', ()=>{
+    closeModal();
+    if(modalOnConfirm) modalOnConfirm();
+  });
+  modalOverlay.addEventListener('click', (e)=>{ if(e.target === modalOverlay) closeModal(); });
+
+  /* ============================================================
+     暫時儲存 / 儲存並送出 → 儲存草稿 / 送出審核
+     規則：僅以「期望上架時間」欄位是否填寫，作為送出審核成功與否的判斷示意，
+     其餘欄位維持原型示意，不強制檢查。
+     ============================================================ */
+  function handleSaveDraft(){
+    const simulateFail = document.getElementById('simulateFailToggle').checked;
+    if(simulateFail){
+      showModal(false, '儲存草稿失敗，請再嘗試，或聯絡您的遊戲在MyCard運營人員', '', null);
+    } else {
+      showModal(true, '草稿已儲存，您可以隨時回來編輯', '注意：若已完成填寫需要送審，請點選<b>【送出審核】</b>', ()=>{ showPage('home'); });
+    }
+  }
+
+  function handleSubmit(){
+    if(!dtInput.value.trim()){
+      stepComplete[5] = false;
+      if(currentStep !== 5){
+        currentStep = 5;
+        showStepContent(5);
+      }
+      updateStepperUI();
+      showModal(false, '送出審核失敗，請檢查必填欄位或欄位填寫狀況，並再次送出', '', null);
+      dtInput.focus();
+      return;
+    }
+    stepComplete[5] = true;
+    updateStepperUI();
+    showModal(true, '已收到您的審核資料，將由運營為您審核', '', ()=>{ showPage('home'); });
+  }
+
+  document.getElementById('btnSave').addEventListener('click', handleSaveDraft);
+  document.getElementById('btnSaveTop').addEventListener('click', handleSubmit);
+  document.getElementById('btnSubmit').addEventListener('click', handleSubmit);
+  document.getElementById('btnPreview').addEventListener('click', ()=>{
+    alert('預覽功能（原型示意），將開啟目前已填寫內容的官網預覽畫面');
+  });
+
+  /* ============================================================
+     Initial render
+     ============================================================ */
+  updateStepperUI();
+	
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+const preview = document.getElementById("preview");
+const uploadContent = document.getElementById("uploadContent");
+const uploadBtn = document.querySelector(".upload-btn");
+
+uploadBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  fileInput.click();
+});
+
+dropZone.addEventListener("click", () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", (e) => {
+  handleFile(e.target.files[0]);
+});
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+
+dropZone.addEventListener("dragleave", (e) => {
+  if (!dropZone.contains(e.relatedTarget)) {
+    dropZone.classList.remove("dragover");
+  }
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+  handleFile(e.dataTransfer.files[0]);
+});
+
+function handleFile(file) {
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("請選擇圖片檔案！");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    preview.src = e.target.result;
+    preview.hidden = false;
+    uploadContent.hidden = true;
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
