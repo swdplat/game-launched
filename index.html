@@ -4,15 +4,12 @@
 <meta charset="UTF-8">
 <title>MyCard遊蹤管理系統</title>
 <link rel="stylesheet" href="css/L.css">
-<link rel="stylesheet" href="css/LM.css" media="only screen and (min-width:1381px) and (max-width:1680px)">
-<link rel="stylesheet" href="css/LMM.css" media="only screen and (min-width:1025px) and (max-width:1380px)">
-<link rel="stylesheet" href="css/M.css" media="only screen and (min-width:600px) and (max-width:1024px)">
-<link rel="stylesheet" href="css/S.css" media="only screen and (max-width:599px)">
 
 	
 <!-- jquery引入檔 -->
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/sidebar.js"></script>
+<script src="js/manager.js"></script>
 
 
 </head>
@@ -53,128 +50,426 @@
     <div id="page-home">
       <div class="page-header-row">
         <div class="page-header-text">
-          <h1>維護您的遊戲資料</h1>
+          <div class="initial"><ol></ol></div><h1>維護您的遊戲資料</h1>
           <p>自主填寫遊戲資料完成，審核過後即可讓您的遊戲資訊在官網曝光</p>
         </div>
-        <button class="btn-add-game" id="btnAddGame">＋ 新增遊戲</button>
+		<!--<button class="btn-outbound" id="btnOutboard">↓ 匯出清單</button>-->
+        <button class="btn-add-game" id="btnAddGame">＋ 新增遊戲</button>		
       </div>
+		
+	  <!--<div class="dynamic_row">
+		<div class="deal">
+		  <ul>
+			<h5>需要你的處理</h5>
+			<h6>優先完成以下事項，讓上架流程繼續往前</h6>
+			<ol>查看全部 →</ol>
+		  </ul>
+		  <li>
+		    <dl><img src="images/game_icon/icon01.webp"></dl>
+			<dt>締造者：放逐之境</dt>
+			<dd>審核退回 · 英文遊戲介紹待補齊</dd>
+			<ol>檢視內容 →</ol>
+		  </li>
+		  <li>
+		    <dl><img src="images/game_icon/icon02.webp"></dl>
+			<dt>天堂2</dt>
+			<dd>草稿 · 尚未設定預計上架日期</dd>
+			<ol>檢視內容 →</ol>
+		  </li>
+		  <li>
+		    <dl><img src="images/game_icon/icon03.webp"></dl>
+			<dt>聖鬥士星矢</dt>
+			<dd>草稿 · 遊戲圖示尚未上傳</dd>
+			<ol>檢視內容 →</ol>
+		  </li>
+		</div>
+	    <div class="history">
+		  <ul>
+			<h5>最近動態</h5>
+			<h6>掌握資料與審核進度的變更</h6>
+			<ol>查看記錄 →</ol>
+		  </ul>
+		  <li>
+			<dt>締造者：放逐之境</dt>
+			<dd>MyCard 已提出修改建議</dd>
+			<ol>09/21 14:10</ol>
+		  </li>
+		  <li>
+			<dt>伊莫</dt>
+			<dd>合作夥伴更新了遊戲介紹</dd>
+			<ol>09/20 18:04</ol>
+		  </li>
+		  <li>
+			<dt>瑪奇 Mobile</dt>
+			<dd>遊戲資料已發佈</dd>
+			<ol>09/18 08:30</ol>
+		  </li>
+		</div>
+	  </div>
 
-      <div class="search-row">
-        <div class="search-box">🔍 <input type="text" placeholder="搜尋遊戲名稱或 GameID"></div>
-        <button class="btn-search">搜尋</button>
-      </div>
+        <div class="total_row">
+		  <div id="total1" class="total-box gray-border">
+			  <dl>遊戲總數</dl>
+			  <dt class="total_gray">10</dt>
+			  <dd>集中管理所有合作遊戲</dd>
+		  </div>
+		  <div id="total2" class="total-box gray-border">
+			  <dl>待處理事項</dl>
+			  <dt class="pending_brown">3</dt>
+			  <dd>草稿與退回修改</dd>
+		  </div>
+		  <div id="total3" class="total-box gray-border">
+			  <dl>審核進行中</dl>
+			  <dt class="review_purple">2</dt>
+			  <dd>等待 MyCard 確認</dd>
+		  </div>
+		  <div id="total4" class="total-box gray-border">
+			  <dl>已發佈遊戲</dl>
+			  <dt class="release_green">10</dt>
+			  <dd>已公開於遊戲列表</dd>
+		  </div>
+		</div>-->
+
 
       <div class="list-header">
         <h2>我的遊戲清單</h2>
         <p>在這裡查看您所建立過的遊戲資料</p>
+      
+		<ul>
+		  <div id="state_tab1" class="active">全部<dl>10</dl></div>
+		  <div id="state_tab2" class="none">待處理<dl>3</dl></div>
+		  <div id="state_tab3" class="none">草稿<dl>2</dl></div>
+		  <div id="state_tab4" class="none">退回修改<dl>1</dl></div>
+		  <div id="state_tab5" class="none">審核中<dl>2</dl></div>
+		  <div id="state_tab6" class="none">待發佈<dl>2</dl></div>
+		  <div id="state_tab7" class="none">已發佈<dl>3</dl></div>
+		</ul>	
       </div>
 
-      <table>
+      
+      <div class="search-row">
+            <div class="search-box">🔍 <input type="text" placeholder="搜尋遊戲名稱或 GameID"></div>
+            <button class="btn-search">搜尋</button>
+          </div> 
+      <table id="table" class="t1"><!--全部-->
         <thead>
           <tr>
-            <th>遊戲名稱</th>
-            <th>服務名稱/代號</th>
+            <th>遊戲名稱/代號</th>
+            <th></th>
+			<th>服務名稱</th>
             <th>遊戲代號</th>
-            <th>狀態</th>
+			<th>狀態</th>
             <th>首次上架時間</th>
-            <th>狀態更新時間 ▾</th>
-			<th></th>
+            <th>更新時間 ▾</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="game-name">星際爭霸戰：重生</td>
-            <td>星際爭霸戰 / starwar</td>
-            <td>GM10245</td>
-            <td><span class="badge">草稿</span></td>
-            <td>2026/06/25 09:00:00</td>
-            <td>2026/07/11 09:18:47</td>
-			<td><span class="btn-copy">複製</span></td>
+			<td class="game-name"><img src="images/game_icon/icon01.webp"></td>
+			<td><a target="_self" href="#">星際爭霸戰：重生</a><br><span class="sub">starwar</span></td>
+            <td>星際爭霸戰</td>
+			<td>GM10245</td>
+			<td><span class="badge">草稿</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">09:18:47</span></td>
           </tr>
           <tr>
-            <td class="game-name">劍與魔法傳說</td>
-            <td>小兵來對決 / fight</td>
-            <td>GM10231</td>
-            <td><span class="badge1">待審核</span></td>
-            <td>2026/06/20 10:00:00</td>
-            <td>2026/07/10 14:32:05</td>
-			<td><span class="btn-copy">複製</span></td>
+			<td class="game-name"><img src="images/game_icon/icon02.webp"></td>
+            <td><a target="_self" href="#">劍與魔法傳說</a><br><span class="sub">fight</span></td>
+            <td>小兵來對決</td>
+			<td>GM10231</td>
+            <td><span class="badge1">審核中</span></td>
+			<td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/10<br><span class="sub2">14:32:05</span></td>
           </tr>
           <tr>
-            <td class="game-name">勇者物語 Online</td>
-            <td>勇者物語 / hero</td>
-            <td>GM10198</td>
-            <td><span class="badge2">待發佈</span></td>
-            <td>2026/06/15 12:00:00</td>
-            <td>2026/07/09 21:05:12</td>
-			<td><span class="btn-copy">複製</span></td>
+			  <td class="game-name"><img src="images/game_icon/icon03.webp"></td>
+            <td><a target="_self" href="#">勇者物語 Online</a><br><span class="sub">hero</span></td>
+            <td>勇者物語</td>
+			<td>GM10198</td>
+			<td><span class="badge2">待發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/09<br><span class="sub2">21:05:12</span></td>
           </tr>
 		  <tr>
-            <td class="game-name">GAME01</td>
-            <td>GAME01 / GAME01</td>
-            <td>GM10001</td>
-            <td><span class="badge3">已發佈</span></td>
-            <td>2026/06/14 09:00:00</td>
-            <td>2026/07/11 18:05:12</td>
-			<td><span class="btn-copy">複製</span></td>
+            <td class="game-name"><img src="images/game_icon/icon04.webp"></td>
+            <td><a target="_self" href="#">GAME01</a><br><span class="sub">test01</span></td>
+            <td>遊戲10001</td>
+			<td>GM10001</td> 
+			<td><span class="badge3">已發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
-            <td class="game-name">GAME02</td>
-            <td>GAME02 / GAME02</td>
+            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
+            <td>GAME02<br><span class="sub">test02</span></td>
+			<td>遊戲10002</td>
             <td>GM10002</td>
-            <td><span class="badge2">待發佈</span></td>
-            <td>2026/06/14 09:00:00</td>
-            <td>2026/07/11 18:05:12</td>
-			<td><span class="btn-copy">複製</span></td>
+			<td><span class="badge4">待處理</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
-            <td class="game-name">GAME03</td>
-            <td>GAME03 / GAME03</td>
+            <td class="game-name"><img src="images/game_icon/icon06.webp"></td>
+            <td>GAME03<br><span class="sub">test03</span></td>
+			<td>遊戲10003</td>
             <td>GM10003</td>
-            <td><span class="badge2">待發佈</span></td>
-            <td>2026/06/14 09:00:00</td>
-            <td>2026/07/11 18:05:12</td>
-			<td><span class="btn-copy">複製</span></td>
+			<td><span class="badge5">退回修改</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
-            <td class="game-name">GAME04</td>
-            <td>GAME04 / GAME04</td>
+            <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
+            <td>GAME04<br><span class="sub">test04</span></td>
+			<td>遊戲10004</td>
             <td>GM10004</td>
-            <td><span class="badge2">待發佈</span></td>
-            <td>2026/06/14 09:00:00</td>
-            <td>2026/07/11 18:05:12</td>
-			<td><span class="btn-copy">複製</span></td>
+			<td><span class="badge2">待發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
-            <td class="game-name">GAME05</td>
-            <td>GAME05 / GAME05</td>
+            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
+            <td>GAME05<br><span class="sub">test05</span></td>
+			<td>遊戲10005</td>
             <td>GM10005</td>
-            <td><span class="badge2">待發佈</span></td>
-            <td>2026/06/14 09:00:00</td>
-            <td>2026/07/11 18:05:12</td>
-			<td><span class="btn-copy">複製</span></td>
+			<td><span class="badge2">待發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
-            <td class="game-name">GAME06</td>
-            <td>GAME06 / GAME06</td>
+            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
+            <td>GAME06<br><span class="sub">test06</span></td>
+			<td>遊戲10006</td>
             <td>GM10006</td>
-            <td><span class="badge2">待發佈</span></td>
-            <td>2026/06/14 09:00:00</td>
-            <td>2026/07/11 18:05:12</td>
-			<td><span class="btn-copy">複製</span></td>
+			<td><span class="badge2">待發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
-            <td class="game-name">GAME07</td>
-            <td>GAME07 / GAME07</td>
+			<td class="game-name"><img src="images/game_icon/icon10.webp"></td>
+            <td>GAME07<br><span class="sub">test07</span></td>
+			<td>遊戲10007</td>
             <td>GM10007</td>
-            <td><span class="badge2">待發佈</span></td>
-            <td>2026/06/14 09:00:00</td>
-            <td>2026/07/11 18:05:12</td>
-			<td><span class="btn-copy">複製</span></td>
+			<td><span class="badge2">待發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+        </tbody>
+      </table>
+		
+	  <table id="table" class="t2"><!--待處理-->
+        <thead>
+          <tr>
+            <th>遊戲名稱/代號</th>
+            <th></th>
+			<th>服務名稱</th>
+            <th>遊戲代號</th>
+			<th>狀態</th>
+            <th>首次上架時間</th>
+            <th>更新時間 ▾</th>
+          </tr>
+        </thead>
+        <tbody>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge4">待處理</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
+            <td>GAME02<br><span class="sub">test02</span></td>
+			<td>遊戲10002</td>
+            <td>GM10002</td>
+			<td><span class="badge4">待處理</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
+            <td>GAME03<br><span class="sub">test03</span></td>
+			<td>遊戲10003</td>
+            <td>GM10003</td>
+			<td><span class="badge4">待處理</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
         </tbody>
       </table>
 
+	  <table id="table" class="t3"><!--草稿-->
+        <thead>
+          <tr>
+            <th>遊戲名稱/代號</th>
+            <th></th>
+			<th>服務名稱</th>
+            <th>遊戲代號</th>
+			<th>狀態</th>
+            <th>首次上架時間</th>
+            <th>更新時間 ▾</th>
+          </tr>
+        </thead>
+        <tbody>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge">草稿</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon10.webp"></td>
+            <td>GAME02<br><span class="sub">test02</span></td>
+			<td>遊戲10002</td>
+            <td>GM10002</td>
+			<td><span class="badge">草稿</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+        </tbody>
+      </table>
+		
+	  <table id="table" class="t4"><!--退回修改-->
+        <thead>
+          <tr>
+            <th>遊戲名稱/代號</th>
+            <th></th>
+			<th>服務名稱</th>
+            <th>遊戲代號</th>
+			<th>狀態</th>
+            <th>首次上架時間</th>
+            <th>更新時間 ▾</th>
+          </tr>
+        </thead>
+        <tbody>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge5">退回修改</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+        </tbody>
+      </table>
+		
+	  <table id="table" class="t5"><!--審核中-->
+        <thead>
+          <tr>
+            <th>遊戲名稱/代號</th>
+            <th></th>
+			<th>服務名稱</th>
+            <th>遊戲代號</th>
+			<th>狀態</th>
+            <th>首次上架時間</th>
+            <th>更新時間 ▾</th>
+          </tr>
+        </thead>
+        <tbody>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge1">審核中</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon02.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge1">審核中</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+        </tbody>
+      </table>
+		
+	  <table id="table" class="t6"><!--待發佈-->
+        <thead>
+          <tr>
+            <th>遊戲名稱/代號</th>
+            <th></th>
+			<th>服務名稱</th>
+            <th>遊戲代號</th>
+			<th>狀態</th>
+            <th>首次上架時間</th>
+            <th>更新時間 ▾</th>
+          </tr>
+        </thead>
+        <tbody>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon03.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge2">待發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge2">待發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+        </tbody>
+      </table>
+		
+	  <table id="table" class="t7"><!--已發佈-->
+        <thead>
+          <tr>
+            <th>遊戲名稱/代號</th>
+            <th></th>
+			<th>服務名稱</th>
+            <th>遊戲代號</th>
+			<th>狀態</th>
+            <th>首次上架時間</th>
+            <th>更新時間 ▾</th>
+          </tr>
+        </thead>
+        <tbody>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge3">已發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge3">已發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
+            <td>GAME01<br><span class="sub">test01</span></td>
+			<td>遊戲10001</td>
+            <td>GM10001</td>
+			<td><span class="badge3">已發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+        </tbody>
+      </table>
+		
       <div class="table-footer">
         <span>共 10 筆資料</span>
         <div class="pager">
@@ -193,7 +488,7 @@
 
         <div class="page-header-row">
           <div class="page-header-text">
-            <h1>開始填寫您的遊戲資料</h1>
+            <div class="initial"><ol></ol></div><h1>開始填寫您的遊戲資料</h1>
             <p>您可以在這裡自行填寫及更新遊戲資料，完成後提交 MyCard 審核，審核通過後就會公開於官網首頁。跟著填寫流程完成 5 個區塊即可。</p>
             <p class="notice-text">注意：填寫過程中如果需要先離開，記得先儲存目前資料；確認都填寫完成後，再送出審核。<br>
                                    審核通過後，MyCard 將協助您將遊戲資料公開於官網。</p>
@@ -217,25 +512,21 @@
             <div class="step-circle">1<span class="status-badge warn">!</span></div>
             <span class="step-label">遊戲基本識別資料</span>
           </div>
-          <div class="step-line"></div>
 
           <div class="step-node" data-step="2">
             <div class="step-circle">2<span class="status-badge warn">!</span></div>
             <span class="step-label">遊戲介紹</span>
           </div>
-          <div class="step-line"></div>
 
           <div class="step-node" data-step="3">
             <div class="step-circle">3<span class="status-badge warn">!</span></div>
             <span class="step-label">儲值入口</span>
           </div>
-          <div class="step-line"></div>
 
           <div class="step-node" data-step="4">
             <div class="step-circle">4<span class="status-badge warn">!</span></div>
             <span class="step-label">官方與社群連結</span>
           </div>
-          <div class="step-line"></div>
 
           <div class="step-node" data-step="5">
             <div class="step-circle">5<span class="status-badge warn">!</span></div>
@@ -296,18 +587,19 @@
           <!-- Step 2: 遊戲介紹 -->
           <div class="step-content" id="step-content-2" style="display:none;">
             <h2 class="block-title">遊戲介紹</h2>
-            <p class="block-desc">提供遊戲名稱、圖片及文字介紹，供 MyCard 用戶於網站查看，支援依語系分別設定</p>
+            <p class="block-desc">提供遊戲名稱、圖片及文字介紹，供 MyCard 用戶於網站查看，支援依語系分別設定<br>
+繁體中文及English必填，其他語系遊戲名稱及文字介紹如未填寫則預設出現英文</p>
 
             <div class="lang-tab-row">
               <div class="lang-tabs" id="langTabs">
-                <div class="lang-tab active" data-lang="zh">中文（預設）</div>
-                <div class="lang-tab" data-lang="en" data-label="English">English <span class="lang-tab-delete" data-lang="en">×</span></div>
+                <div class="lang-tab active" data-lang="zh">繁體中文(預設)<span class="required-star">*</span></div>
+                <div class="lang-tab" data-lang="en" data-label="English">English<span class="required-star">*</span> <span class="lang-tab-delete" data-lang="en">×</span></div>
                 <div class="lang-tab-add-new" id="langAddBtn"><span class="plus-icon">+</span> 新增語系
                   <div class="lang-add-menu" id="langAddMenu">
+                    <div class="lang-add-item" data-lang="ja" data-label="简体中文">简体中文</div>
                     <div class="lang-add-item" data-lang="ja" data-label="日本語">日本語</div>
-                    <div class="lang-add-item" data-lang="ko" data-label="한국어">한국어</div>
                     <div class="lang-add-item" data-lang="th" data-label="ภาษาไทย">ภาษาไทย</div>
-                    <div class="lang-add-item" data-lang="vi" data-label="Tiếng Việt">Tiếng Việt</div>
+                    <div class="lang-add-item" data-lang="vi" data-label="Bahasa Indonesia">Bahasa Indonesia</div>
                   </div>
                 </div>
               </div>
@@ -337,111 +629,10 @@
                   </span>
                 </div>
                 <div class="field-caption">填寫遊戲介紹內容，供用戶了解您的遊戲。</div>
-				  
-<!-- MyCard 富文字編輯器 -->
-<div class="rt-editor" id="mcEditor">
-
-  <!-- 工具列 -->
-  <div class="rt-toolbar">
-
-    <select id="mcFontSize" class="rt-select" aria-label="字級">
-      <option value="">字級</option>
-      <option value="12px">12 px</option>
-      <option value="14px">14 px</option>
-      <option value="16px" selected>16 px</option>
-      <option value="18px">18 px</option>
-      <option value="20px">20 px</option>
-      <option value="24px">24 px</option>
-      <option value="28px">28 px</option>
-      <option value="32px">32 px</option>
-      <option value="36px">36 px</option>
-    </select>
-
-    <select id="mcLineHeight" class="rt-select" aria-label="行高">
-      <option value="">行高</option>
-      <option value="1">1.0 倍</option>
-      <option value="1.2">1.2 倍</option>
-      <option value="1.5" selected>1.5 倍</option>
-      <option value="1.8">1.8 倍</option>
-      <option value="2">2.0 倍</option>
-      <option value="2.5">2.5 倍</option>
-    </select>
-
-    <span class="rt-toolbar-divider"></span>
-
-    <button type="button" data-command="bold" title="粗體">
-      <b>B</b>
-    </button>
-    <button type="button" data-command="italic" title="斜體">
-      <i>I</i>
-    </button>
-    <button type="button" data-command="underline" title="底線">
-      <u>U</u>
-    </button>
-    <button type="button" data-command="strikeThrough" title="刪除線">
-      <s>S</s>
-    </button>
-
-    <span class="rt-toolbar-divider"></span>
-
-    <button type="button" data-command="insertUnorderedList" title="項目符號">
-      • 清單
-    </button>
-    <button type="button" data-command="insertOrderedList" title="編號清單">
-      1. 清單
-    </button>
-    <button type="button" id="mcInsertLink" title="插入連結">
-      連結
-    </button>
-    <button type="button" data-command="unlink" title="取消連結">
-      取消連結
-    </button>
-
-    <span class="rt-toolbar-divider"></span>
-
-    <button type="button" data-command="undo" title="復原">↶</button>
-    <button type="button" data-command="redo" title="重做">↷</button>
-    <button type="button" id="mcClearFormat" title="清除格式">
-      清除格式
-    </button>
-    <button type="button" id="mcToggleSource" title="HTML 原始碼">
-      &lt;/&gt; HTML
-    </button>
-
-  </div>
-
-  <!-- 視覺編輯區 -->
-  <div
-    id="mcEditorContent"
-    class="rt-content"
-    contenteditable="true"
-    spellcheck="true"
-    data-placeholder="請輸入遊戲介紹內容..."
-  ></div>
-
-  <!-- HTML 原始碼編輯區 -->
-  <textarea
-    id="mcEditorSource"
-    class="rt-source"
-    aria-label="HTML 原始碼"
-    placeholder="請輸入 HTML 原始碼..."
-    hidden
-  ></textarea>
-
-  <!-- 原表單相容欄位 -->
-  <textarea
-    id="field-desc-input"
-    name="description"
-    hidden
-  ></textarea>
-
-  <!-- 字數統計 -->
-  <div class="rt-footer">
-    <span id="mcEditorStatus">視覺編輯模式</span>
-    <span>字數：<b id="mcWordCount">0</b></span>
-  </div>
-
-</div>
+                <div class="rt-toolbar">
+                  <span><b>B</b></span><span><i>I</i></span><span><u>U</u></span><span><s>S</s></span><span>HTML</span><span>•</span><span>1.</span><span>&lt;&gt;</span>
+                </div>
+                <textarea class="rt-textarea" id="field-desc-input" placeholder="遊戲介紹內容"></textarea>
               </div>
             </div>
 
@@ -469,25 +660,18 @@
               <div class="field-caption">您上傳的遊戲 Icon 圖片將顯示於網站的遊戲選擇頁面。</div>
               <div class="upload-row">
                 <div class="upload-box" id="iconUpload">
-   <div class="icon-upload-container">
+<!--ICON圖片上傳-->
+<div class="icon-uploader" id="iconUploader">
+  <input
+    type="file"
+    id="iconFileInput"
+    accept="image/jpeg,image/png,image/webp"
+    hidden
+  />
 
-    <div class="icon-upload-box" id="iconUploadBox">
-
-      <!-- 隱藏的檔案選擇器 -->
-      <input
-        type="file"
-        id="iconFileInput"
-        class="icon-file-input"
-        accept="image/jpeg,image/png,image/webp"
-        aria-label="選擇 ICON 圖片"
-      >
-
-      <!-- 上傳前的 UI -->
-      <div class="icon-upload-empty" id="iconUploadEmpty">
-
-        <!-- 雲端上傳圖案 -->
-        <div class="icon-cloud">
-          <svg
+  <!-- 初始上傳畫面 -->
+  <div class="icon-upload-content" id="iconUploadContent">
+    <svg
             xmlns="http://www.w3.org/2000/svg"
             width="64"
             height="52"
@@ -516,58 +700,34 @@
               stroke-linejoin="round"
             />
           </svg>
-        </div>
 
-        <div class="icon-upload-title">
-          拖曳圖片至此上傳
-        </div>
+    <div class="upload-main-text">拖曳圖片至此上傳</div>
+    <div class="upload-format-text">支援 JPG / PNG / WEBP</div>
 
-        <div class="icon-upload-format">
-          支援JPG/PNG/WEBP格式
-        </div>
-
-        <!-- 上傳前選擇圖片按鈕 -->
-        <button
-          type="button"
-          class="icon-select-button"
-          id="iconSelectButton"
-        >
-          選擇圖片
-        </button>
-
-      </div>
-
-      <!-- 上傳後的縮圖 UI -->
-      <div class="icon-upload-preview" id="iconUploadPreview" hidden>
-
-        <img
-          src=""
-          alt="ICON 圖片縮圖"
-          id="iconPreviewImage"
-          class="icon-preview-image"
-        >
-
-        <!-- 覆蓋在縮圖中央的重新選擇按鈕 -->
-        <button
-          type="button"
-          class="icon-reselect-button"
-          id="iconReselectButton"
-        >
-          重新選擇圖片
-        </button>
-
-      </div>
-
-    </div>
-
-    <!-- 錯誤訊息 -->
-    <div
-      class="icon-upload-error"
-      id="iconUploadError"
-      aria-live="polite"
-    ></div>
-
+    <button
+      type="button"
+      class="upload-button"
+      id="iconSelectButton"
+    >
+      選擇圖片
+    </button>
   </div>
+
+  <!-- 上傳後顯示縮圖 -->
+  <div class="icon-preview" id="iconPreview" hidden>
+    <img id="iconPreviewImage" alt="ICON 圖片預覽" />
+
+    <button
+      type="button"
+      class="upload-button preview-reselect-button"
+      id="iconReselectButton"
+    >
+      重新選擇圖片
+    </button>
+  </div>
+
+  <div class="upload-error" id="iconUploadError" role="alert"></div>
+</div>
                 </div>
               </div>
             </div>
@@ -583,231 +743,312 @@
               </div>
               <div class="field-caption">上傳您希望公開顯示的遊戲主視覺輪播圖片。</div>
               <div class="upload-row" id="carouselRow">
-  <!--6輪播圖上傳-->
-  <div class="icu6-container">
+<!--6輪播圖上傳-->
+<div class="icu6-uploader" id="icu6Uploader">
 
-    <div class="icu6-grid" id="icu6Grid">
+  <div class="icu6-grid">
 
-      <!-- 輪播圖片 1 -->
-      <div class="icu6-card" data-slot="1">
-        <div class="icu6-upload-box">
-
-          <input
-            type="file"
-            class="icu6-file-input"
-            accept="image/jpeg,image/png,image/webp"
-            aria-label="選擇輪播圖片 1"
+    <!-- 六個獨立上傳欄位 -->
+    <div class="icu6-card" data-slot="1">
+      <input class="icu6-file-input" type="file"
+             accept="image/jpeg,image/png,image/webp"
+             aria-label="選擇輪播圖片 1">
+      <div class="icu6-upload-box">
+        <div class="icu6-empty">
+          <div class="icu6-cloud-icon">
+		  <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="52"
+            viewBox="0 0 64 52"
+            fill="none"
+            aria-hidden="true"
           >
+            <path
+              d="M17 39H46C54 39 60 33 60 26
+                 C60 19 54 14 47 14
+                 C45 6 38 2 30 3
+                 C21 4 16 10 14 18
+                 C6 18 2 23 2 29
+                 C2 35 8 39 17 39Z"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
 
-          <!-- 上傳前 UI -->
-          <div class="icu6-empty">
-
-            <div class="icu6-cloud-icon">
-              <svg viewBox="0 0 64 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M17 39H46C54 39 60 33 60 26C60 19 54 14 47 14C45 6 38 2 30 3C21 4 16 10 14 18C6 18 2 23 2 29C2 35 8 39 17 39Z"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 43V24M24 32L32 24L40 32"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-
-            <div class="icu6-upload-title">拖曳圖片至此上傳</div>
-            <div class="icu6-upload-format">支援JPG/PNG/WEBP格式</div>
-
-            <button type="button" class="icu6-select-button">
-              選擇圖片
-            </button>
-
-          </div>
-
-          <!-- 上傳後 UI -->
-          <div class="icu6-preview" hidden>
-            <img class="icu6-preview-image" alt="輪播圖片 1 縮圖">
-            <button type="button" class="icu6-reselect-button">
-              重新選擇圖片
-            </button>
-          </div>
-
+            <path
+              d="M32 43V24M24 32L32 24L40 32"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+		  </div>
+          <div class="icu6-upload-title">拖曳圖片至此上傳</div>
+          <div class="icu6-upload-format">支援 JPG / PNG / WEBP</div>
+          <button type="button" class="icu6-select-button">選擇圖片</button>
         </div>
-        <div class="icu6-error" aria-live="polite"></div>
-      </div>
-
-      <!-- 輪播圖片 2 -->
-      <div class="icu6-card" data-slot="2">
-        <div class="icu6-upload-box">
-
-          <input type="file" class="icu6-file-input"
-            accept="image/jpeg,image/png,image/webp"
-            aria-label="選擇輪播圖片 2">
-
-          <div class="icu6-empty">
-            <div class="icu6-cloud-icon">
-              <svg viewBox="0 0 64 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M17 39H46C54 39 60 33 60 26C60 19 54 14 47 14C45 6 38 2 30 3C21 4 16 10 14 18C6 18 2 23 2 29C2 35 8 39 17 39Z"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 43V24M24 32L32 24L40 32"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="icu6-upload-title">拖曳圖片至此上傳</div>
-            <div class="icu6-upload-format">支援JPG/PNG/WEBP格式</div>
-            <button type="button" class="icu6-select-button">選擇圖片</button>
-          </div>
-
-          <div class="icu6-preview" hidden>
-            <img class="icu6-preview-image" alt="輪播圖片 2 縮圖">
-            <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
-          </div>
-
+        <div class="icu6-preview" hidden>
+          <img class="icu6-preview-image" alt="輪播圖片 1 縮圖">
+          <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
         </div>
-        <div class="icu6-error" aria-live="polite"></div>
       </div>
-
-      <!-- 輪播圖片 3 -->
-      <div class="icu6-card" data-slot="3">
-        <div class="icu6-upload-box">
-
-          <input type="file" class="icu6-file-input"
-            accept="image/jpeg,image/png,image/webp"
-            aria-label="選擇輪播圖片 3">
-
-          <div class="icu6-empty">
-            <div class="icu6-cloud-icon">
-              <svg viewBox="0 0 64 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M17 39H46C54 39 60 33 60 26C60 19 54 14 47 14C45 6 38 2 30 3C21 4 16 10 14 18C6 18 2 23 2 29C2 35 8 39 17 39Z"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 43V24M24 32L32 24L40 32"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="icu6-upload-title">拖曳圖片至此上傳</div>
-            <div class="icu6-upload-format">支援JPG/PNG/WEBP格式</div>
-            <button type="button" class="icu6-select-button">選擇圖片</button>
-          </div>
-
-          <div class="icu6-preview" hidden>
-            <img class="icu6-preview-image" alt="輪播圖片 3 縮圖">
-            <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
-          </div>
-
-        </div>
-        <div class="icu6-error" aria-live="polite"></div>
-      </div>
-
-      <!-- 輪播圖片 4 -->
-      <div class="icu6-card" data-slot="4">
-        <div class="icu6-upload-box">
-
-          <input type="file" class="icu6-file-input"
-            accept="image/jpeg,image/png,image/webp"
-            aria-label="選擇輪播圖片 4">
-
-          <div class="icu6-empty">
-            <div class="icu6-cloud-icon">
-              <svg viewBox="0 0 64 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M17 39H46C54 39 60 33 60 26C60 19 54 14 47 14C45 6 38 2 30 3C21 4 16 10 14 18C6 18 2 23 2 29C2 35 8 39 17 39Z"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 43V24M24 32L32 24L40 32"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="icu6-upload-title">拖曳圖片至此上傳</div>
-            <div class="icu6-upload-format">支援JPG/PNG/WEBP格式</div>
-            <button type="button" class="icu6-select-button">選擇圖片</button>
-          </div>
-
-          <div class="icu6-preview" hidden>
-            <img class="icu6-preview-image" alt="輪播圖片 4 縮圖">
-            <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
-          </div>
-
-        </div>
-        <div class="icu6-error" aria-live="polite"></div>
-      </div>
-
-      <!-- 輪播圖片 5 -->
-      <div class="icu6-card" data-slot="5">
-        <div class="icu6-upload-box">
-
-          <input type="file" class="icu6-file-input"
-            accept="image/jpeg,image/png,image/webp"
-            aria-label="選擇輪播圖片 5">
-
-          <div class="icu6-empty">
-            <div class="icu6-cloud-icon">
-              <svg viewBox="0 0 64 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M17 39H46C54 39 60 33 60 26C60 19 54 14 47 14C45 6 38 2 30 3C21 4 16 10 14 18C6 18 2 23 2 29C2 35 8 39 17 39Z"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 43V24M24 32L32 24L40 32"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="icu6-upload-title">拖曳圖片至此上傳</div>
-            <div class="icu6-upload-format">支援JPG/PNG/WEBP格式</div>
-            <button type="button" class="icu6-select-button">選擇圖片</button>
-          </div>
-
-          <div class="icu6-preview" hidden>
-            <img class="icu6-preview-image" alt="輪播圖片 5 縮圖">
-            <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
-          </div>
-
-        </div>
-        <div class="icu6-error" aria-live="polite"></div>
-      </div>
-
-      <!-- 輪播圖片 6 -->
-      <div class="icu6-card" data-slot="6">
-        <div class="icu6-upload-box">
-
-          <input type="file" class="icu6-file-input"
-            accept="image/jpeg,image/png,image/webp"
-            aria-label="選擇輪播圖片 6">
-
-          <div class="icu6-empty">
-            <div class="icu6-cloud-icon">
-              <svg viewBox="0 0 64 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M17 39H46C54 39 60 33 60 26C60 19 54 14 47 14C45 6 38 2 30 3C21 4 16 10 14 18C6 18 2 23 2 29C2 35 8 39 17 39Z"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 43V24M24 32L32 24L40 32"
-                  fill="none" stroke="#398FE0" stroke-width="3.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="icu6-upload-title">拖曳圖片至此上傳</div>
-            <div class="icu6-upload-format">支援JPG/PNG/WEBP格式</div>
-            <button type="button" class="icu6-select-button">選擇圖片</button>
-          </div>
-
-          <div class="icu6-preview" hidden>
-            <img class="icu6-preview-image" alt="輪播圖片 6 縮圖">
-            <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
-          </div>
-
-        </div>
-        <div class="icu6-error" aria-live="polite"></div>
-      </div>
-
+      <div class="icu6-error" aria-live="polite"></div>
     </div>
+
+    <div class="icu6-card" data-slot="2">
+      <input class="icu6-file-input" type="file"
+             accept="image/jpeg,image/png,image/webp"
+             aria-label="選擇輪播圖片 2">
+      <div class="icu6-upload-box">
+        <div class="icu6-empty">
+          <div class="icu6-cloud-icon">
+		  <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="52"
+            viewBox="0 0 64 52"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M17 39H46C54 39 60 33 60 26
+                 C60 19 54 14 47 14
+                 C45 6 38 2 30 3
+                 C21 4 16 10 14 18
+                 C6 18 2 23 2 29
+                 C2 35 8 39 17 39Z"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M32 43V24M24 32L32 24L40 32"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+		  </div>
+          <div class="icu6-upload-title">拖曳圖片至此上傳</div>
+          <div class="icu6-upload-format">支援 JPG / PNG / WEBP</div>
+          <button type="button" class="icu6-select-button">選擇圖片</button>
+        </div>
+        <div class="icu6-preview" hidden>
+          <img class="icu6-preview-image" alt="輪播圖片 2 縮圖">
+          <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
+        </div>
+      </div>
+      <div class="icu6-error" aria-live="polite"></div>
+    </div>
+
+    <div class="icu6-card" data-slot="3">
+      <input class="icu6-file-input" type="file"
+             accept="image/jpeg,image/png,image/webp"
+             aria-label="選擇輪播圖片 3">
+      <div class="icu6-upload-box">
+        <div class="icu6-empty">
+          <div class="icu6-cloud-icon">
+		  <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="52"
+            viewBox="0 0 64 52"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M17 39H46C54 39 60 33 60 26
+                 C60 19 54 14 47 14
+                 C45 6 38 2 30 3
+                 C21 4 16 10 14 18
+                 C6 18 2 23 2 29
+                 C2 35 8 39 17 39Z"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M32 43V24M24 32L32 24L40 32"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+		  </div>
+          <div class="icu6-upload-title">拖曳圖片至此上傳</div>
+          <div class="icu6-upload-format">支援 JPG / PNG / WEBP</div>
+          <button type="button" class="icu6-select-button">選擇圖片</button>
+        </div>
+        <div class="icu6-preview" hidden>
+          <img class="icu6-preview-image" alt="輪播圖片 3 縮圖">
+          <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
+        </div>
+      </div>
+      <div class="icu6-error" aria-live="polite"></div>
+    </div>
+
+    <div class="icu6-card" data-slot="4">
+      <input class="icu6-file-input" type="file"
+             accept="image/jpeg,image/png,image/webp"
+             aria-label="選擇輪播圖片 4">
+      <div class="icu6-upload-box">
+        <div class="icu6-empty">
+          <div class="icu6-cloud-icon">
+		  <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="52"
+            viewBox="0 0 64 52"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M17 39H46C54 39 60 33 60 26
+                 C60 19 54 14 47 14
+                 C45 6 38 2 30 3
+                 C21 4 16 10 14 18
+                 C6 18 2 23 2 29
+                 C2 35 8 39 17 39Z"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M32 43V24M24 32L32 24L40 32"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+		  </div>
+          <div class="icu6-upload-title">拖曳圖片至此上傳</div>
+          <div class="icu6-upload-format">支援 JPG / PNG / WEBP</div>
+          <button type="button" class="icu6-select-button">選擇圖片</button>
+        </div>
+        <div class="icu6-preview" hidden>
+          <img class="icu6-preview-image" alt="輪播圖片 4 縮圖">
+          <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
+        </div>
+      </div>
+      <div class="icu6-error" aria-live="polite"></div>
+    </div>
+
+    <div class="icu6-card" data-slot="5">
+      <input class="icu6-file-input" type="file"
+             accept="image/jpeg,image/png,image/webp"
+             aria-label="選擇輪播圖片 5">
+      <div class="icu6-upload-box">
+        <div class="icu6-empty">
+          <div class="icu6-cloud-icon">
+		  <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="52"
+            viewBox="0 0 64 52"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M17 39H46C54 39 60 33 60 26
+                 C60 19 54 14 47 14
+                 C45 6 38 2 30 3
+                 C21 4 16 10 14 18
+                 C6 18 2 23 2 29
+                 C2 35 8 39 17 39Z"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M32 43V24M24 32L32 24L40 32"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+		  </div>
+          <div class="icu6-upload-title">拖曳圖片至此上傳</div>
+          <div class="icu6-upload-format">支援 JPG / PNG / WEBP</div>
+          <button type="button" class="icu6-select-button">選擇圖片</button>
+        </div>
+        <div class="icu6-preview" hidden>
+          <img class="icu6-preview-image" alt="輪播圖片 5 縮圖">
+          <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
+        </div>
+      </div>
+      <div class="icu6-error" aria-live="polite"></div>
+    </div>
+
+    <div class="icu6-card" data-slot="6">
+      <input class="icu6-file-input" type="file"
+             accept="image/jpeg,image/png,image/webp"
+             aria-label="選擇輪播圖片 6">
+      <div class="icu6-upload-box">
+        <div class="icu6-empty">
+          <div class="icu6-cloud-icon">
+		  <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="52"
+            viewBox="0 0 64 52"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M17 39H46C54 39 60 33 60 26
+                 C60 19 54 14 47 14
+                 C45 6 38 2 30 3
+                 C21 4 16 10 14 18
+                 C6 18 2 23 2 29
+                 C2 35 8 39 17 39Z"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M32 43V24M24 32L32 24L40 32"
+              stroke="#398FE0"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+		  </div>
+          <div class="icu6-upload-title">拖曳圖片至此上傳</div>
+          <div class="icu6-upload-format">支援 JPG / PNG / WEBP</div>
+          <button type="button" class="icu6-select-button">選擇圖片</button>
+        </div>
+        <div class="icu6-preview" hidden>
+          <img class="icu6-preview-image" alt="輪播圖片 6 縮圖">
+          <button type="button" class="icu6-reselect-button">重新選擇圖片</button>
+        </div>
+      </div>
+      <div class="icu6-error" aria-live="polite"></div>
+    </div>
+
   </div>
 
-				  
-              </div>
+  <div class="icu6-caption">至少上傳 1 張即可，不需要 6 張全部上傳。</div>
+</div>
 			  
-			
-			
-			 
+              </div>		 
               <div class="upload-caption">至少上傳1張即可，不需要6張全部上傳</div>
             </div>
 
@@ -878,7 +1119,6 @@
             <div class="field-group">
               <div class="field-label-row">
                 <span class="field-label">儲值方式</span>
-                <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
                   <div class="tooltip-popover">可複選，請勾選此遊戲提供的 MyCard 儲值方式，勾選後將顯示對應的填寫欄位。</div>
@@ -900,7 +1140,7 @@
               <div class="field-group">
                 <div class="field-label-row">
                   <span class="field-label">web shop 連結</span>
-                  <span class="required-star">*</span>
+
                   <span class="tooltip-wrap">
                     <button class="tooltip-icon" type="button">?</button>
                     <div class="tooltip-popover">請貼上完整網址，需以 https:// 開頭。</div>
@@ -919,7 +1159,7 @@
               <div class="field-group">
                 <div class="field-label-row">
                   <span class="field-label">Android APK 連結</span>
-                  <span class="required-star">*</span>
+ 
                   <span class="tooltip-wrap">
                     <button class="tooltip-icon" type="button">?</button>
                     <div class="tooltip-popover">請提供可直接下載 APK 安裝檔的網址。</div>
@@ -950,7 +1190,7 @@
               <div class="field-group">
                 <div class="field-label-row">
                   <span class="field-label">PC版 連結</span>
-                  <span class="required-star">*</span>
+ 
                   <span class="tooltip-wrap">
                     <button class="tooltip-icon" type="button">?</button>
                     <div class="tooltip-popover">請提供 PC 版下載或啟動網址。</div>
@@ -1016,7 +1256,7 @@
             <div class="field-group">
               <div class="field-label-row">
                 <span class="field-label">期望上架時間</span>
-                <span class="required-star">*</span>
+ 
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
                   <div class="tooltip-popover">點擊欄位開啟時間選擇器，選擇您期望曝光的日期與時間（精確到分鐘）。</div>
@@ -1449,10 +1689,11 @@
      Step 2: Tag selection modal
      ============================================================ */
   const TAG_CATEGORIES = [
-    { key: 'product', name: '產品分類', options: ['手機遊戲','主機遊戲','PC遊戲','網頁遊戲','卡牌遊戲','桌遊'] },
-    { key: 'genre', name: '遊戲類型', options: ['RPG','動作','策略','射擊','模擬','益智','運動','競速','恐怖','卡牌對戰'] },
-    { key: 'story', name: '故事題材', options: ['奇幻','科幻','武俠','校園','都市','歷史','末日','偵探','戀愛','恐怖驚悚'] },
-    { key: 'gameplay', name: '遊戲玩法', options: ['開放世界','回合制','即時戰鬥','生存','建造經營','多人連線','單機','塔防','Roguelike','卡牌構築'] }
+    { key: 'product', name: '產品分類', options: ['線上遊戲','網頁遊戲','手機遊戲','單機遊戲','會員','金流平台','直播交友','棋牌益智','動漫平台','娛樂命理','社群平台','遊戲平台','AI','工具軟體'] },
+    { key: 'genre', name: '遊戲類型', options: ['動作冒險','棋牌益智','休閒娛樂','電子書籍','家庭教育','音樂節奏','社交互動','運動競速','策略排擬','益智解謎','角色拌演','卡牌桌遊','平台點數'] },
+	{ key: 'type', name: '動作冒險', options: ['格鬥','打擊','射擊','生存',] },
+    { key: 'story', name: '故事題材', options: ['中國文化','三國','西遊','封神榜','布袋戲','日本文化','科幻','奇幻','喪屍','殭屍','女性向','校園','戀愛','武俠','修仙','金庸','古龍','黃易','宮廷','動漫','漫威','神話','驚悚','懸疑','古墓','尋寶','戰爭','歷史','末日','DC','部落','機甲','坦克','船艦','戰機','西方文化','地下城'] },
+    { key: 'gameplay', name: '遊戲玩法', options: ['放置掛機','單機','轉珠相消','回合','戰棋','PVP','PVE','RvR','沙盒','純文字','MOBA','MMO'] }
   ];
   const MAX_PER_CATEGORY = 3;
   const tagSelections = {};
@@ -1712,791 +1953,360 @@
 	
 /* =====================================
    ICON 單張圖片上傳功能
-   獨立作用域，不影響其他 6 張輪播圖元件
 ===================================== */
-
 (() => {
-  const iconBox = document.getElementById("iconUploadBox");
-  const iconInput = document.getElementById("iconFileInput");
-  const iconEmpty = document.getElementById("iconUploadEmpty");
-  const iconPreview = document.getElementById("iconUploadPreview");
-  const iconPreviewImage = document.getElementById("iconPreviewImage");
+  const uploader = document.getElementById("iconUploader");
+  const fileInput = document.getElementById("iconFileInput");
+  const uploadContent = document.getElementById("iconUploadContent");
+  const preview = document.getElementById("iconPreview");
+  const previewImage = document.getElementById("iconPreviewImage");
+  const selectButton = document.getElementById("iconSelectButton");
+  const reselectButton = document.getElementById("iconReselectButton");
+  const errorElement = document.getElementById("iconUploadError");
 
-  const iconSelectButton = document.getElementById("iconSelectButton");
-  const iconReselectButton = document.getElementById("iconReselectButton");
-  const iconError = document.getElementById("iconUploadError");
-
-  // 確認元件存在
-  if (
-    !iconBox ||
-    !iconInput ||
-    !iconEmpty ||
-    !iconPreview ||
-    !iconPreviewImage ||
-    !iconSelectButton ||
-    !iconReselectButton ||
-    !iconError
-  ) {
-    return;
-  }
-
-  // 允許的圖片格式
-  const iconAllowedTypes = [
+  const MAX_FILE_SIZE = 10 * 1024 * 1024;
+  const ALLOWED_TYPES = [
     "image/jpeg",
     "image/png",
     "image/webp"
   ];
 
-  // 最大圖片大小：10MB
-  const iconMaxSize = 10 * 1024 * 1024;
+  let selectedFile = null;
+  let objectUrl = null;
 
-  // 保存目前圖片的暫存網址
-  let iconObjectUrl = null;
-
-  // 開啟電腦檔案選擇器
-  function iconOpenFilePicker() {
-    iconInput.click();
-  }
-
-  // 清除錯誤訊息
-  function iconClearError() {
-    iconError.textContent = "";
+  // 開啟電腦檔案選擇視窗
+  function openFileDialog() {
+    fileInput.click();
   }
 
   // 顯示錯誤訊息
-  function iconShowError(message) {
-    iconError.textContent = message;
+  function showError(message = "") {
+    errorElement.textContent = message;
   }
 
   // 顯示圖片縮圖
-  function iconDisplayImage(file) {
-    iconClearError();
+  function renderImage(file) {
+    if (!file) return;
+
+    showError("");
 
     // 檢查圖片格式
-    if (!iconAllowedTypes.includes(file.type)) {
-      iconShowError("請選擇 JPG、PNG 或 WEBP 格式圖片。");
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      showError("請上傳 JPG、PNG 或 WEBP 格式圖片");
       return;
     }
 
     // 檢查圖片大小
-    if (file.size > iconMaxSize) {
-      iconShowError("圖片大小不可超過 10MB，請重新選擇。");
+    if (file.size > MAX_FILE_SIZE) {
+      showError("圖片大小不可超過 10MB");
       return;
     }
 
-    // 建立新的本機預覽網址
-    const newUrl = URL.createObjectURL(file);
-    const testImage = new Image();
+    // 釋放上一張圖片的暫存網址
+    if (objectUrl) {
+      URL.revokeObjectURL(objectUrl);
+    }
 
-    // 確認圖片可以正常讀取
-    testImage.onload = () => {
-      if (!testImage.naturalWidth || !testImage.naturalHeight) {
-        URL.revokeObjectURL(newUrl);
-        iconShowError("圖片無法讀取，請重新選擇。");
-        return;
-      }
+    selectedFile = file;
+    objectUrl = URL.createObjectURL(file);
 
-      // 釋放之前的圖片網址
-      if (iconObjectUrl) {
-        URL.revokeObjectURL(iconObjectUrl);
-      }
+    previewImage.src = objectUrl;
 
-      iconObjectUrl = newUrl;
+    // 隱藏初始畫面，顯示縮圖與重新選擇按鈕
+    uploadContent.hidden = true;
+    preview.hidden = false;
 
-      // 設定縮圖
-      iconPreviewImage.src = iconObjectUrl;
-
-      // 隱藏原始上傳 UI
-      iconEmpty.hidden = true;
-
-      // 顯示縮圖與覆蓋按鈕
-      iconPreview.hidden = false;
-    };
-
-    // 圖片讀取失敗
-    testImage.onerror = () => {
-      URL.revokeObjectURL(newUrl);
-      iconShowError("圖片讀取失敗，請重新選擇。");
-    };
-
-    testImage.src = newUrl;
+    // 通知外部程式圖片已變更
+    uploader.dispatchEvent(
+      new CustomEvent("iconchange", {
+        bubbles: true,
+        detail: {
+          file: selectedFile
+        }
+      })
+    );
   }
 
-  // 上傳前：選擇圖片
-  iconSelectButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    iconOpenFilePicker();
-  });
+  // 初始選擇圖片按鈕
+  selectButton.addEventListener("click", openFileDialog);
 
-  // 上傳後：重新選擇圖片
-  iconReselectButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    iconOpenFilePicker();
-  });
+  // 縮圖上的重新選擇圖片按鈕
+  reselectButton.addEventListener("click", openFileDialog);
 
-  // 從電腦匯入圖片
-  iconInput.addEventListener("change", () => {
-    const file = iconInput.files && iconInput.files[0];
+  // 從電腦選取圖片
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files && fileInput.files[0];
 
     if (file) {
-      iconDisplayImage(file);
+      renderImage(file);
     }
 
-    // 清空 input 值，讓相同圖片也能再次選擇
-    iconInput.value = "";
+    // 允許再次選取相同檔案
+    fileInput.value = "";
   });
 
-  // 拖曳圖片進入上傳框
-  iconBox.addEventListener("dragenter", (event) => {
+  // 拖曳圖片進入欄位
+  uploader.addEventListener("dragover", (event) => {
     event.preventDefault();
-    iconBox.classList.add("icon-dragover");
+    uploader.classList.add("is-dragover");
   });
 
-  // 拖曳圖片經過上傳框
-  iconBox.addEventListener("dragover", (event) => {
+  // 拖曳圖片離開欄位
+  uploader.addEventListener("dragleave", (event) => {
+    if (!uploader.contains(event.relatedTarget)) {
+      uploader.classList.remove("is-dragover");
+    }
+  });
+
+  // 放開滑鼠，完成拖曳上傳
+  uploader.addEventListener("drop", (event) => {
     event.preventDefault();
+    uploader.classList.remove("is-dragover");
 
-    if (event.dataTransfer) {
-      event.dataTransfer.dropEffect = "copy";
-    }
+    const file = event.dataTransfer.files &&
+      event.dataTransfer.files[0];
 
-    iconBox.classList.add("icon-dragover");
-  });
-
-  // 拖曳離開上傳框
-  iconBox.addEventListener("dragleave", (event) => {
-    if (!iconBox.contains(event.relatedTarget)) {
-      iconBox.classList.remove("icon-dragover");
+    if (file) {
+      renderImage(file);
     }
   });
 
-  // 放開圖片，上傳或替換縮圖
-  iconBox.addEventListener("drop", (event) => {
-    event.preventDefault();
+  // 取得目前選取的圖片檔案
+  window.getIconImageFile = function () {
+    return selectedFile;
+  };
 
-    iconBox.classList.remove("icon-dragover");
+  // 清除圖片並恢復初始上傳畫面
+  window.clearIconImage = function () {
+    if (objectUrl) {
+      URL.revokeObjectURL(objectUrl);
+      objectUrl = null;
+    }
 
-    const files = event.dataTransfer && event.dataTransfer.files;
+    selectedFile = null;
+    previewImage.removeAttribute("src");
+    preview.hidden = true;
+    uploadContent.hidden = false;
+    fileInput.value = "";
+    showError("");
 
-    if (files && files.length > 0) {
-      iconDisplayImage(files[0]);
+    uploader.dispatchEvent(
+      new CustomEvent("iconchange", {
+        bubbles: true,
+        detail: {
+          file: null
+        }
+      })
+    );
+  };
+
+  // 頁面離開時釋放圖片暫存網址
+  window.addEventListener("beforeunload", () => {
+    if (objectUrl) {
+      URL.revokeObjectURL(objectUrl);
     }
   });
-
-  // 頁面離開時釋放暫存圖片網址
-  window.addEventListener("pagehide", () => {
-    if (iconObjectUrl) {
-      URL.revokeObjectURL(iconObjectUrl);
-      iconObjectUrl = null;
-    }
-  });
-
 })();
 
 /* ==========================================
    六張輪播圖片上傳功能
    使用獨立作用域與 icu6- 命名
 ========================================== */
-
 (() => {
-  const icu6Root = document.getElementById("icu6Grid");
+  const uploader = document.getElementById("icu6Uploader");
+  if (!uploader) return;
 
-  if (!icu6Root) return;
+  const cards = uploader.querySelectorAll(".icu6-card");
+  const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+  const maxSize = 10 * 1024 * 1024; // 10MB
 
-  const icu6MaxSize = 10 * 1024 * 1024;
+  // 每個欄位各自保存圖片與預覽網址
+  const slotData = new Map();
 
-  const icu6AllowedTypes = [
-    "image/jpeg",
-    "image/png",
-    "image/webp"
-  ];
-
-  // 每張圖片獨立保存狀態
-  const icu6Slots = Array.from(
-    icu6Root.querySelectorAll(".icu6-card"),
-    card => ({
-      card,
-      file: null,
-      url: null
-    })
-  );
-
-  // 開啟電腦檔案選擇器
-  function icu6OpenPicker(slot) {
-    slot.card.querySelector(".icu6-file-input").click();
-  }
-
-  // 顯示錯誤訊息
-  function icu6ShowError(slot, message) {
-    slot.card.querySelector(".icu6-error").textContent = message;
-  }
-
-  // 清除錯誤訊息
-  function icu6ClearError(slot) {
-    slot.card.querySelector(".icu6-error").textContent = "";
-  }
-
-  // 檢查圖片並顯示縮圖
-  function icu6ShowPreview(slot, file) {
-    icu6ClearError(slot);
-
-    // 檢查檔案格式
-    if (!icu6AllowedTypes.includes(file.type)) {
-      icu6ShowError(
-        slot,
-        "請選擇 JPG、PNG 或 WEBP 格式圖片。"
-      );
-      return;
-    }
-
-    // 檢查檔案大小
-    if (file.size > icu6MaxSize) {
-      icu6ShowError(
-        slot,
-        "圖片大小不可超過 10MB，請重新選擇。"
-      );
-      return;
-    }
-
-    // 建立本機預覽網址
-    const newUrl = URL.createObjectURL(file);
-    const testImage = new Image();
-
-    testImage.onload = () => {
-      // 確認圖片具有有效尺寸
-      if (!testImage.naturalWidth || !testImage.naturalHeight) {
-        URL.revokeObjectURL(newUrl);
-        icu6ShowError(slot, "圖片無法讀取，請重新選擇。");
-        return;
-      }
-
-      // 圖片成功載入後，釋放該欄位舊網址
-      if (slot.url) {
-        URL.revokeObjectURL(slot.url);
-      }
-
-      slot.file = file;
-      slot.url = newUrl;
-
-      const empty = slot.card.querySelector(".icu6-empty");
-      const preview = slot.card.querySelector(".icu6-preview");
-      const previewImage = slot.card.querySelector(".icu6-preview-image");
-
-      // 設定縮圖
-      previewImage.src = slot.url;
-
-      // 隱藏原本的雲端圖示、文字及選擇圖片按鈕
-      empty.hidden = true;
-
-      // 顯示縮圖及覆蓋在縮圖上的重新選擇按鈕
-      preview.hidden = false;
-    };
-
-    testImage.onerror = () => {
-      URL.revokeObjectURL(newUrl);
-      icu6ShowError(slot, "圖片讀取失敗，請重新選擇。");
-    };
-
-    testImage.src = newUrl;
-  }
-
-  // 為六個欄位分別綁定事件
-  icu6Slots.forEach(slot => {
-    const card = slot.card;
-    const box = card.querySelector(".icu6-upload-box");
+  cards.forEach((card) => {
     const input = card.querySelector(".icu6-file-input");
+    const box = card.querySelector(".icu6-upload-box");
     const empty = card.querySelector(".icu6-empty");
+    const preview = card.querySelector(".icu6-preview");
+    const image = card.querySelector(".icu6-preview-image");
     const selectButton = card.querySelector(".icu6-select-button");
     const reselectButton = card.querySelector(".icu6-reselect-button");
+    const error = card.querySelector(".icu6-error");
 
-    // 點擊「選擇圖片」
-    selectButton.addEventListener("click", event => {
-      event.stopPropagation();
-      icu6OpenPicker(slot);
+    const slot = card.dataset.slot;
+
+    slotData.set(slot, {
+      file: null,
+      url: null
     });
 
-    // 點擊縮圖上的「重新選擇圖片」
-    reselectButton.addEventListener("click", event => {
-      event.stopPropagation();
-      icu6OpenPicker(slot);
-    });
-
-    // 點擊尚未上傳的空白區域也可選擇圖片
-    empty.addEventListener("click", event => {
-      if (event.target.closest(".icu6-select-button")) return;
-      icu6OpenPicker(slot);
-    });
-
-    // 從電腦選擇圖片
-    input.addEventListener("change", () => {
-      const file = input.files && input.files[0];
-
-      if (file) {
-        icu6ShowPreview(slot, file);
-      }
-
-      // 允許再次選擇相同檔案
+    function openFilePicker() {
+      // 清空 value，允許再次選取同一張圖片
       input.value = "";
-    });
-
-    // 拖曳圖片進入欄位
-    box.addEventListener("dragenter", event => {
-      event.preventDefault();
-      box.classList.add("icu6-dragover");
-    });
-
-    // 拖曳圖片經過欄位
-    box.addEventListener("dragover", event => {
-      event.preventDefault();
-
-      if (event.dataTransfer) {
-        event.dataTransfer.dropEffect = "copy";
-      }
-
-      box.classList.add("icu6-dragover");
-    });
-
-    // 拖曳離開欄位
-    box.addEventListener("dragleave", event => {
-      if (!box.contains(event.relatedTarget)) {
-        box.classList.remove("icu6-dragover");
-      }
-    });
-
-    // 放開圖片：上傳或替換該欄位圖片
-    box.addEventListener("drop", event => {
-      event.preventDefault();
-      box.classList.remove("icu6-dragover");
-
-      const files = event.dataTransfer && event.dataTransfer.files;
-
-      if (files && files.length > 0) {
-        icu6ShowPreview(slot, files[0]);
-      }
-    });
-  });
-
-  // 頁面離開時釋放所有暫存圖片網址
-  window.addEventListener("pagehide", () => {
-    icu6Slots.forEach(slot => {
-      if (slot.url) {
-        URL.revokeObjectURL(slot.url);
-        slot.url = null;
-      }
-    });
-  });
-})();
-	
-// 文字編輯器
-(() => {
-  const root = document.getElementById("mcEditor");
-  if (!root) return;
-
-  const editor = root.querySelector("#mcEditorContent");
-  const source = root.querySelector("#mcEditorSource");
-  const hiddenInput = root.querySelector("#field-desc-input");
-  const fontSizeSelect = root.querySelector("#mcFontSize");
-  const lineHeightSelect = root.querySelector("#mcLineHeight");
-  const toggleSourceBtn = root.querySelector("#mcToggleSource");
-  const status = root.querySelector("#mcEditorStatus");
-  const wordCount = root.querySelector("#mcWordCount");
-
-  let sourceMode = false;
-  let savedRange = null;
-
-  // ===== 儲存目前選取範圍 =====
-  function saveSelection() {
-    const selection = window.getSelection();
-
-    if (
-      selection &&
-      selection.rangeCount > 0 &&
-      editor.contains(selection.anchorNode) &&
-      editor.contains(selection.focusNode)
-    ) {
-      savedRange = selection.getRangeAt(0).cloneRange();
-    }
-  }
-
-  // ===== 還原選取範圍 =====
-  function restoreSelection() {
-    if (!savedRange) return false;
-
-    try {
-      const selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(savedRange);
-      return true;
-    } catch {
-      return false;
-    }
-  }
-
-  editor.addEventListener("mouseup", saveSelection);
-  editor.addEventListener("keyup", saveSelection);
-  editor.addEventListener("input", () => {
-    saveSelection();
-    syncValue();
-  });
-
-  // 下拉選單取得焦點前先保存選取範圍
-  [fontSizeSelect, lineHeightSelect].forEach((select) => {
-    select.addEventListener("mousedown", saveSelection);
-    select.addEventListener("keydown", saveSelection);
-  });
-
-  // ===== 同步內容到隱藏欄位 =====
-  function syncValue() {
-    const html = sourceMode ? source.value : editor.innerHTML;
-    hiddenInput.value = html;
-
-    const text = sourceMode
-      ? source.value.replace(/<[^>]*>/g, " ")
-      : editor.innerText;
-
-    wordCount.textContent = text.trim()
-      ? text.trim().split(/\s+/).length
-      : 0;
-
-    hiddenInput.dispatchEvent(new Event("input", { bubbles: true }));
-    hiddenInput.dispatchEvent(new Event("change", { bubbles: true }));
-  }
-
-  // 讓外部表單程式可以呼叫
-  root.syncValue = syncValue;
-
-  // ===== 工具列格式命令 =====
-  root.querySelectorAll("[data-command]").forEach((button) => {
-    button.addEventListener("mousedown", saveSelection);
-
-    button.addEventListener("click", () => {
-      if (sourceMode) return;
-
-      editor.focus();
-      restoreSelection();
-
-      const command = button.dataset.command;
-      document.execCommand(command, false, null);
-
-      saveSelection();
-      syncValue();
-      updateToolbarState();
-    });
-  });
-
-  // ===== 更新粗體、斜體等按鈕狀態 =====
-  function updateToolbarState() {
-    if (sourceMode) return;
-
-    root.querySelectorAll("[data-command]").forEach((button) => {
-      const command = button.dataset.command;
-
-      if (["bold", "italic", "underline", "strikeThrough"].includes(command)) {
-        try {
-          button.classList.toggle(
-            "is-active",
-            document.queryCommandState(command)
-          );
-        } catch {
-          button.classList.remove("is-active");
-        }
-      }
-    });
-  }
-
-  editor.addEventListener("keyup", updateToolbarState);
-  editor.addEventListener("mouseup", updateToolbarState);
-
-  // ===== 套用字級 =====
-  fontSizeSelect.addEventListener("change", () => {
-    const size = fontSizeSelect.value;
-    if (!size || sourceMode) return;
-
-    editor.focus();
-
-    if (!restoreSelection()) {
-      editor.style.fontSize = size;
-      syncValue();
-      return;
+      input.click();
     }
 
-    const selection = window.getSelection();
-
-    // 沒有選取文字，設定編輯區預設字級
-    if (!selection || selection.isCollapsed) {
-      editor.style.fontSize = size;
-      syncValue();
-      return;
+    function showError(message) {
+      error.textContent = message;
     }
 
-    const range = selection.getRangeAt(0);
-    const span = document.createElement("span");
-    span.style.fontSize = size;
-
-    try {
-      range.surroundContents(span);
-    } catch {
-      const contents = range.extractContents();
-      span.appendChild(contents);
-      range.insertNode(span);
+    function clearError() {
+      error.textContent = "";
     }
 
-    // 將游標移到套用字級的文字後
-    selection.removeAllRanges();
-    const newRange = document.createRange();
-    newRange.selectNodeContents(span);
-    newRange.collapse(false);
-    selection.addRange(newRange);
+    function showPreview(file) {
+      clearError();
 
-    savedRange = newRange.cloneRange();
-    syncValue();
-  });
-
-  // ===== 找出選取範圍涉及的區塊 =====
-  function getSelectedBlocks(range) {
-    const blocks = new Set();
-    const blockTags = [
-      "P", "DIV", "LI", "H1", "H2", "H3",
-      "H4", "H5", "H6", "BLOCKQUOTE"
-    ];
-
-    function findBlock(node) {
-      let element = node.nodeType === Node.ELEMENT_NODE
-        ? node
-        : node.parentElement;
-
-      while (element && element !== editor) {
-        if (blockTags.includes(element.tagName)) {
-          blocks.add(element);
-          return;
-        }
-        element = element.parentElement;
-      }
-
-      blocks.add(editor);
-    }
-
-    findBlock(range.startContainer);
-    findBlock(range.endContainer);
-
-    editor.querySelectorAll(blockTags.join(",")).forEach((element) => {
-      try {
-        if (range.intersectsNode(element)) blocks.add(element);
-      } catch {}
-    });
-
-    return [...blocks];
-  }
-
-  // ===== 套用行高 =====
-  lineHeightSelect.addEventListener("change", () => {
-    const lineHeight = lineHeightSelect.value;
-    if (!lineHeight || sourceMode) return;
-
-    editor.focus();
-
-    if (!restoreSelection()) {
-      editor.style.lineHeight = lineHeight;
-      syncValue();
-      return;
-    }
-
-    const selection = window.getSelection();
-
-    // 沒有選取文字時，設定編輯區預設行高
-    if (!selection || selection.isCollapsed) {
-      editor.style.lineHeight = lineHeight;
-      syncValue();
-      return;
-    }
-
-    const range = selection.getRangeAt(0);
-    const blocks = getSelectedBlocks(range);
-
-    blocks.forEach((block) => {
-      block.style.lineHeight = lineHeight;
-    });
-
-    saveSelection();
-    syncValue();
-  });
-
-  // ===== 插入連結 =====
-  root.querySelector("#mcInsertLink").addEventListener("mousedown", saveSelection);
-
-  root.querySelector("#mcInsertLink").addEventListener("click", () => {
-    if (sourceMode) return;
-
-    editor.focus();
-    restoreSelection();
-
-    const url = prompt("請輸入連結網址：");
-    if (!url) return;
-
-    let parsedUrl;
-
-    try {
-      parsedUrl = new URL(url);
-    } catch {
-      alert("請輸入有效的網址。");
-      return;
-    }
-
-    if (!["http:", "https:"].includes(parsedUrl.protocol)) {
-      alert("僅允許 http 或 https 網址。");
-      return;
-    }
-
-    const selection = window.getSelection();
-
-    if (selection && !selection.isCollapsed) {
-      document.execCommand("createLink", false, parsedUrl.href);
-    } else {
-      const link = document.createElement("a");
-      link.href = parsedUrl.href;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.textContent = parsedUrl.href;
-
-      const range = selection.getRangeAt(0);
-      range.insertNode(link);
-    }
-
-    syncValue();
-  });
-
-  // ===== 清除格式 =====
-  root.querySelector("#mcClearFormat").addEventListener("click", () => {
-    if (sourceMode) return;
-
-    editor.focus();
-    restoreSelection();
-
-    document.execCommand("removeFormat", false, null);
-    document.execCommand("unlink", false, null);
-
-    syncValue();
-    updateToolbarState();
-  });
-
-  // ===== HTML 原始碼模式 =====
-  toggleSourceBtn.addEventListener("click", () => {
-    if (!sourceMode) {
-      source.value = editor.innerHTML;
-      editor.hidden = true;
-      source.hidden = false;
-
-      sourceMode = true;
-      toggleSourceBtn.classList.add("is-active");
-      status.textContent = "HTML 原始碼模式";
-    } else {
-      // 轉回視覺模式前，清理危險標籤與屬性
-      editor.innerHTML = sanitizeHTML(source.value);
-
-      source.hidden = true;
-      editor.hidden = false;
-
-      sourceMode = false;
-      toggleSourceBtn.classList.remove("is-active");
-      status.textContent = "視覺編輯模式";
-    }
-
-    syncValue();
-  });
-
-  source.addEventListener("input", syncValue);
-
-  // ===== 基本 HTML 清理 =====
-  function sanitizeHTML(html) {
-    const template = document.createElement("template");
-    template.innerHTML = html;
-
-    const blockedTags = [
-      "SCRIPT", "STYLE", "IFRAME", "OBJECT", "EMBED",
-      "SVG", "MATH", "FORM", "INPUT", "BUTTON"
-    ];
-
-    template.content.querySelectorAll("*").forEach((element) => {
-      if (blockedTags.includes(element.tagName)) {
-        element.remove();
+      if (!allowedTypes.includes(file.type)) {
+        showError("請選擇 JPG、PNG 或 WEBP 格式圖片。");
         return;
       }
 
-      // 僅保留常用格式屬性
-      [...element.attributes].forEach((attribute) => {
-        const name = attribute.name.toLowerCase();
-
-        if (
-          name.startsWith("on") ||
-          !["href", "target", "rel", "style"].includes(name)
-        ) {
-          element.removeAttribute(attribute.name);
-        }
-      });
-
-      // 避免危險連結
-      if (element.tagName === "A") {
-        const href = element.getAttribute("href") || "";
-
-        try {
-          const url = new URL(href, window.location.href);
-
-          if (!["http:", "https:"].includes(url.protocol)) {
-            element.removeAttribute("href");
-          }
-        } catch {
-          element.removeAttribute("href");
-        }
-
-        element.setAttribute("rel", "noopener noreferrer");
+      if (file.size > maxSize) {
+        showError("圖片大小不可超過 10MB。");
+        return;
       }
 
-      // 限制可使用的 inline CSS 屬性
-      const style = element.getAttribute("style");
+      const newUrl = URL.createObjectURL(file);
+      const testImage = new Image();
 
-      if (style) {
-        const safeStyles = [];
-
-        style.split(";").forEach((rule) => {
-          const parts = rule.split(":");
-          if (parts.length < 2) return;
-
-          const property = parts[0].trim().toLowerCase();
-          const value = parts.slice(1).join(":").trim();
-
-          if (
-            ["font-size", "line-height", "text-align", "font-weight",
-             "font-style", "text-decoration"].includes(property) &&
-            !/url\s*\(|expression\s*\(|javascript:/i.test(value)
-          ) {
-            safeStyles.push(`${property}: ${value}`);
-          }
-        });
-
-        if (safeStyles.length) {
-          element.setAttribute("style", safeStyles.join("; "));
-        } else {
-          element.removeAttribute("style");
+      testImage.onload = () => {
+        if (!testImage.naturalWidth || !testImage.naturalHeight) {
+          URL.revokeObjectURL(newUrl);
+          showError("圖片無法讀取，請重新選擇。");
+          return;
         }
+
+        const data = slotData.get(slot);
+
+        if (data.url) {
+          URL.revokeObjectURL(data.url);
+        }
+
+        data.file = file;
+        data.url = newUrl;
+
+        image.src = newUrl;
+        empty.hidden = true;
+        preview.hidden = false;
+
+        // 發出自訂事件，方便外部表單取得上傳檔案
+        card.dispatchEvent(new CustomEvent("imagechange", {
+          bubbles: true,
+          detail: {
+            slot: Number(slot),
+            file: file
+          }
+        }));
+      };
+
+      testImage.onerror = () => {
+        URL.revokeObjectURL(newUrl);
+        showError("圖片讀取失敗，請重新選擇。");
+      };
+
+      testImage.src = newUrl;
+    }
+
+    // 點擊「選擇圖片」
+    selectButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openFilePicker();
+    });
+
+    // 點擊「重新選擇圖片」
+    reselectButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openFilePicker();
+    });
+
+    // 點擊空白上傳區
+    empty.addEventListener("click", (event) => {
+      if (event.target.closest("button")) return;
+      openFilePicker();
+    });
+
+    // 從電腦選擇檔案
+    input.addEventListener("change", () => {
+      const file = input.files && input.files[0];
+      if (file) showPreview(file);
+    });
+
+    // 拖曳進入上傳區
+    box.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      box.classList.add("is-dragover");
+    });
+
+    // 拖曳離開上傳區
+    box.addEventListener("dragleave", (event) => {
+      if (!box.contains(event.relatedTarget)) {
+        box.classList.remove("is-dragover");
       }
     });
 
-    return template.innerHTML;
-  }
+    // 放開檔案完成拖曳上傳
+    box.addEventListener("drop", (event) => {
+      event.preventDefault();
+      box.classList.remove("is-dragover");
 
-  // ===== 貼上純文字，避免直接帶入外部格式 =====
-  editor.addEventListener("paste", (event) => {
-    event.preventDefault();
+      const file = event.dataTransfer.files &&
+                   event.dataTransfer.files[0];
 
-    const text = event.clipboardData.getData("text/plain");
-    document.execCommand("insertText", false, text);
-
-    syncValue();
+      if (file) showPreview(file);
+    });
   });
 
-  // ===== 初始化 =====
-  editor.innerHTML = hiddenInput.value || "";
-  syncValue();
+  // 取得指定欄位目前選取的 File
+  uploader.getImageFile = function (slotNumber) {
+    const data = slotData.get(String(slotNumber));
+    return data ? data.file : null;
+  };
+
+  // 取得全部六個欄位的圖片資料
+  uploader.getAllImageFiles = function () {
+    return Array.from(slotData.entries()).map(([slot, data]) => ({
+      slot: Number(slot),
+      file: data.file
+    }));
+  };
+
+  // 清除指定欄位的圖片
+  uploader.clearImage = function (slotNumber) {
+    const slot = String(slotNumber);
+    const card = uploader.querySelector(
+      `.icu6-card[data-slot="${slot}"]`
+    );
+
+    const data = slotData.get(slot);
+    if (!card || !data) return;
+
+    if (data.url) URL.revokeObjectURL(data.url);
+
+    data.file = null;
+    data.url = null;
+
+    card.querySelector(".icu6-preview-image").removeAttribute("src");
+    card.querySelector(".icu6-preview").hidden = true;
+    card.querySelector(".icu6-empty").hidden = false;
+    card.querySelector(".icu6-error").textContent = "";
+    card.querySelector(".icu6-file-input").value = "";
+
+    card.dispatchEvent(new CustomEvent("imagechange", {
+      bubbles: true,
+      detail: {
+        slot: Number(slot),
+        file: null
+      }
+    }));
+  };
+
+  // 頁面離開前釋放暫存圖片網址
+  window.addEventListener("beforeunload", () => {
+    slotData.forEach((data) => {
+      if (data.url) URL.revokeObjectURL(data.url);
+    });
+  });
 })();
 </script>
 

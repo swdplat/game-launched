@@ -5,14 +5,14 @@
     --text-main:#46464a;
     --text-sub:#9a9a9e;
     --text-dark-active:#1f2023;
-    --border:#e7e8ec;
+    --border:#e7e8ec!important;
     --bg:#f5f6f8;
     --blue-badge-bg:#dee9fc;
     --blue-badge-text:#4d6fc4;
     --blue-btn:#2c60d0;
     --home-blue:#1f56cd;
     --blue-step:#3a72e0;
-    --green:#2fa860;
+    --green:#5eb581;
     --red:#e0453c;
     --grey-step:#d7d7da;
   }
@@ -28,7 +28,7 @@
   .topbar{
     height:56px;
     background: #ffffff;
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid #eee;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -69,7 +69,7 @@
   .sidebar{
     width:266px;
     background:#fff;
-    border-right:1px solid var(--border);
+    border-right:1px solid #eee;
     padding:20px 0;
     flex-shrink:0;
   }
@@ -118,8 +118,9 @@
   }
 
   /* Main */
+#page-home {width:80%; margin:0 10%;padding:0;}
   .main{flex:1;padding:24px 32px;}
-  .page-inner{max-width:900px;margin:0 auto;}
+  .page-inner{max-width:60%;margin:0 auto;}
 
   /* Page header */
   .page-header-row{
@@ -130,16 +131,22 @@
     gap:20px;
   }
   .page-header-text h1{
-	width:100%;
+	width:90%;
     font-size:28px;
+	  line-height: 28px;
     margin:0 0 18px 0;
+	padding:0;
     color:#222;
     font-weight:700;
+    display:inline-block;
   }
 .page-header-text {width:100%;display:inline-block;}
-  .page-header-text p{
-	margin:0 0 0 0;
-    font-size:15px;
+.page-header-text .initial {width:10px; height:26px;margin:0px 8px -2px 0;padding:0;background-color:#5b9ad1;display:inline-block;top:2px;}
+.page-header-text .initial ol {position:absolute; margin:0 0;padding:0; width:10px; height:10px;background-color:#95bfe4;}
+.page-header-text p{
+	margin:-8px 0 0 0;
+    font-size:13px;
+	color:#999999!important;
     color:var(--text-sub);
     line-height:1.7;
 	  text-align:justify;
@@ -151,46 +158,327 @@
     color:var(--text-sub);
     font-weight:400;
     margin-bottom:0;
+	  margin:12px 0 0 0;
+	  padding:8px 12px;
+	  border-radius:6px;
+   border:1px solid #f3dfab;
+    background-color: #fff8e6;
   }
-.header-actions{display:flex;gap:10px;flex-shrink:0;margin:0 0 0 -40px;}
+.header-actions{
+	display:none;
+	width:auto;gap:10px;flex-shrink:0;margin:-36px 0 0 -40px;padding:8px 12px 8px 12px;
+	background-color:#fbfbfc;
+	border-radius: 0px 0px 12px 12px;
+	border-bottom:1px solid #e7e8ec;
+	border-left:1px solid #e7e8ec;
+	border-right:1px solid #e7e8ec;
+}
   .btn-ghost{
     background:#e5e7eb;
     color:#6b6b6f;
     border:none;
     border-radius:6px;
+    margin:0 0 8px 0;
     padding:9px 16px;
     font-size:13px;
     font-weight:600;
     cursor:pointer;
     white-space:nowrap;
+    margin:1px 0 0 0;
   }
   .btn-ghost:hover{background:#d9dbdf;}
   .btn-ghost.primary-ghost{
-    background:#bde0f9;
+    background:#95bfe4;
     color:#666666;
   }
 .btn-ghost.primary-ghost:hover{background:#a4d5fa;color:#333333;}
 
   /* Home page specific */
   .btn-add-game{
-    background:#ed0677;
+    background:#5b9ad1;
     color:#fff;
-    border:1px solid #e7a0c8;
-    border-radius:6px;
-    padding:8px 14px;
-    font-size:18px;
+    border:1px solid #95bfe4;
+    border-radius:100px;
+    padding:6px 14px;
+    font-size:16px;
     font-weight:700;
     cursor:pointer;
     white-space:nowrap;
     margin-top:2px;
     transition:background .15s ease;
   }
-.btn-add-game:hover{background-color:#f40543;}
+.btn-add-game:hover{border:1px solid #95bfe4; background-color:#4b6ec0;}
+.btn-outbound{
+    background:#ffffff;
+    color:#999999;
+    border:1px solid #cccccc;
+    border-radius:100px;
+    padding:6px 14px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
+    margin-top:2px;
+    transition:background .15s ease;
+  }
+.btn-outbound:hover{background-color:#f3f3f3;}
 
-  .search-row{display:flex;gap:10px;margin-bottom:28px;}
-  .search-box{
-    flex:1;
-    display:flex;
+.search-row{width:100%;display:inline-block;float:left;gap:10px;padding:12px 18px;margin:0;background-color:#f6f7fa;
+	border-top:1px solid var(--border);border-left:1px solid var(--border);border-right:1px solid var(--border);border-radius: 0px 0px 4px 4px;}
+
+/*新增處理/最近動態*/
+.dynamic_row {
+	width:100%;
+	margin:2px 0 16px 0;
+	padding:0 0;
+	display:flex;
+	gap:12px;
+    align-items:center;
+	display:inline-block;
+}
+.dynamic_row .deal {
+    width:49%;
+	margin:2px 0;
+	padding:8px 18px;
+	display:inline;
+    align-items:center;
+	background-color:#ffffff;
+    border-radius:8px;
+    color:#999;
+	cursor:pointer;
+	display:inline;
+	float:left;
+}
+.dynamic_row .deal ul {
+	width:100%;
+	margin:0 0;
+	padding:10px 0 5px 0;
+	float:left;
+}
+.dynamic_row .deal ul h5 {
+	width:70%;
+	margin:0 0 5px 0px;
+	font-size:16px;
+	color:#333333;
+	float:left;
+}
+.dynamic_row .deal ul h6 {
+    width:70%;
+	margin:0 0 10px 0px;
+	font-size:12px;
+	color:#999999;
+	float:left;
+}
+.dynamic_row .deal ul ol {
+	width:auto;
+	margin:-12px 0 0 0;
+	padding:4px 8px;
+	border-radius:24px;
+	background:#f3f3f3;
+	font-size:12px;
+	font-weight: bold;
+	color:#4b6ec0;
+	text-align:right;
+	cursor:pointer;
+	float:right;
+}
+.dynamic_row .deal ul ol:hover {background:#efefef;}
+.dynamic_row .deal li {
+	width:100%;
+	margin:0 0;
+	padding:8px 0;
+	list-style: none;
+	border-top:1px dotted #eeeeee;
+	float:left;
+}
+.dynamic_row .deal li dl {
+	width:40px;
+	height:40px;
+	margin:0 10px 0 0;
+	padding:0 0;
+	float:left;
+}
+.dynamic_row .deal li dl img {width:100%;}
+.dynamic_row .deal li dt {
+	width:70%;
+	margin:0 0 5px 0;
+	padding:0 0;
+	font-size:14px;
+	font-weight: bold;
+	text-align:left;
+	color:#666666;
+	display:inline;
+	float:left;
+}
+.dynamic_row .deal li dd {
+	width:70%;
+	margin:0 0 0 0;
+	padding:0 0;
+	font-size:11px;
+	font-weight: normal;
+	text-align:left;
+	color:#999999;
+	display:inline;
+	float:left;
+}
+.dynamic_row .deal li ol {
+	width:auto;
+	margin:-32px 0 0 0;
+	padding:4px 8px;
+	border-radius:24px;
+	background:#f3f3f3;
+	font-size:12px;
+	font-weight: bold;
+	color:#4b6ec0;
+	text-align:right;
+	cursor:pointer;
+	float:right;
+}
+.dynamic_row .deal li ol:hover {background:#efefef;}
+.dynamic_row .history {
+    width:49%;
+	margin:2px 0;
+	padding:8px 18px;
+	display:inline;
+    align-items:center;
+	background-color:#ffffff;
+    border-radius:8px;
+    color:#999;
+	cursor:pointer;
+	display:inline;
+	float:right;
+}
+.dynamic_row .history ul {
+	width:100%;
+	margin:0 0;
+	padding:10px 0 5px 0;
+	float:left;
+}
+.dynamic_row .history ul h5 {
+	width:70%;
+	margin:0 0 5px 0px;
+	font-size:16px;
+	color:#333333;
+	float:left;
+}
+.dynamic_row .history ul h6 {
+    width:70%;
+	margin:0 0 10px 0px;
+	font-size:12px;
+	color:#999999;
+	float:left;
+}
+.dynamic_row .history ul ol {
+	width:auto;
+	margin:-12px 0 0 0;
+	padding:4px 8px;
+	border-radius:24px;
+	background:#f3f3f3;
+	font-size:12px;
+	font-weight: bold;
+	color:#4b6ec0;
+	text-align:right;
+	cursor:pointer;
+	float:right;
+}
+.dynamic_row .history li {
+	width:100%;
+	margin:0 0;
+	padding:8px 0;
+	border-top:1px dotted #eeeeee;
+	list-style: none;
+	float:left;
+}
+.dynamic_row .history li dt {
+	width:70%;
+	margin:0 0 5px 0;
+	padding:0 0;
+	font-size:14px;
+	font-weight: bold;
+	text-align:left;
+	color:#666666;
+	display:inline;
+	float:left;
+}
+.dynamic_row .history li dd {
+	width:70%;
+	margin:0 0 0 0;
+	padding:0 0;
+	font-size:11px;
+	font-weight: normal;
+	text-align:left;
+	color:#999999;
+	display:inline;
+	float:left;
+}
+.dynamic_row .history li ol {
+	width:auto;
+	margin:-18px 0 0 0;
+	padding:4px 8px;
+	font-size:11px;
+	font-weight: bold;
+	color:#999999;
+	text-align:right;
+	cursor:pointer;
+	float:right;
+}
+.total_row {
+	width:100%;
+	margin:2px 0 16px 0;
+	padding:0 0;
+	display:flex;
+	gap:12px;
+    align-items:center;
+}
+.total-box {
+	width:24%;
+	margin:2px 0;
+	padding:10px 18px;
+	display:inline;
+    align-items:center;
+	background-color:#ffffff;
+    border-radius:8px;
+    color:#999;
+	cursor:pointer;
+	float:left;
+}
+.total-box:hover {border:1px solid #95bfe4;}
+.gray-border {border:4px solid #eeeeee;}
+.blue-border {border:4px solid #95bfe4;}
+.total-box dl {
+    width:100%;
+	font-size:13px;
+	margin:0 0;
+    color:#666;
+	font-weight: bold;
+	display:inline;
+	float:left;
+}
+.total-box dt {
+	width:100%;
+	font-size:36px;
+	margin:0 0;
+	list-style: none;
+	display:inline;
+	float:left;
+}
+.total-box dd {
+	width:100%;
+	font-size:11px;
+	margin:0 0;
+    color:#999;
+	display:inline;
+	float:left;
+}
+.total_gray {color:#666666;}
+.pending_brown {color:#98805f;}
+.review_purple {color:#9269b2;}
+.release_green {color:#7bbc90;}
+
+
+.search-box{
+	width:40%;
+    display:inline-block;
     align-items:center;
     gap:8px;
     background:#fff;
@@ -198,24 +486,183 @@
     border-radius:8px;
     padding:11px 16px;
     color:#999;
-    font-size:13.5px;
+    font-size:15px;
+	float:left;
   }
   .search-box input{border:none;outline:none;flex:1;font-size:13.5px;color:#333;background:transparent;}
   .btn-search{
-    background:#00aeef;
+    background:#95bfe4;
     color:#fff;
     border-radius:6px;
-    border:1px solid #82c5f7;
-    padding:0 24px;
-    font-size:15px;
-    font-weight:600;
+     border:none;
+	  margin:0 0 0 10px;
+    padding:11px 24px;
+    font-size:14px;
+    font-weight:bold;
     cursor:pointer;
+	  display:inline-block;
+	  float:left;
   }
 
-  .list-header{margin-bottom:14px;}
-  .list-header h2{font-size:18px;margin:0 0 4px 0;color:#222;font-weight:700;white-space:nowrap;}
-  .list-header p{margin:0;font-size:14px;color:var(--text-sub);}
-
+  .list-header{margin-bottom:0px;height:auto;}
+  .list-header h2{font-size:18px;margin:16px 0 4px 0;color:#222;font-weight:700;white-space:nowrap;}
+  .list-header p{margin:0 0 16px 0;font-size:14px;color:var(--text-sub);}
+.list-header ul {
+	width:100%;
+	margin:12px 0 10px 0;
+	padding:0 0 2px 0;
+	font-size:13px;
+    font-weight:normal;
+	color:#999999;
+	text-align:left;
+	display:inline;
+	float:left;
+}
+.list-header ul li {
+    padding:10px 12px;
+	list-style: none;
+	font-size:14px;
+    font-weight:normal;
+	color:#666666;font-weight: bold;
+	text-align:left;
+	display:inline;
+	background-color:#e5eff8;
+	gap:1px;
+	border-top:1px solid var(--border);
+	border-left:1px solid var(--border);
+	border-right:1px solid var(--border);
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.list-header ul #state_tab1 {
+    padding:10px 16px;
+	list-style: none;
+	font-size:15px;
+    font-weight:normal;
+	color:#666666;font-weight: bold;
+	text-align:left;
+	display:inline;
+	background: linear-gradient(to bottom,  rgba(229,239,248,1) 0%,rgba(246,247,250,1) 100%);
+	gap:1px;
+	border-top:1px solid var(--border);
+	border-left:1px solid var(--border);
+	border-right:1px solid var(--border);
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.list-header ul #state_tab2 {
+    padding:10px 16px;
+	list-style: none;
+	font-size:15px;
+    font-weight:normal;
+	color:#666666;font-weight: bold;
+	text-align:left;
+	display:inline;
+	background: linear-gradient(to bottom,  rgba(229,239,248,1) 0%,rgba(246,247,250,1) 100%);
+	gap:1px;
+	border-top:1px solid var(--border);
+	border-left:1px solid var(--border);
+	border-right:1px solid var(--border);
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.list-header ul #state_tab3 {
+    padding:10px 16px;
+	list-style: none;
+	font-size:15px;
+    font-weight:normal;
+	color:#666666;font-weight: bold;
+	text-align:left;
+	display:inline;
+	background: linear-gradient(to bottom,  rgba(229,239,248,1) 0%,rgba(246,247,250,1) 100%);
+	gap:1px;
+	border-top:1px solid var(--border);
+	border-left:1px solid var(--border);
+	border-right:1px solid var(--border);
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.list-header ul #state_tab4 {
+    padding:10px 16px;
+	list-style: none;
+	font-size:15px;
+    font-weight:normal;
+	color:#666666;font-weight: bold;
+	text-align:left;
+	display:inline;
+	background: linear-gradient(to bottom,  rgba(229,239,248,1) 0%,rgba(246,247,250,1) 100%);
+	gap:1px;
+	border-top:1px solid var(--border);
+	border-left:1px solid var(--border);
+	border-right:1px solid var(--border);
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.list-header ul #state_tab5 {
+    padding:10px 16px;
+	list-style: none;
+	font-size:15px;
+    font-weight:normal;
+	color:#666666;font-weight: bold;
+	text-align:left;
+	display:inline;
+	background: linear-gradient(to bottom,  rgba(229,239,248,1) 0%,rgba(246,247,250,1) 100%);
+	gap:1px;
+	border-top:1px solid var(--border);
+	border-left:1px solid var(--border);
+	border-right:1px solid var(--border);
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.list-header ul #state_tab6 {
+    padding:10px 16px;
+	list-style: none;
+	font-size:15px;
+    font-weight:normal;
+	color:#666666;font-weight: bold;
+	text-align:left;
+	display:inline;
+	background: linear-gradient(to bottom,  rgba(229,239,248,1) 0%,rgba(246,247,250,1) 100%);
+	gap:1px;
+	border-top:1px solid var(--border);
+	border-left:1px solid var(--border);
+	border-right:1px solid var(--border);
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.list-header ul #state_tab7 {
+    padding:10px 16px;
+	list-style: none;
+	font-size:15px;
+    font-weight:normal;
+	color:#666666;font-weight: bold;
+	text-align:left;
+	display:inline;
+	background: linear-gradient(to bottom,  rgba(229,239,248,1) 0%,rgba(246,247,250,1) 100%);
+	gap:1px;
+	border-top:1px solid var(--border);
+	border-left:1px solid var(--border);
+	border-right:1px solid var(--border);
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.list-header .active {border-bottom:4px solid #4b6ec0;}
+.list-header .none {border-bottom:4px solid #f6f7fa;}
+.list-header ul dl {
+    width:16px;
+	height:16px;
+	margin:0 15px 0 5px;
+	list-style: none;
+	font-size:12px;
+    font-weight:normal;
+	color:#ffffff;
+	text-align:left;
+	padding:1px 6px;
+	border-radius:100px;
+	background-color:#bbd5ed;
+	display:inline;
+}
+#table {outline:1px solid var(--border);}
   table{
     width:100%;
     border-collapse:collapse;
@@ -224,7 +671,10 @@
     border-radius:4px;
     overflow:hidden;
   }
-  thead tr{background:#f6f7fa;}
+table a:link {color:#333;text-decoration:none;line-height:32px;}
+table a:hover {color:#000;text-decoration: underline;}
+table a:visited {color:#333;text-decoration:none; }
+thead tr{background:#f6f7fa;}
   th{
     text-align:left;
     font-size:14px;
@@ -235,26 +685,46 @@
     white-space:nowrap;
   }
   td{
-    padding:14px;
+    padding:8px 14px 6px 14px;
     font-size:15px;
     color:#333;
     border-bottom:1px solid var(--border);
     vertical-align:middle;
   }
+
+table .sub {
+	font-size:14px;
+    color:#90a8bb;font-weight: bold;
+}
+table .sub2 {
+	font-size:12px;
+    color:#999999;font-weight: normal;
+}
 .btn-copy{
-    background:#00aeef;
+    background:#95bfe4;
     color:#fff;
     border-radius:6px;
-    border:1px solid #82c5f7;
     padding:4px 12px;
-    font-size:15px;
+    font-size:14px;
     font-weight:600;
     cursor:pointer;
   }
-.btn-copy:hover{background:#178de0;}
+.btn-copy:hover{background:#5b9ad1;}
 tbody tr:last-child td{border-bottom:none;}
   tbody tr:hover{background:#fcfcfd;}
-  .game-name{font-weight:700;color:#222;}
+  .game-name{width:64px;height:64px;}
+  .game-name img {width:100%;}
+#status {
+	position:absolute;
+	z-index:9;
+	top:0;
+	right:0;
+	margin:45px 10% 0 0;
+	width:56px;
+	height:auto;
+	text-align:center;
+	display:block;
+}
 /*灰-草稿*/
   .badge{
     width:56px;
@@ -267,12 +737,12 @@ tbody tr:last-child td{border-bottom:none;}
     padding:4px 0px;
     border-radius:12px;
   }
-/*藍-待審核*/
+/*藍-審核中*/
 .badge1{
     width:56px;
 	text-align:center;
 	display:inline-block;
-    background:#aad7f9;
+    background:#e5eff8;
     color:#333333;
     font-size:12px;
     font-weight:600;
@@ -284,7 +754,7 @@ tbody tr:last-child td{border-bottom:none;}
     width:56px;
 	text-align:center;
 	display:inline-block;
-    background:#f6c5e1;
+    background:#f2e0ea;
     color:#333333;
     font-size:12px;
     font-weight:600;
@@ -296,14 +766,63 @@ tbody tr:last-child td{border-bottom:none;}
     width:56px;
 	text-align:center;
 	display:inline-block;
-    background:#eaf38f;
+    background:#e0e5ad;
     color:#333333;
     font-size:12px;
     font-weight:600;
     padding:4px 0px;
     border-radius:12px;
   }
-  .btn-mini{
+/*黃-待處理*/
+.badge4{
+    width:56px;
+	text-align:center;
+	display:inline-block;
+    background:#e5daad;
+    color:#333333;
+    font-size:12px;
+    font-weight:600;
+    padding:4px 0px;
+    border-radius:12px;
+  }
+/*紫-退回修改*/
+.badge5{
+    width:56px;
+	text-align:center;
+	display:inline-block;
+    background:#d5b9dd;
+    color:#333333;
+    font-size:12px;
+    font-weight:600;
+    padding:4px 0px;
+    border-radius:12px;
+  }
+/*進度條*/
+.progress-container {
+	position:relative;
+	top:3px;
+    width: 50px;
+    height: 18px;
+	margin:0 8px 0 0;
+    background-color: #555555;
+    border-radius: 4px;
+    overflow: hidden;
+	display:inline-block;
+}
+.progress-bar {
+    height: 100%;
+    background-color: #6bb6e8;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 400;
+    transition: width 0.3s ease;
+    box-sizing: border-box;
+}
+.btn-mini{
     background:var(--orange);
     color:#fff;
     border:none;
@@ -335,34 +854,54 @@ tbody tr:last-child td{border-bottom:none;}
   .pager .active{background-color:#82c5f7;color:#fff;border-color:#82c5f7;}
 
   /* Stepper */
-  .stepper{display:flex;align-items:center;margin:22px 0 12px 0;padding:0 4px;}
+  .stepper{
+	  position:absolute;
+	  top:0;
+	  left:0;
+	  width:210px;
+	  margin:245px 0 0 20%;
+	  padding:12px 17px;
+	  border-radius:12px;
+	  background-color:#ffffff;
+	  border:1px solid #e7e8ec;
+	  display:block;align-items:center;}
   .step-node{
-    display:flex;
+    width:100%!important;
     align-items:center;
-    gap:8px;
+    gap:0px;
     cursor:pointer;
     position:relative;
-    padding:6px 8px 3px 8px;
-    border-radius:100px;
+	 margin:8px 0px!important;
+    padding:6px 8px 4px 8px;
     transition:background .15s ease;
+	  border-bottom:1px solid #e7e8ec;
+	  display:inline;
+	  float:left;
   }
-.step-node:hover{background:#efefef;}
+.step-node:hover{background:#edf7ff;border-radius:100px;padding:6px 8px 4px 8px;display:inline;float:left;}
   .step-circle{
-    width:26px;height:26px;
-    border-radius:6px;
-    display:flex;align-items:center;justify-content:center;
+    width:24px;height:24px;
+	  margin:0 3px 0 0;
+    border-radius:8px;
+	  align-items:center;justify-content:center;
     font-size:13px;
+	  line-height: 21px;
     font-weight:700;
+	  text-align:center;
     background:#cccccc;
+	  border:1px solid #f9f9f9;
     color:#fff;
     flex-shrink:0;
     position:relative;
+	  display:inline;
+	  float:left;
   }
-.step-node.current .step-circle{background:#178de0;border:2px solid #4faff;color:#ffffff;}
-  .step-node.done .step-circle{background:#bfd730;}
+.step-node.current {;display:inline;float:left;}
+.step-node.current .step-circle{background:#5b9ad1;border:2px solid #4faff;color:#ffffff;display:inline;float:left;}
+  .step-node.done .step-circle{background:#c2cd7d;display:inline;float:left;}
   .status-badge{
     position:absolute;
-    top:-6px;right:-6px;
+    top:-8px;left:-10px;
     width:16px;height:16px;
     border-radius:50%;
     display:flex;align-items:center;justify-content:center;
@@ -371,10 +910,10 @@ tbody tr:last-child td{border-bottom:none;}
     color:#fff;
     border:none;
   }
-  .status-badge.warn{background:#ed0677;}
+  .status-badge.warn{background:#d96fa3;}
   .status-badge.ok{background:var(--green);}
-  .step-label{font-size:18px;color:#8a8a8e;white-space:nowrap;}
-.step-node.current .step-label{color:#178de0;font-weight:700;border-bottom:2px solid #178de0;}
+  .step-label{font-size:16px;line-height:24px; color:#8a8a8e;white-space:nowrap;}
+.step-node.current .step-label{color:#5b9ad1;font-weight:700;}
   .step-line{flex:1;height:1px;background:#dcdde1;margin:0 2px;min-width:4px;}
 
   /* Content card */
@@ -386,7 +925,7 @@ tbody tr:last-child td{border-bottom:none;}
   .field-group:last-child{margin-bottom:0;}
 .field-label-row{display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;width:100%;}
   .field-label{font-size:16px;font-weight:700;color:#333;}
-  .required-star{color:#ed0677;font-weight:700;}
+  .required-star{color:#d96fa3;font-weight:700;}
   .tooltip-wrap{position:relative;display:inline-flex;}
   .tooltip-icon{
     width:16px;height:16px;
@@ -452,7 +991,7 @@ tbody tr:last-child td{border-bottom:none;}
 
   .field-caption{margin:0 0 8px 0;font-size:14px;color:#a9abb0;line-height:1.6;}
   .field-caption.pending{color:#c9a13a;font-style:italic;}
-  .field-caption.warn{color:#ed0677;font-weight:500;font-style:normal;}
+  .field-caption.warn{color:#d96fa3;font-weight:500;font-style:normal;}
 
   .field-group.error .field-input{border-color:var(--red);background:#fdf3f2;}
   .field-error-msg{margin-top:7px;font-size:12px;color:var(--red);font-weight:600;display:flex;align-items:center;gap:5px;}
@@ -512,7 +1051,7 @@ tbody tr:last-child td{border-bottom:none;}
   .page-footer{display:flex;align-items:center;justify-content:space-between;margin-top:24px;}
   .step-count{font-size:13px;color:#8a8a8e;}
   .btn-next{
-    background:#00aeef;
+    background:#4b6ec0;
     color:#fff;
     border:none;
     border-radius:6px;
@@ -623,7 +1162,7 @@ tbody tr:last-child td{border-bottom:none;}
     width:180px;
 	  height:200px;
 	  padding:0;
-    border:1px solid #cfe6fa;
+    border:none;
     border-radius:24px;
     background:#ffffff;
     display:inline-flex;
@@ -716,9 +1255,9 @@ tbody tr:last-child td{border-bottom:none;}
   .tag-modal-box{
     background:#fff;
     border-radius:14px;
-    width:520px;
+    width:900px;
     max-width:100%;
-    max-height:86vh;
+    max-height:96vh;
     display:flex;
     flex-direction:column;
     box-shadow:0 20px 50px rgba(0,0,0,.25);
@@ -741,12 +1280,12 @@ tbody tr:last-child td{border-bottom:none;}
     gap:7px;
     padding:8px 14px;
     border:1px solid var(--border);
-    border-radius:6px;
+    border-radius: 150px 6px 6px 150px;
     font-size:12px;
     color:#444;
     cursor:pointer;
     user-select:none;
-    background:#fff;
+    background:#ffffff;
     transition:border-color .12s ease, background .12s ease;
   }
   .tag-pill:hover{border-color:#b9c6e6;}
@@ -765,7 +1304,7 @@ tbody tr:last-child td{border-bottom:none;}
     transform:scale(0);
     transition:transform .1s ease;
   }
-  .tag-pill.selected{border-color:#00aeef;background:daeffe;color:#00aeef;font-weight:600;}
+  .tag-pill.selected{border-color:#00aeef;background:#daeffe;color:#00aeef;font-weight:600;}
   .tag-pill.selected .tag-pill-dot{border-color:#00aeef;background:#00aeef;}
   .tag-pill.selected .tag-pill-dot::after{background:#fff;transform:scale(1);}
   .tag-modal-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-top:1px solid var(--border);flex-shrink:0;}
@@ -884,7 +1423,7 @@ tbody tr:last-child td{border-bottom:none;}
   .modal-message{font-size:15px;font-weight:700;color:#222;margin:0 0 8px 0;line-height:1.6;}
   .modal-note{font-size:12.5px;color:#8a8a8e;margin:0 0 24px 0;line-height:1.7;}
   .modal-note:empty{margin:0 0 16px 0;}
-  .modal-note b{color:#ed0677;font-weight:700;}
+  .modal-note b{color:#d96fa3;font-weight:700;}
   .modal-confirm-btn{background:#00aeef
 ;color:#fff;border:none;border-radius:8px;padding:11px 0;width:100%;font-size:14px;font-weight:700;cursor:pointer;}
   .modal-confirm-btn:hover{background:#178de0;}
@@ -892,98 +1431,248 @@ tbody tr:last-child td{border-bottom:none;}
 
 
 
-/*拖曳圖片上傳鈕*/
-/* =====================================
-   ICON 單張圖片上傳元件
-   使用 icon- 專屬命名，避免與輪播元件衝突
-===================================== */
-
-
-.icon-upload-container {
-  width: 100%;
-  max-width: 204px;
-	height:auto;
-	padding:0 0;
-}
-
-/* 上傳框 */
-.icon-upload-box {
+/*拖曳ICON圖片上傳*/
+/* 上傳欄位外框 */
+.icon-uploader {
   position: relative;
-  width: 100%;
-  height: 198px;
-	margin:6px 0 0 0;
-  padding:25px 0 10px 0; 
+  width: 180px;
+  height: 200px;
+  box-sizing: border-box;
   overflow: hidden;
-  border: none;
+  border: 1px solid #cfe5fa;
   border-radius: 24px;
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
+  background: #fff;
+  font-family: Arial, "Noto Sans TC", sans-serif;
+  color: #4388c8;
+  transition: border-color 0.2s, background 0.2s;
 }
 
-/* 拖曳時的外觀 */
-.icon-upload-box.icon-dragover {
-  border: 1px dashed #398fe0;
-  background: #f0f8ff;
+/* 拖曳圖片時 */
+.icon-uploader.is-dragover {
+  background: #f7fbff;
 }
 
-/* 隱藏原生檔案選擇器 */
-.icon-file-input {
-  display: none;
-}
-
-/* =====================================
-   上傳前 UI
-===================================== */
-
-.icon-upload-empty {
+/* 初始上傳畫面 */
+.icon-upload-content {
   width: 100%;
   height: 100%;
-  padding: 0 0;
-
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  background: #transparent;
+  padding-top: 21px;
 }
 
-.icon-cloud {
-  width: 64px;
-  height: 52px;
-  margin-bottom: 10px;
+.upload-cloud-icon {
+  display: block;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
 
-  display: flex;
+/* 文字樣式 */
+.upload-main-text {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 4px 3px;
+  color: #4288c9;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.upload-format-text {
+  margin-top: 7px;
+  color: #8298aa;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+
+/* 共用按鈕樣式：選擇圖片與重新選擇圖片完全一致 */
+.upload-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 90px;
+  height: 36px;
+  box-sizing: border-box;
+  padding: 0 18px;
+  border: 1px solid #398fe0;
+  border-radius: 22px;
+  background: #fff;
+  color: #666666;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
 
-.icon-cloud svg {
+/* 初始選擇圖片按鈕位置 */
+#iconSelectButton {
+  margin-top: 23px;
+}
+
+/* 兩個按鈕使用相同 hover 效果 */
+.upload-button:hover {
+  border-color: #3292e5;
+  background: #f1f8ff;
+  color: #3288d1;
+}
+
+/* 圖片預覽區 */
+.icon-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f7fbff;
+}
+
+.icon-preview[hidden] {
+  display: none;
+}
+
+.icon-preview img {
   display: block;
-  width: 64px;
-  height: 52px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.icon-upload-title {
+/* 重新選擇圖片按鈕覆蓋於縮圖中央 */
+.preview-reselect-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+	background:#f7fbff;
+}
+
+/* 滑鼠移至縮圖時顯示按鈕 */
+.icon-preview:hover .preview-reselect-button,
+.icon-preview:focus-within .preview-reselect-button {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* 錯誤訊息 */
+.upload-error {
+  position: absolute;
+  right: 4px;
+  bottom: 3px;
+  left: 4px;
+  color: #e05252;
+  font-size: 10px;
+  line-height: 14px;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* 觸控裝置沒有 hover，按鈕常駐顯示 */
+@media (hover: none) {
+  .preview-reselect-button {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+
+/* ==========================================
+   六張輪播圖片上傳欄位
+   專屬 icu6- 前綴，避免與 ICON 元件衝突
+========================================== */
+/* ===== 六欄位配置 ===== */
+.icu6-uploader {
+  width: 100%;
+  font-family: Arial, "Noto Sans TC", sans-serif;
+  color: #23476b;
+}
+
+.icu6-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.icu6-card {
+  min-width: 0;
+}
+
+/* ===== 上傳框 ===== */
+.icu6-upload-box {
+  position: relative;
+  min-height: 190px;
+  overflow: hidden;
+	border-radius:24px;
+  transition: background .2s;
+}
+
+.icu6-upload-box.is-dragover {
+  border-radius:24px;
+	border-color: #2588df;
+  background: #f7fbff;
+}
+
+.icu6-file-input {
+  display: none;
+}
+
+/* ===== 尚未上傳狀態 ===== */
+.icu6-empty {
+    width:180px;
+    height:200px;
+    padding:0;
+    border:1px solid #cfe6fa;
+    border-radius:24px;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:24x;
+    font-size:11px;
+    color:#b6b8bd;
+    text-align:center;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    flex-shrink:0;
+    transition:border-color .15s ease;
+  cursor: pointer;
+}
+
+.icu6-cloud-icon {
+  width: 64px;
+  height: 42px;
+  margin-bottom: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.icu6-upload-title {
+  margin-bottom: 6px;
   color: #398FE0;
   font-size: 14px;
-  font-weight: 400;
-  line-height: 1.6;
-  white-space: nowrap;
+  font-weight: normal;
 }
 
-.icon-upload-format {
-  margin-top: 6px;
-  color: #6C8093;
-  font-size: 11px;
-  line-height: 1.5;
-  white-space: nowrap;
+.icu6-upload-format {
+  margin-bottom: 12px;
+  color: #8198ad;
+  font-size: 12px;
 }
 
-/* 白色選擇圖片按鈕 */
-.icon-select-button {
+.icu6-select-button {
   width: 90px;
   height: 36px;
   margin-top: 13px;
@@ -1005,240 +1694,47 @@ tbody tr:last-child td{border-bottom:none;}
 
   cursor: pointer;
   transition: all 0.2s ease;
+
+rgba(255, 255, 255, 0.7)
 }
 
-.icon-select-button:hover {
-  color: #398FE0;
-  border-color: #398FE0;
-  background: #F7FBFF;
+.icu6-select-button:hover {
+  border-color: #398fe0;
+  background: #eaf5ff;
 }
 
-/* =====================================
-   上傳後的縮圖
-===================================== */
-
-.icon-upload-preview {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
+/* ===== 已上傳縮圖 ===== */
+.icu6-preview {
+  position: relative;
+  width: 180px;
+  height:200px;
   overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #ffffff;
+	border-radius:24px;
+	border:1px solid #cfe6fa;
+  background: #edf4fa;
 }
-
-/* hidden 時完全隱藏 */
-.icon-upload-empty[hidden],
-.icon-upload-preview[hidden] {
+.icu6-preview img {width:100%;}
+.icu6-preview[hidden],
+.icu6-empty[hidden] {
   display: none !important;
 }
 
-/* 縮圖 */
-.icon-preview-image {
+.icu6-preview-image {
   display: block;
-  width: 100%;
+  width: auto;
   height: 100%;
-
   object-fit: contain;
-  background: #ffffff;
+  background: #f2f7fc;
 }
 
-/* =====================================
-   覆蓋在縮圖上的重新選擇圖片按鈕
-===================================== */
-
-.icon-reselect-button {
+/* ===== 重新選擇圖片按鈕：預設隱藏 ===== */
+.icu6-reselect-button {
   position: absolute;
-  top: 50%;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  width:90px;
-  height:36px;
-  color:#8495a5;
-  border:1px solid #aeb7bf;
-  padding: 0 18px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(255, 255, 255, 0.85);
-  border-radius:100px;
-
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 400;
-  white-space: nowrap;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
- 
-}
-
-.icon-reselect-button:hover {
-  background: #F0F8FF;
-  border-color: #398FE0;
-}
-
-.icon-reselect-button:focus-visible,
-.icon-select-button:focus-visible {
-  outline: 2px solid #398FE0;
-  outline-offset: 3px;
-}
-
-/* 錯誤提示 */
-.icon-upload-error {
-  margin-top: 6px;
-  color: #D05262;
-  font-size: 12px;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-}
-
-/* 手機版 */
-@media (max-width: 480px) {
-  .icon-upload-container {
-    max-width: 204px;
-	  padding:0 0;
-  }
-}
-
-
-
-
-
-
-/* ==========================================
-   六張輪播圖片上傳欄位
-   專屬 icu6- 前綴，避免與 ICON 元件衝突
-========================================== */
-
-.icu6-container,
-.icu6-container * {
-  box-sizing: border-box;
-}
-
-.icu6-container {
-  width: 580px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-
-  background: #ffffff;
-  border:none;
-  border-radius:0;
-}
-
-.icu6-heading {
-  margin: 0 0 8px;
-  color: #174a78;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.icu6-description {
-  margin: 0 0 24px;
-  color: #6485a4;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-/* 3 欄 × 2 列 */
-.icu6-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.icu6-card {
-  min-width: 0;
-}
-
-/* 上傳框 */
-.icu6-upload-box {
-  position: relative;
-  width: 100%;
-  height: 204px;
-  overflow: hidden;
-
-  background: transparent;
-  border: 1px solid #cfe6fa;
-  border-radius: 24px;
-
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.icu6-upload-box.icu6-dragover {
-  border: 1px dashed #398fe0;
-  background: #f0f8ff;
-}
-
-/* 隱藏原生檔案選擇器 */
-.icu6-file-input {
-  display: none;
-}
-
-/* ==========================================
-   上傳前 UI
-========================================== */
-
-.icu6-empty {
-  width: 180px;
-  height: 100%;
-  padding: 20px 8px 10px 8px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  background: transparent;
-}
-
-.icu6-cloud-icon {
-  width: 64px;
-  height: 52px;
-  margin-bottom: 10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icu6-cloud-icon svg {
-  display: block;
-  width: 64px;
-  height: 52px;
-}
-
-.icu6-upload-title {
-  color: #398fe0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.6;
-  white-space: nowrap;
-}
-
-.icu6-upload-format {
-  margin-top: 6px;
-  color: #6c8093;
-  font-size: 11px;
-  line-height: 1.5;
-  white-space: nowrap;
-}
-
-/* 白色選擇圖片按鈕 */
-.icu6-select-button {
-  width: 90px;
+  z-index: 2;
+    width: 90px;
   height: 36px;
   margin-top: 13px;
   padding: 0 10px;
@@ -1247,9 +1743,9 @@ tbody tr:last-child td{border-bottom:none;}
   align-items: center;
   justify-content: center;
 
-  color: #8495a5;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #aeb7bf;
+  color: #398fe0;
+  background: #ffffff;
+  border: 1px solid #AEB7BF;
   border-radius: 22px;
 
   font-family: inherit;
@@ -1259,315 +1755,61 @@ tbody tr:last-child td{border-bottom:none;}
 
   cursor: pointer;
   transition: all 0.2s ease;
-}
-
-.icu6-select-button:hover {
-  color: #398fe0;
-  border-color: #398fe0;
-  background: #f7fbff;
-}
-
-/* ==========================================
-   上傳後：縮圖與重新選擇按鈕
-========================================== */
-
-.icu6-preview {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #ffffff;
-}
-
-.icu6-preview[hidden],
-.icu6-empty[hidden] {
-  display: none !important;
-}
-
-/* 圖片縮圖 */
-.icu6-preview-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-  background: #ffffff;
-}
-
-/* 覆蓋在縮圖中央的重新選擇按鈕 */
-.icu6-reselect-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-	width:90px;
-	height:36px;
-  transform: translate(-50%, -50%);
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color:#8495a5;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid #aeb7bf;
-  border-radius: 100px;
-
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 400;
-  white-space: nowrap;
-
   cursor: pointer;
 
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+/* 滑鼠移入縮圖區時顯示按鈕 */
+.icu6-preview:hover .icu6-reselect-button,
+.icu6-preview:focus-within .icu6-reselect-button {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .icu6-reselect-button:hover {
-  background: #f0f8ff;
-  border-color: #59a2e6;
+  color:##398fe0;
+  background: #f7fbff;
+  border:1px solid #398fe0;
 }
 
-/* 錯誤提示 */
+/* 觸控裝置沒有 hover，按鈕保持可操作 */
+@media (hover: none) {
+  .icu6-preview .icu6-reselect-button {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+/* ===== 錯誤提示與說明 ===== */
 .icu6-error {
-  margin-top: 6px;
-  color: #d05262;
+  min-height: 18px;
+  padding-top: 5px;
+  color: #d94b4b;
   font-size: 12px;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
 }
 
-/* 鍵盤焦點 */
-.icu6-select-button:focus-visible,
-.icu6-reselect-button:focus-visible {
-  outline: 2px solid #398fe0;
-  outline-offset: 3px;
+.icu6-caption {
+  margin-top: 12px;
+  color: #8295a8;
+  font-size: 12px;
 }
 
-/* 平板：2 欄 */
-@media (max-width: 900px) {
+/* ===== 響應式版面 ===== */
+@media (max-width: 760px) {
   .icu6-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 }
 
-/* 手機：1 欄 */
-@media (max-width: 560px) {
-  .icu6-container {
-    padding: 16px;
-    border-radius: 16px;
-  }
-
-  .icu6-heading {
-    font-size: 21px;
-  }
-
+@media (max-width: 480px) {
   .icu6-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .icu6-upload-box {
-    height: 204px;
-  }
-}
-
-
-
-
-/* =================================
-   MyCard 富文字編輯器
-================================= */
-/* ===== 編輯器外框 ===== */
-.rt-editor {
-  width: 100%;
-  border: 1px solid #cbdced;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  color: #243b53;
-  font-family: Arial, "Noto Sans TC", sans-serif;
-  box-sizing: border-box;
-}
-
-/* ===== 工具列 ===== */
-.rt-toolbar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 7px;
-  padding: 12px;
-  background: #f3f8fd;
-  border-bottom: 1px solid #dce8f4;
-}
-
-.rt-toolbar button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 34px;
-  height: 32px;
-  padding: 0 9px;
-  border: 1px solid #cbdced;
-  border-radius: 6px;
-  background: #fff;
-  color: #23476b;
-  font-size: 13px;
-  cursor: pointer;
-  transition: background .15s, border-color .15s;
-}
-
-.rt-toolbar button:hover {
-  background: #e6f2ff;
-  border-color: #80b9ee;
-}
-
-.rt-toolbar button:active {
-  background: #d5eaff;
-}
-
-.rt-toolbar button.is-active {
-  background: #dceeff;
-  border-color: #3995e8;
-  color: #1266ad;
-}
-
-.rt-toolbar-divider {
-  width: 1px;
-  height: 24px;
-  margin: 0 2px;
-  background: #d1deeb;
-}
-
-/* ===== 下拉選單 ===== */
-.rt-select {
-  height: 32px;
-  min-width: 90px;
-  padding: 0 8px;
-  border: 1px solid #cbdced;
-  border-radius: 6px;
-  background: #fff;
-  color: #23476b;
-  font-size: 13px;
-  cursor: pointer;
-  outline: none;
-}
-
-.rt-select:hover {
-  border-color: #80b9ee;
-}
-
-.rt-select:focus {
-  border-color: #3995e8;
-  box-shadow: 0 0 0 2px rgba(57, 149, 232, .14);
-}
-
-/* ===== 編輯內容區 ===== */
-.rt-content {
-  min-height: 260px;
-  padding: 18px;
-  overflow-wrap: anywhere;
-  outline: none;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333333;
-  background: #fff;
-}
-
-.rt-content:empty::before {
-  content: attr(data-placeholder);
-  color: #9aabba;
-  pointer-events: none;
-}
-
-.rt-content:focus {
-  box-shadow: inset 0 0 0 1px #a8d3f7;
-}
-
-.rt-content p {
-  margin: 0 0 12px;
-}
-
-.rt-content ul,
-.rt-content ol {
-  padding-left: 28px;
-  margin: 10px 0;
-}
-
-.rt-content a {
-  color: #1683d8;
-  text-decoration: underline;
-}
-
-.rt-content blockquote {
-  margin: 12px 0;
-  padding: 8px 14px;
-  border-left: 3px solid #80b9ee;
-  background: #f4f9ff;
-  color: #52677d;
-}
-
-/* ===== 原始碼區 ===== */
-.rt-source {
-  display: block;
-  width: 100%;
-  min-height: 260px;
-  padding: 18px;
-  border: 0;
-  outline: none;
-  resize: vertical;
-  box-sizing: border-box;
-  background: #fbfdff;
-  color: #23476b;
-  font: 14px/1.6 Consolas, Monaco, monospace;
-  overflow-wrap: anywhere;
-}
-
-.rt-source[hidden] {
-  display: none;
-}
-
-/* ===== 底部狀態列 ===== */
-.rt-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 9px 14px;
-  border-top: 1px solid #e1ebf4;
-  background: #f8fbfe;
-  color: #7b8da0;
-  font-size: 12px;
-}
-
-/* ===== 手機版 ===== */
-@media (max-width: 600px) {
-  .rt-toolbar {
-    gap: 6px;
-    padding: 9px;
-  }
-
-  .rt-select {
-    flex: 1 1 90px;
-  }
-
-  .rt-toolbar button {
-    min-width: 32px;
-    padding: 0 7px;
-  }
-
-  .rt-content,
-  .rt-source {
-    min-height: 220px;
-    padding: 14px;
   }
 }
