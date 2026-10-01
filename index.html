@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>MyCard遊蹤管理系統</title>
 <link rel="stylesheet" href="css/L.css">
-
+<link rel="stylesheet" href="css/LM.css" media="only screen and (min-width:1280px) and (max-width:1680px)">
 	
 <!-- jquery引入檔 -->
 <script src="js/jquery-3.6.0.min.js"></script>
@@ -137,26 +137,28 @@
       
 		<ul>
 		  <div id="state_tab1" class="active">全部<dl>10</dl></div>
-		  <div id="state_tab2" class="none">待處理<dl>3</dl></div>
-		  <div id="state_tab3" class="none">草稿<dl>2</dl></div>
-		  <div id="state_tab4" class="none">退回修改<dl>1</dl></div>
-		  <div id="state_tab5" class="none">審核中<dl>2</dl></div>
-		  <div id="state_tab6" class="none">待發佈<dl>2</dl></div>
-		  <div id="state_tab7" class="none">已發佈<dl>3</dl></div>
+		  <div id="state_tab2" class="none">草稿<dl>3</dl></div>
+		  <div id="state_tab3" class="none">待審核<dl>2</dl></div>
+		  <div id="state_tab4" class="none">撤回<dl>1</dl></div>
+		  <div id="state_tab5" class="none">待發佈<dl>2</dl></div>
+		  <div id="state_tab6" class="none">已發佈<dl>2</dl></div>
+		  <div id="state_tab7" class="none">未發佈<dl>3</dl></div>
+		  <div id="state_tab8" class="none">不啟用 <dl>4</dl></div>
 		</ul>	
       </div>
 
       
       <div class="search-row">
-            <div class="search-box">🔍 <input type="text" placeholder="搜尋遊戲名稱或 GameID"></div>
+            <div class="search-box"><img src="images/search_icon.svg">
+            <input type="text" placeholder="搜尋遊戲名稱或 GameID"></div>
             <button class="btn-search">搜尋</button>
           </div> 
       <table id="table" class="t1"><!--全部-->
         <thead>
           <tr>
-            <th>遊戲名稱/代號</th>
+            <th>遊戲名稱</th>
             <th></th>
-			<th>服務名稱</th>
+			<th>服務名稱/代號</th>
             <th>遊戲代號</th>
 			<th>狀態</th>
             <th>首次上架時間</th>
@@ -166,8 +168,8 @@
         <tbody>
           <tr>
 			<td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-			<td><a target="_self" href="#">星際爭霸戰：重生</a><br><span class="sub">starwar</span></td>
-            <td>星際爭霸戰</td>
+			<td><a target="_self" href="#">星際爭霸戰：重生</a></td>
+            <td>星際爭霸戰<br><span class="sub">starwar</span></td>
 			<td>GM10245</td>
 			<td><span class="badge">草稿</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
@@ -175,94 +177,94 @@
           </tr>
           <tr>
 			<td class="game-name"><img src="images/game_icon/icon02.webp"></td>
-            <td><a target="_self" href="#">劍與魔法傳說</a><br><span class="sub">fight</span></td>
-            <td>小兵來對決</td>
+            <td><a target="_self" href="#">劍與魔法傳說</a></td>
+            <td>小兵來對決<br><span class="sub">fight</span></td>
 			<td>GM10231</td>
-            <td><span class="badge1">審核中</span></td>
+            <td><span class="badge1">待審核</span></td>
 			<td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/10<br><span class="sub2">14:32:05</span></td>
           </tr>
           <tr>
 			  <td class="game-name"><img src="images/game_icon/icon03.webp"></td>
-            <td><a target="_self" href="#">勇者物語 Online</a><br><span class="sub">hero</span></td>
-            <td>勇者物語</td>
+            <td><a target="_self" href="#">勇者物語 Online</a></td>
+            <td>勇者物語<br><span class="sub">hero</span></td>
 			<td>GM10198</td>
-			<td><span class="badge2">待發佈</span></td>
+			<td><span class="badge5">撤回</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/09<br><span class="sub2">21:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon04.webp"></td>
-            <td><a target="_self" href="#">GAME01</a><br><span class="sub">test01</span></td>
-            <td>遊戲10001</td>
+            <td><a target="_self" href="#">GAME01</a></td>
+            <td>遊戲10001<br><span class="sub">test01</span></td>
 			<td>GM10001</td> 
-			<td><span class="badge3">已發佈</span></td>
+			<td><span class="badge2">待發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
-            <td>GAME02<br><span class="sub">test02</span></td>
-			<td>遊戲10002</td>
+            <td>GAME02</td>
+			<td>遊戲10002<br><span class="sub">test02</span></td>
             <td>GM10002</td>
-			<td><span class="badge4">待處理</span></td>
+			<td><span class="badge3">已發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon06.webp"></td>
-            <td>GAME03<br><span class="sub">test03</span></td>
-			<td>遊戲10003</td>
+            <td>GAME03</td>
+			<td>遊戲10003<br><span class="sub">test03</span></td>
             <td>GM10003</td>
-			<td><span class="badge5">退回修改</span></td>
+			<td><span class="badge6">未發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
-            <td>GAME04<br><span class="sub">test04</span></td>
-			<td>遊戲10004</td>
+            <td>GAME04</td>
+			<td>遊戲10004<br><span class="sub">test04</span></td>
             <td>GM10004</td>
-			<td><span class="badge2">待發佈</span></td>
+			<td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
-            <td>GAME05<br><span class="sub">test05</span></td>
-			<td>遊戲10005</td>
+            <td>GAME05</td>
+			<td>遊戲10005<br><span class="sub">test05</span></td>
             <td>GM10005</td>
-			<td><span class="badge2">待發佈</span></td>
+			<td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
-            <td>GAME06<br><span class="sub">test06</span></td>
-			<td>遊戲10006</td>
+            <td>GAME06</td>
+			<td>遊戲10006<br><span class="sub">test06</span></td>
             <td>GM10006</td>
-			<td><span class="badge2">待發佈</span></td>
+			<td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
 			<td class="game-name"><img src="images/game_icon/icon10.webp"></td>
-            <td>GAME07<br><span class="sub">test07</span></td>
-			<td>遊戲10007</td>
+            <td>GAME07</td>
+			<td>遊戲10007<br><span class="sub">test07</span></td>
             <td>GM10007</td>
-			<td><span class="badge2">待發佈</span></td>
+			<td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
         </tbody>
       </table>
 		
-	  <table id="table" class="t2"><!--待處理-->
+	  <table id="table" class="t2"><!--草稿-->
         <thead>
           <tr>
-            <th>遊戲名稱/代號</th>
+            <th>遊戲名稱</th>
             <th></th>
-			<th>服務名稱</th>
+			<th>服務名稱/代號</th>
             <th>遊戲代號</th>
 			<th>狀態</th>
             <th>首次上架時間</th>
@@ -272,40 +274,40 @@
         <tbody>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge4">待處理</span></td>
+			<td><span class="badge">草稿</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
-            <td>GAME02<br><span class="sub">test02</span></td>
-			<td>遊戲10002</td>
+            <td>GAME02</td>
+			<td>遊戲10002<br><span class="sub">test02</span></td>
             <td>GM10002</td>
-			<td><span class="badge4">待處理</span></td>
+			<td><span class="badge">草稿</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
-            <td>GAME03<br><span class="sub">test03</span></td>
-			<td>遊戲10003</td>
+            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
+            <td>GAME03</td>
+			<td>遊戲10003<br><span class="sub">test03</span></td>
             <td>GM10003</td>
-			<td><span class="badge4">待處理</span></td>
+			<td><span class="badge">草稿</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
         </tbody>
       </table>
 
-	  <table id="table" class="t3"><!--草稿-->
+	  <table id="table" class="t3"><!--待審核-->
         <thead>
           <tr>
-            <th>遊戲名稱/代號</th>
+            <th>遊戲名稱</th>
             <th></th>
-			<th>服務名稱</th>
+			<th>服務名稱/代號</th>
             <th>遊戲代號</th>
 			<th>狀態</th>
             <th>首次上架時間</th>
@@ -315,31 +317,31 @@
         <tbody>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge">草稿</span></td>
+			<td><span class="badge1">待審核</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon10.webp"></td>
-            <td>GAME02<br><span class="sub">test02</span></td>
-			<td>遊戲10002</td>
+            <td>GAME02</td>
+			<td>遊戲10002<br><span class="sub">test02</span></td>
             <td>GM10002</td>
-			<td><span class="badge">草稿</span></td>
+			<td><span class="badge1">待審核</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
         </tbody>
       </table>
 		
-	  <table id="table" class="t4"><!--退回修改-->
+	  <table id="table" class="t4"><!--撤回-->
         <thead>
           <tr>
-            <th>遊戲名稱/代號</th>
+            <th>遊戲名稱</th>
             <th></th>
-			<th>服務名稱</th>
+			<th>服務名稱/代號</th>
             <th>遊戲代號</th>
 			<th>狀態</th>
             <th>首次上架時間</th>
@@ -349,22 +351,22 @@
         <tbody>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge5">退回修改</span></td>
+			<td><span class="badge5">撤回</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
         </tbody>
       </table>
 		
-	  <table id="table" class="t5"><!--審核中-->
+	  <table id="table" class="t5"><!--待發佈-->
         <thead>
           <tr>
-            <th>遊戲名稱/代號</th>
+            <th>遊戲名稱</th>
             <th></th>
-			<th>服務名稱</th>
+			<th>服務名稱/代號</th>
             <th>遊戲代號</th>
 			<th>狀態</th>
             <th>首次上架時間</th>
@@ -374,31 +376,31 @@
         <tbody>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
+            <td>GAME01</td>
 			<td>遊戲10001</td>
-            <td>GM10001</td>
-			<td><span class="badge1">審核中</span></td>
+            <td>GM10001<br><span class="sub">test01</span></td>
+			<td><span class="badge2">待發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon02.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge1">審核中</span></td>
+			<td><span class="badge2">待發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
         </tbody>
       </table>
 		
-	  <table id="table" class="t6"><!--待發佈-->
+	  <table id="table" class="t6"><!--已發佈-->
         <thead>
           <tr>
-            <th>遊戲名稱/代號</th>
+            <th>遊戲名稱</th>
             <th></th>
-			<th>服務名稱</th>
+			<th>服務名稱/代號</th>
             <th>遊戲代號</th>
 			<th>狀態</th>
             <th>首次上架時間</th>
@@ -408,31 +410,31 @@
         <tbody>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon03.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge2">待發佈</span></td>
+			<td><span class="badge3">已發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge2">待發佈</span></td>
+			<td><span class="badge3">已發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
         </tbody>
       </table>
 		
-	  <table id="table" class="t7"><!--已發佈-->
+	  <table id="table" class="t7"><!--未發佈-->
         <thead>
           <tr>
-            <th>遊戲名稱/代號</th>
+            <th>遊戲名稱</th>
             <th></th>
-			<th>服務名稱</th>
+			<th>服務名稱/代號</th>
             <th>遊戲代號</th>
 			<th>狀態</th>
             <th>首次上架時間</th>
@@ -442,28 +444,80 @@
         <tbody>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge3">已發佈</span></td>
+			<td><span class="badge6">未發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge3">已發佈</span></td>
+			<td><span class="badge6">未發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
 		  <tr>
             <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
-            <td>GAME01<br><span class="sub">test01</span></td>
-			<td>遊戲10001</td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
             <td>GM10001</td>
-			<td><span class="badge3">已發佈</span></td>
+			<td><span class="badge6">未發佈</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+        </tbody>
+      </table>
+		
+	  <table id="table" class="t8"><!--不啟用-->
+        <thead>
+          <tr>
+            <th>遊戲名稱</th>
+            <th></th>
+			<th>服務名稱/代號</th>
+            <th>遊戲代號</th>
+			<th>狀態</th>
+            <th>首次上架時間</th>
+            <th>更新時間 ▾</th>
+          </tr>
+        </thead>
+        <tbody>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
+            <td>GAME01</td>
+			<td>遊戲10001<br><span class="sub">test01</span></td>
+            <td>GM10001</td>
+			<td><span class="badge7">不啟用</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon06.webp"></td>
+            <td>GAME01</td>
+			<td>遊戲10002<br><span class="sub">test02</span></td>
+            <td>GM10002</td>
+			<td><span class="badge7">不啟用</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
+            <td>GAME01</td>
+			<td>遊戲10003<br><span class="sub">test03</span></td>
+            <td>GM10003</td>
+			<td><span class="badge7">不啟用</span></td>
+            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
+          </tr>
+		  <tr>
+            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
+            <td>GAME01</td>
+			<td>遊戲10004<br><span class="sub">test04</span></td>
+            <td>GM10004</td>
+			<td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
@@ -479,7 +533,7 @@
         </div>
       </div>
 
-      <div class="footer-note">©Soft-World Corp. All Rights Reserved.</div>
+ 
     </div>
 
     <!-- ============ PAGE: 填寫流程（Wizard） ============ -->
@@ -538,6 +592,19 @@
 
           <!-- Step 1: 遊戲基本識別資料 -->
           <div class="step-content" id="step-content-1">
+			<div id="status"><span class="badge">草稿</span></div>
+			<div id="button_list">
+              <a class="button-list-prev" id="" style="text-decoration:none;display:inline;align-items:left;">‹ 上一步</a>
+                <span class="step-count" id="Text">尚未儲存 · 僅供預覽</span>
+                <div style="display:inline;align-items:center;gap:10px;">
+                <button class="btn-submit" id="btnSubmit" style="display:none;align-items:right;">送出審核</button>
+			    <button class="button-list-next" id="nextBtn" style="display:inline;align-items:right;">下一步 ›</button>
+			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
+				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
+				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
+			    <div id="copyright">©Soft-World Corp. All Rights Reserved.</div>
+              </div>
+			</div>
             <h2 class="block-title">遊戲基本識別資料</h2>
             <p class="block-desc">填寫遊戲所對應的公司、服務及遊戲代號</p>
 
@@ -586,10 +653,23 @@
 
           <!-- Step 2: 遊戲介紹 -->
           <div class="step-content" id="step-content-2" style="display:none;">
+			<div id="status"><span class="badge">草稿</span></div>
+			<div id="button_list">
+              <a class="button-list-prev" id="" style="text-decoration:none;display:inline;align-items:left;">‹ 上一步</a>
+                <span class="step-count" id="Text">尚未儲存 · 僅供預覽</span>
+                <div style="display:inline;align-items:center;gap:10px;">
+                <button class="btn-submit" id="btnSubmit" style="display:none;align-items:right;">送出審核</button>
+			    <button class="button-list-next" id="nextBtn" style="display:inline;align-items:right;">下一步 ›</button>
+			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
+				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
+				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
+			    <div id="copyright">©Soft-World Corp. All Rights Reserved.</div>
+              </div>
+			</div>
             <h2 class="block-title">遊戲介紹</h2>
             <p class="block-desc">提供遊戲名稱、圖片及文字介紹，供 MyCard 用戶於網站查看，支援依語系分別設定<br>
 繁體中文及English必填，其他語系遊戲名稱及文字介紹如未填寫則預設出現英文</p>
-
+			  
             <div class="lang-tab-row">
               <div class="lang-tabs" id="langTabs">
                 <div class="lang-tab active" data-lang="zh">繁體中文(預設)<span class="required-star">*</span></div>
@@ -635,7 +715,8 @@
                 <textarea class="rt-textarea" id="field-desc-input" placeholder="遊戲介紹內容"></textarea>
               </div>
             </div>
-
+            <div id="dashline"></div>
+			  
             <div class="field-group">
               <div class="field-label-row">
                 <span class="field-label">遊戲簡稱</span>
@@ -1113,6 +1194,19 @@
 
           <!-- Step 3: 儲值入口 -->
           <div class="step-content" id="step-content-3" style="display:none;">
+			<div id="status"><span class="badge">草稿</span></div>
+			<div id="button_list">
+              <a class="button-list-prev" id="" style="text-decoration:none;display:inline;align-items:left;">‹ 上一步</a>
+                <span class="step-count" id="Text">尚未儲存 · 僅供預覽</span>
+                <div style="display:inline;align-items:center;gap:10px;">
+                <button class="btn-submit" id="btnSubmit" style="display:none;align-items:right;">送出審核</button>
+			    <button class="button-list-next" id="nextBtn" style="display:inline;align-items:right;">下一步 ›</button>
+			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
+				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
+				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
+			    <div id="copyright">©Soft-World Corp. All Rights Reserved.</div>
+              </div>
+			</div>
             <h2 class="block-title">儲值入口</h2>
             <p class="block-desc">提供玩家使用 MyCard 儲值所需的相關連結</p>
 
@@ -1220,6 +1314,19 @@
 
           <!-- Step 4: 官方與社群連結 -->
           <div class="step-content" id="step-content-4" style="display:none;">
+			<div id="status"><span class="badge">草稿</span></div>
+			<div id="button_list">
+              <a class="button-list-prev" id="" style="text-decoration:none;display:inline;align-items:left;">‹ 上一步</a>
+                <span class="step-count" id="Text">尚未儲存 · 僅供預覽</span>
+                <div style="display:inline;align-items:center;gap:10px;">
+                <button class="btn-submit" id="btnSubmit" style="display:none;align-items:right;">送出審核</button>
+			    <button class="button-list-next" id="nextBtn" style="display:inline;align-items:right;">下一步 ›</button>
+			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
+				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
+				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
+			    <div id="copyright">©Soft-World Corp. All Rights Reserved.</div>
+              </div>
+			</div>
             <h2 class="block-title">官方與社群連結</h2>
             <p class="block-desc">提供用戶更多遊戲相關資訊及官方動態</p>
 
@@ -1250,6 +1357,17 @@
 
           <!-- Step 5: 期望上架時間 -->
           <div class="step-content" id="step-content-5" style="display:none;">
+			<div id="status"><span class="badge">草稿</span></div>
+			<div id="button_list">
+                <a class="button-list-prev" id="" style="text-decoration:none;display:inline;align-items:left;">上一步</a>
+                <span class="step-count" id="Text">尚未儲存 · 僅供預覽</span>
+                <button class="btn-submit button_list-submit" id="btnSubmit" style="display:inline;align-items:right;">送出審核</button>
+			    <button class="button-list-next" id="nextBtn" style="display:none;align-items:right;">下一步 ›</button>
+			    <button class="btn-sub primary-ghost" id="btnPreview" style="display:inline;align-items:right;">撤回審核</button>
+				<button class="btn-sub primary-ghost" id="btnPreview" style="display:inline;align-items:right;">預覽</button>
+				<button class="btn-sub primary-ghost" id="btnPreview" style="display:inline;align-items:right;">複製</button>
+				<div id="copyright">©Soft-World Corp. All Rights Reserved.</div>			
+			</div>
             <h2 class="block-title">期望上架時間</h2>
             <p class="block-desc">填寫您期望的上架時間，供 MyCard 審核及安排上架作業時參考。</p>
 
@@ -1295,11 +1413,11 @@
           <div style="display:flex;align-items:center;gap:10px;">
             <button class="btn-ghost primary-ghost" id="btnPreview" style="display:none;">預覽</button>
             <button class="btn-next" id="nextBtn">下一步 ›</button>
-            <button class="btn-submit" id="btnSubmit" style="display:none;">送出審核</button>
+            <button class="btn-submit" id="btnSubmit" style="display:none;">送出審核</button>	
           </div>
         </div>
 
-        <div class="footer-note">©Soft-World Corp. All Rights Reserved.</div>
+
       </div>
     </div>
 

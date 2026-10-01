@@ -120,7 +120,7 @@
   /* Main */
 #page-home {width:90%; margin:0 5%;padding:0;}
   .main{flex:1;padding:24px 32px;}
-.page-inner{max-width:60%;margin:0 auto;padding:0 0 90px 0;}
+.page-inner{max-width:100%;margin:0 auto;padding:0 20% 90px 10%;}
 
   /* Page header */
   .page-header-row{
@@ -477,7 +477,7 @@
 
 
 .search-box{
-	width:93.5%;
+	width:91%;
     display:inline-block;
     align-items:center;
     gap:8px;
@@ -901,7 +901,7 @@ tbody tr:last-child td{border-bottom:none;}
 	  top:0;
 	  right:0;
 	  width:210px;
-	  margin:245px 6.5% 0 0;
+	  margin:245px 2.5% 0 0;
 	  padding:12px 17px;
 	  border-radius:12px;
 	  background-color:#ffffff;
@@ -1283,7 +1283,7 @@ tbody tr:last-child td{border-bottom:none;}
     transition:transform .12s ease;
     margin-top:-2px;
   }
-  .checkbox-option input[type="checkbox"]:checked + .checkbox-box{border-color:#5b9ad1;background:#5b9ad1;}
+  .checkbox-option input[type="checkbox"]:checked + .checkbox-box{border-color:##5b9ad1;background:##5b9ad1;}
   .checkbox-option input[type="checkbox"]:checked + .checkbox-box::after{transform:rotate(45deg) scale(1);}
 
   select.field-input{background:#fff;}
@@ -1476,8 +1476,8 @@ tbody tr:last-child td{border-bottom:none;}
 	z-index:9;
 	bottom:0;
 	right:0;
-	width:49.6%;
-	margin:0 18.2% 0 0;
+	width:53.5%;
+	margin:0 18% 0 28.5%;
 	padding:4px 1% 4px 1%;
 	background:#ffffff;
 	border-radius: 10px 10px 0px 0px;
@@ -1497,7 +1497,7 @@ tbody tr:last-child td{border-bottom:none;}
     color:#6b6b6f;
     border:none;
     border-radius:6px;
-    margin:24px 0 -58px 0;
+    margin:16px 0 -58px 0;
     padding:8px 16px 8px 16px;
     font-size:13px;
     font-weight:600;
@@ -1513,7 +1513,7 @@ tbody tr:last-child td{border-bottom:none;}
   }
 #button_list.button-list-prev.primary-ghost:hover{background:#a4d5fa;color:#333333;}
 #button_list .step-count{
-	position:relative;z-index:4;top:32px;width:40%;margin:-4px 42% 0 18%!important;padding:4px 12px;border-radius:40px;
+	position:relative;z-index:4;top:32px;width:40%;margin:-12px 46% 0 14%!important;padding:4px 12px;border-radius:40px;
 	font-size:13px;color:#8a8a8e;text-align:center;align-items: center;display:inline-block;;float:left;;
 	background-color:#efefef;
 }
@@ -1956,6 +1956,7 @@ rgba(255, 255, 255, 0.7)
     grid-template-columns: 1fr;
   }
 }
+
 
 #dashline {
     width:100%;

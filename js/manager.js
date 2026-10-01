@@ -51,6 +51,7 @@ $(document).ready(function() {
 	$(".t5").hide()
 	$(".t6").hide()
 	$(".t7").hide()
+	$(".t8").hide()
 	
 	$("#state_tab1").click(function(){
       $("#state_tab1").addClass('active')
@@ -67,6 +68,8 @@ $(document).ready(function() {
 	  $("#state_tab6").removeClass('active')
 	  $("#state_tab7").addClass('none')
 	  $("#state_tab7").removeClass('active')
+      $("#state_tab8").addClass('none')
+	  $("#state_tab8").removeClass('active')
 	  $(".t1").slideDown()	
 	  $(".t2").slideUp()
 	  $(".t3").slideUp()
@@ -74,6 +77,7 @@ $(document).ready(function() {
 	  $(".t5").slideUp()
 	  $(".t6").slideUp()
 	  $(".t7").slideUp()
+	  $(".t8").slideUp()
 	});	
 	
 	$("#state_tab2").click(function(){
@@ -91,6 +95,8 @@ $(document).ready(function() {
 	  $("#state_tab6").removeClass('active')
 	  $("#state_tab7").addClass('none')
 	  $("#state_tab7").removeClass('active')
+      $("#state_tab8").addClass('none')
+	  $("#state_tab8").removeClass('active')
       $(".t1").slideUp()	
 	  $(".t2").slideDown()
       $(".t3").slideUp()
@@ -98,6 +104,7 @@ $(document).ready(function() {
 	  $(".t5").slideUp()
 	  $(".t6").slideUp()
 	  $(".t7").slideUp()
+	  $(".t8").slideUp()
 	});	
 	
 	
@@ -116,6 +123,8 @@ $(document).ready(function() {
 	  $("#state_tab6").removeClass('active')
 	  $("#state_tab7").addClass('none')
 	  $("#state_tab7").removeClass('active')
+      $("#state_tab8").addClass('none')
+	  $("#state_tab8").removeClass('active')
       $(".t1").slideUp()	
 	  $(".t2").slideUp()	
       $(".t3").slideDown()
@@ -123,6 +132,7 @@ $(document).ready(function() {
 	  $(".t5").slideUp()
 	  $(".t6").slideUp()
 	  $(".t7").slideUp()
+	  $(".t8").slideUp()
 	});	
 	
 	$("#state_tab4").click(function(){
@@ -140,6 +150,8 @@ $(document).ready(function() {
 	  $("#state_tab6").removeClass('active')
 	  $("#state_tab7").addClass('none')
 	  $("#state_tab7").removeClass('active')
+	  $("#state_tab8").addClass('none')
+	  $("#state_tab8").removeClass('active')
       $(".t1").slideUp()	
 	  $(".t2").slideUp()	
       $(".t3").slideUp()
@@ -147,6 +159,7 @@ $(document).ready(function() {
 	  $(".t5").slideUp()
 	  $(".t6").slideUp()
 	  $(".t7").slideUp()
+	  $(".t8").slideUp()
 	});
 	
 	$("#state_tab5").click(function(){
@@ -164,6 +177,8 @@ $(document).ready(function() {
 	  $("#state_tab6").removeClass('active')
 	  $("#state_tab7").addClass('none')
 	  $("#state_tab7").removeClass('active')
+      $("#state_tab8").addClass('none')
+	  $("#state_tab8").removeClass('active')
       $(".t1").slideUp()	
 	  $(".t2").slideUp()	
       $(".t3").slideUp()
@@ -171,6 +186,7 @@ $(document).ready(function() {
 	  $(".t5").slideDown()
 	  $(".t6").slideUp()
 	  $(".t7").slideUp()
+	  $(".t8").slideUp()
 	});
 	
 	$("#state_tab6").click(function(){
@@ -188,6 +204,8 @@ $(document).ready(function() {
 	  $("#state_tab6").removeClass('none')
 	  $("#state_tab7").addClass('none')
 	  $("#state_tab7").removeClass('active')
+      $("#state_tab8").addClass('none')
+	  $("#state_tab8").removeClass('active')
       $(".t1").slideUp()	
 	  $(".t2").slideUp()	
       $(".t3").slideUp()
@@ -195,6 +213,7 @@ $(document).ready(function() {
 	  $(".t5").slideUp()
 	  $(".t6").slideDown()
 	  $(".t7").slideUp()
+	  $(".t8").slideUp()
 	});
 	
 	$("#state_tab7").click(function(){
@@ -212,6 +231,8 @@ $(document).ready(function() {
 	  $("#state_tab6").removeClass('active')
 	  $("#state_tab7").addClass('active')
 	  $("#state_tab7").removeClass('none')
+      $("#state_tab8").addClass('none')
+	  $("#state_tab8").removeClass('active')
       $(".t1").slideUp()	
 	  $(".t2").slideUp()	
       $(".t3").slideUp()
@@ -219,6 +240,34 @@ $(document).ready(function() {
 	  $(".t5").slideUp()	
 	  $(".t6").slideUp()
 	  $(".t7").slideDown()
+	  $(".t8").slideUp()
+	});
+	
+	$("#state_tab8").click(function(){
+      $("#state_tab1").addClass('none')
+      $("#state_tab1").removeClass('active')
+	  $("#state_tab2").addClass('none')
+	  $("#state_tab2").removeClass('active')
+	  $("#state_tab3").addClass('none')
+	  $("#state_tab3").removeClass('active')
+	  $("#state_tab4").addClass('none')
+	  $("#state_tab4").removeClass('active')
+	  $("#state_tab5").addClass('none')
+	  $("#state_tab5").removeClass('active')
+	  $("#state_tab6").addClass('none')
+	  $("#state_tab6").removeClass('active')
+	  $("#state_tab7").addClass('none')
+	  $("#state_tab7").removeClass('active')
+	  $("#state_tab8").addClass('active')
+      $("#state_tab8").removeClass('none')
+      $(".t1").slideUp()	
+	  $(".t2").slideUp()	
+      $(".t3").slideUp()
+	  $(".t4").slideUp()
+	  $(".t5").slideUp()	
+	  $(".t6").slideUp()
+      $(".t7").slideUp()
+	  $(".t8").slideDown()
 	});
 	
 	
