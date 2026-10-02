@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_1" data-name="圖層_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 56.27 56.27">
+  <!-- Generator: Adobe Illustrator 30.6.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 109)  -->
+  <defs>
+    <style>
+      .st0 {
+        opacity: .9;
+      }
+
+      .st1 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st2 {
+        mask: url(#mask-1);
+      }
+
+      .st3 {
+        fill: #fff;
+      }
+
+      .st4 {
+        mask: url(#mask);
+      }
+
+      .st5 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st6 {
+        mask: url(#mask-2);
+      }
+
+      .st7 {
+        filter: url(#luminosity-noclip1);
+      }
+
+      .st8 {
+        filter: url(#luminosity-noclip2);
+      }
+
+      .st9 {
+        fill: #919191;
+      }
+
+      .st10 {
+        fill: url(#linear-gradient);
+      }
+
+      .st11 {
+        opacity: .7;
+      }
+
+      .st12 {
+        filter: url(#luminosity-noclip);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="40.46" y1="47.05" x2="47" y2="40.51" gradientUnits="userSpaceOnUse">
+      <stop offset=".38" stop-color="#4c4948"/>
+      <stop offset=".7" stop-color="#787878"/>
+      <stop offset=".92" stop-color="#3e3a39"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="2.38" y1="21.68" x2="40.97" y2="21.68" gradientTransform="translate(40.84 -2.25) rotate(83.68)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#def1fb"/>
+      <stop offset="1" stop-color="#b2dff7"/>
+    </linearGradient>
+    <filter id="luminosity-noclip" x="14.49" y="5.05" width="24" height="21" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-color="#fff" result="bg"/>
+      <feBlend in="SourceGraphic" in2="bg"/>
+    </filter>
+    <mask id="mask" x="14.49" y="5.05" width="24" height="21" maskUnits="userSpaceOnUse">
+      <g class="st12">
+        <image width="24" height="21" transform="translate(14.49 5.05)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAVCAYAAABc6S4mAAAACXBIWXMAAAsSAAALEgHS3X78AAABNUlEQVQ4jbWVQYqDQBBFv0NyAI/g1o0HyHGELLyGeAcRDS6bzjHchHZjq9lGvIE7SQjULGY6zIyaiR398KGpsvtRVWobAAgr6mPNwwFgoxZBEGC328E0TWy3WxiGASICEaHrOpzPZ+z3ey0IASDOOV2vV3qmqqrocDiQ2vOivxa+71NRFE8BSlJKiuN4HkA5iiISQtDlcvkXxDmfD/jpJEmoqqqnEMaYPkA5TVMqy1K3ktcHxjnXqWTWG0GMsUlImqbvAwDQ8XgcBZRluQwAAEkpRyFRFP16TvtXkef5aNxxnEFMqwJMDL1pmmVapFzX9QAShuH7LVI6nU6DmG3by7RI+e/XnmXZchUAgBAC9/sdAHC73VDX9SO3mdo0R67rou97WJaFtm3hed4jZ+B70mtp9SvzE+0pXxTT+fUzAAAAAElFTkSuQmCC"/>
+      </g>
+    </mask>
+    <filter id="luminosity-noclip1" x="5.49" y="20.05" width="20" height="19" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-color="#fff" result="bg"/>
+      <feBlend in="SourceGraphic" in2="bg"/>
+    </filter>
+    <mask id="mask-1" x="5.49" y="20.05" width="20" height="19" maskUnits="userSpaceOnUse">
+      <g class="st7">
+        <image width="20" height="19" transform="translate(5.49 20.05)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAAAsSAAALEgHS3X78AAAA/klEQVQ4ja2UMYqGMBCFn+t2Nh4jlYWNB7L3BtZewqiNEOIp7Gyj3kAvIYjvr3T5V39ZXR8MJMPwzZsQxgJAPKivJ2EA8L0ekiSBEALDMCCKon9BCYB1XZMk53lmnudc81djG9l1XQCAbdvwff+2uw1oWdaW9DwPWuvbUAJg0zT8rTRN749sjNl1CoLgvkMA7Lpu51IpddXlzyXLsh2QJLXW94AAqJQ6hPZ9/9c33Se11ofQZVlYVdV14JlTkjTGnLn93K0oCrZt+9FtWZbXgGtIKQ9/wDiOjOP4rXZbDmcKwxAAIKWEEAKO44AkhmHANE1vtdZq8yk9vg8fB74Axlx7UoeHDzUAAAAASUVORK5CYII="/>
+      </g>
+    </mask>
+    <filter id="luminosity-noclip2" x="3.49" y="-1.95" width="42" height="42" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-color="#fff" result="bg"/>
+      <feBlend in="SourceGraphic" in2="bg"/>
+    </filter>
+    <mask id="mask-2" x="3.49" y="-1.95" width="42" height="42" maskUnits="userSpaceOnUse">
+      <g class="st8">
+        <image width="42" height="42" transform="translate(3.49 -1.95)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAACXBIWXMAAAsSAAALEgHS3X78AAABKUlEQVRYhe2YXQ6DIBCEh97/kavt4m3oQ2Nj1cWl3TqYOAmJP0S/zI4IJAAVF9CDDeCVG1REUGvtaiISCltbTVVrhFS1+R5H278hIiGAgcD/cfAPsOdCLiUi/aC9kKWUkMh0uPs6CHxgd4WczradsJyLBnYYYT8wArIHuOurn52NhvRk+MDVeJhfnG3Ang965OxQoIA90hijAA+0FYF13zTTsvRi2iql9HFOn4+qqus63VHA5yrdUa+GAC2lHPYZovTAfvnv0kcr5/w+vksfrSFArUF/qSFKfw/4DNFBrf2p9d+KntFLTPOsr32apt3rw8/uwVqKfLMKpWTUyiWwzeYsSkat+aeVzVmUjK7X9Y6dGQ4oFll1bh/xQAHUnLOrH33A94r+C/XqCU0mA+vNh2yTAAAAAElFTkSuQmCC"/>
+      </g>
+    </mask>
+    <linearGradient id="linear-gradient2" x1="5.67" y1="36.17" x2="37.93" y2="6.97" gradientUnits="userSpaceOnUse">
+      <stop offset=".01" stop-color="#9c9c9d"/>
+      <stop offset="1" stop-color="#858585"/>
+    </linearGradient>
+  </defs>
+  <path class="st10" d="M52.19,56.27c-1.05,0-2.09-.4-2.89-1.2l-16.87-16.87c-1.6-1.6-1.6-4.18,0-5.78,1.6-1.6,4.18-1.6,5.78,0l16.87,16.87c1.59,1.6,1.59,4.18,0,5.78-.8.8-1.84,1.2-2.89,1.2Z"/>
+  <g>
+    <circle class="st5" cx="21.68" cy="21.68" r="19.3" transform="translate(-2.25 40.84) rotate(-83.68)"/>
+    <g class="st0">
+      <g class="st4">
+        <path class="st3" d="M19.22,7.13c10.27,0,16.4,7.88,16.96,13.28.53,5.18-2.43,3.7-3.3,1.78-3.27-7.2-7.55-10.66-13.59-12.07-3.01-.71-2.98-2.99-.08-2.99Z"/>
+      </g>
+    </g>
+    <g class="st0">
+      <g class="st2">
+        <path class="st3" d="M20.65,36.43c-6.2-1.18-10.79-4.06-12.3-10.42-1.14-4.77,2.33-3.51,3.06-1.68,1.49,3.74,4.67,7.37,9.18,9.29,2.64,1.13,2.72,3.31.07,2.81Z"/>
+      </g>
+    </g>
+  </g>
+  <g class="st11">
+    <g class="st6">
+      <path class="st9" d="M36.33,7.03C32.23,2.94,26.79.68,21,.68S9.76,2.94,5.67,7.03l3.37,3.37c3.06-3.06,7.29-4.96,11.95-4.96,9.33,0,16.91,7.59,16.91,16.91,0,4.66-1.9,8.89-4.96,11.95l3.37,3.38c4.09-4.09,6.35-9.54,6.35-15.33s-2.25-11.23-6.35-15.33Z"/>
+    </g>
+  </g>
+  <path class="st1" d="M21.68,43.36c-5.79,0-11.23-2.25-15.33-6.35S0,27.47,0,21.68,2.25,10.44,6.35,6.35C10.44,2.25,15.89,0,21.68,0s11.23,2.25,15.33,6.35c4.09,4.09,6.35,9.54,6.35,15.33s-2.25,11.23-6.35,15.33c-4.09,4.09-9.54,6.35-15.33,6.35ZM21.68,4.76c-9.33,0-16.91,7.59-16.91,16.91s7.59,16.91,16.91,16.91,16.91-7.59,16.91-16.91S31,4.76,21.68,4.76Z"/>
+</svg>

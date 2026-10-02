@@ -11,7 +11,7 @@
 <script src="js/sidebar.js"></script>
 <script src="js/manager.js"></script>
 <script src="js/step.js"></script>
-
+<script src="js/tag.js"></script>
 </head>
 <body>
 
@@ -46,498 +46,8 @@
 
   <div class="main">
 
-    <!-- ============ PAGE: 功能首頁 ============ -->
-    <div id="page-home">
-      <div class="page-header-row">
-        <div class="page-header-text">
-          <div class="initial"><ol></ol></div><h1>維護您的遊戲資料</h1>
-          <p>自主填寫遊戲資料完成，審核過後即可讓您的遊戲資訊在官網曝光</p>
-        </div>
-		<!--<button class="btn-outbound" id="btnOutboard">↓ 匯出清單</button>-->
-        <button class="btn-add-game" id="btnAddGame">＋ 新增遊戲</button>		
-      </div>
-		
-	  <!--<div class="dynamic_row">
-		<div class="deal">
-		  <ul>
-			<h5>需要你的處理</h5>
-			<h6>優先完成以下事項，讓上架流程繼續往前</h6>
-			<ol>查看全部 →</ol>
-		  </ul>
-		  <li>
-		    <dl><img src="images/game_icon/icon01.webp"></dl>
-			<dt>締造者：放逐之境</dt>
-			<dd>審核退回 · 英文遊戲介紹待補齊</dd>
-			<ol>檢視內容 →</ol>
-		  </li>
-		  <li>
-		    <dl><img src="images/game_icon/icon02.webp"></dl>
-			<dt>天堂2</dt>
-			<dd>草稿 · 尚未設定預計上架日期</dd>
-			<ol>檢視內容 →</ol>
-		  </li>
-		  <li>
-		    <dl><img src="images/game_icon/icon03.webp"></dl>
-			<dt>聖鬥士星矢</dt>
-			<dd>草稿 · 遊戲圖示尚未上傳</dd>
-			<ol>檢視內容 →</ol>
-		  </li>
-		</div>
-	    <div class="history">
-		  <ul>
-			<h5>最近動態</h5>
-			<h6>掌握資料與審核進度的變更</h6>
-			<ol>查看記錄 →</ol>
-		  </ul>
-		  <li>
-			<dt>締造者：放逐之境</dt>
-			<dd>MyCard 已提出修改建議</dd>
-			<ol>09/21 14:10</ol>
-		  </li>
-		  <li>
-			<dt>伊莫</dt>
-			<dd>合作夥伴更新了遊戲介紹</dd>
-			<ol>09/20 18:04</ol>
-		  </li>
-		  <li>
-			<dt>瑪奇 Mobile</dt>
-			<dd>遊戲資料已發佈</dd>
-			<ol>09/18 08:30</ol>
-		  </li>
-		</div>
-	  </div>
-
-        <div class="total_row">
-		  <div id="total1" class="total-box gray-border">
-			  <dl>遊戲總數</dl>
-			  <dt class="total_gray">10</dt>
-			  <dd>集中管理所有合作遊戲</dd>
-		  </div>
-		  <div id="total2" class="total-box gray-border">
-			  <dl>待處理事項</dl>
-			  <dt class="pending_brown">3</dt>
-			  <dd>草稿與退回修改</dd>
-		  </div>
-		  <div id="total3" class="total-box gray-border">
-			  <dl>審核進行中</dl>
-			  <dt class="review_purple">2</dt>
-			  <dd>等待 MyCard 確認</dd>
-		  </div>
-		  <div id="total4" class="total-box gray-border">
-			  <dl>已發佈遊戲</dl>
-			  <dt class="release_green">10</dt>
-			  <dd>已公開於遊戲列表</dd>
-		  </div>
-		</div>-->
-
-
-      <div class="list-header">
-        <h2>我的遊戲清單</h2>
-        <p>在這裡查看您所建立過的遊戲資料</p>
-      
-		<ul>
-		  <div id="state_tab1" class="active">全部<dl>10</dl></div>
-		  <div id="state_tab2" class="none">草稿<dl>3</dl></div>
-		  <div id="state_tab3" class="none">待審核<dl>2</dl></div>
-		  <div id="state_tab4" class="none">撤回<dl>1</dl></div>
-		  <div id="state_tab5" class="none">待發佈<dl>2</dl></div>
-		  <div id="state_tab6" class="none">已發佈<dl>2</dl></div>
-		  <div id="state_tab7" class="none">未發佈<dl>3</dl></div>
-		  <div id="state_tab8" class="none">不啟用 <dl>4</dl></div>
-		</ul>	
-      </div>
-
-      
-      <div class="search-row">
-            <div class="search-box"><img src="images/search_icon.svg">
-            <input type="text" placeholder="搜尋遊戲名稱或 GameID"></div>
-            <button class="btn-search">搜尋</button>
-          </div> 
-      <table id="table" class="t1"><!--全部-->
-        <thead>
-          <tr>
-            <th>遊戲名稱</th>
-            <th></th>
-			<th>服務名稱/代號</th>
-            <th>遊戲代號</th>
-			<th>狀態</th>
-            <th>首次上架時間</th>
-            <th>更新時間 ▾</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-			<td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-			<td><a target="_self" href="#">星際爭霸戰：重生</a></td>
-            <td>星際爭霸戰<br><span class="sub">starwar</span></td>
-			<td>GM10245</td>
-			<td><span class="badge">草稿</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">09:18:47</span></td>
-          </tr>
-          <tr>
-			<td class="game-name"><img src="images/game_icon/icon02.webp"></td>
-            <td><a target="_self" href="#">劍與魔法傳說</a></td>
-            <td>小兵來對決<br><span class="sub">fight</span></td>
-			<td>GM10231</td>
-            <td><span class="badge1">待審核</span></td>
-			<td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/10<br><span class="sub2">14:32:05</span></td>
-          </tr>
-          <tr>
-			  <td class="game-name"><img src="images/game_icon/icon03.webp"></td>
-            <td><a target="_self" href="#">勇者物語 Online</a></td>
-            <td>勇者物語<br><span class="sub">hero</span></td>
-			<td>GM10198</td>
-			<td><span class="badge5">撤回</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/09<br><span class="sub2">21:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon04.webp"></td>
-            <td><a target="_self" href="#">GAME01</a></td>
-            <td>遊戲10001<br><span class="sub">test01</span></td>
-			<td>GM10001</td> 
-			<td><span class="badge2">待發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
-            <td>GAME02</td>
-			<td>遊戲10002<br><span class="sub">test02</span></td>
-            <td>GM10002</td>
-			<td><span class="badge3">已發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon06.webp"></td>
-            <td>GAME03</td>
-			<td>遊戲10003<br><span class="sub">test03</span></td>
-            <td>GM10003</td>
-			<td><span class="badge6">未發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
-            <td>GAME04</td>
-			<td>遊戲10004<br><span class="sub">test04</span></td>
-            <td>GM10004</td>
-			<td><span class="badge7">不啟用</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
-            <td>GAME05</td>
-			<td>遊戲10005<br><span class="sub">test05</span></td>
-            <td>GM10005</td>
-			<td><span class="badge7">不啟用</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
-            <td>GAME06</td>
-			<td>遊戲10006<br><span class="sub">test06</span></td>
-            <td>GM10006</td>
-			<td><span class="badge7">不啟用</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-			<td class="game-name"><img src="images/game_icon/icon10.webp"></td>
-            <td>GAME07</td>
-			<td>遊戲10007<br><span class="sub">test07</span></td>
-            <td>GM10007</td>
-			<td><span class="badge7">不啟用</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-        </tbody>
-      </table>
-		
-	  <table id="table" class="t2"><!--草稿-->
-        <thead>
-          <tr>
-            <th>遊戲名稱</th>
-            <th></th>
-			<th>服務名稱/代號</th>
-            <th>遊戲代號</th>
-			<th>狀態</th>
-            <th>首次上架時間</th>
-            <th>更新時間 ▾</th>
-          </tr>
-        </thead>
-        <tbody>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge">草稿</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
-            <td>GAME02</td>
-			<td>遊戲10002<br><span class="sub">test02</span></td>
-            <td>GM10002</td>
-			<td><span class="badge">草稿</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
-            <td>GAME03</td>
-			<td>遊戲10003<br><span class="sub">test03</span></td>
-            <td>GM10003</td>
-			<td><span class="badge">草稿</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-        </tbody>
-      </table>
-
-	  <table id="table" class="t3"><!--待審核-->
-        <thead>
-          <tr>
-            <th>遊戲名稱</th>
-            <th></th>
-			<th>服務名稱/代號</th>
-            <th>遊戲代號</th>
-			<th>狀態</th>
-            <th>首次上架時間</th>
-            <th>更新時間 ▾</th>
-          </tr>
-        </thead>
-        <tbody>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge1">待審核</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon10.webp"></td>
-            <td>GAME02</td>
-			<td>遊戲10002<br><span class="sub">test02</span></td>
-            <td>GM10002</td>
-			<td><span class="badge1">待審核</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-        </tbody>
-      </table>
-		
-	  <table id="table" class="t4"><!--撤回-->
-        <thead>
-          <tr>
-            <th>遊戲名稱</th>
-            <th></th>
-			<th>服務名稱/代號</th>
-            <th>遊戲代號</th>
-			<th>狀態</th>
-            <th>首次上架時間</th>
-            <th>更新時間 ▾</th>
-          </tr>
-        </thead>
-        <tbody>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge5">撤回</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-        </tbody>
-      </table>
-		
-	  <table id="table" class="t5"><!--待發佈-->
-        <thead>
-          <tr>
-            <th>遊戲名稱</th>
-            <th></th>
-			<th>服務名稱/代號</th>
-            <th>遊戲代號</th>
-			<th>狀態</th>
-            <th>首次上架時間</th>
-            <th>更新時間 ▾</th>
-          </tr>
-        </thead>
-        <tbody>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001</td>
-            <td>GM10001<br><span class="sub">test01</span></td>
-			<td><span class="badge2">待發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon02.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge2">待發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-        </tbody>
-      </table>
-		
-	  <table id="table" class="t6"><!--已發佈-->
-        <thead>
-          <tr>
-            <th>遊戲名稱</th>
-            <th></th>
-			<th>服務名稱/代號</th>
-            <th>遊戲代號</th>
-			<th>狀態</th>
-            <th>首次上架時間</th>
-            <th>更新時間 ▾</th>
-          </tr>
-        </thead>
-        <tbody>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon03.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge3">已發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge3">已發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-        </tbody>
-      </table>
-		
-	  <table id="table" class="t7"><!--未發佈-->
-        <thead>
-          <tr>
-            <th>遊戲名稱</th>
-            <th></th>
-			<th>服務名稱/代號</th>
-            <th>遊戲代號</th>
-			<th>狀態</th>
-            <th>首次上架時間</th>
-            <th>更新時間 ▾</th>
-          </tr>
-        </thead>
-        <tbody>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge6">未發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge6">未發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge6">未發佈</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-        </tbody>
-      </table>
-		
-	  <table id="table" class="t8"><!--不啟用-->
-        <thead>
-          <tr>
-            <th>遊戲名稱</th>
-            <th></th>
-			<th>服務名稱/代號</th>
-            <th>遊戲代號</th>
-			<th>狀態</th>
-            <th>首次上架時間</th>
-            <th>更新時間 ▾</th>
-          </tr>
-        </thead>
-        <tbody>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10001<br><span class="sub">test01</span></td>
-            <td>GM10001</td>
-			<td><span class="badge7">不啟用</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon06.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10002<br><span class="sub">test02</span></td>
-            <td>GM10002</td>
-			<td><span class="badge7">不啟用</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10003<br><span class="sub">test03</span></td>
-            <td>GM10003</td>
-			<td><span class="badge7">不啟用</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
-            <td>GAME01</td>
-			<td>遊戲10004<br><span class="sub">test04</span></td>
-            <td>GM10004</td>
-			<td><span class="badge7">不啟用</span></td>
-            <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
-          </tr>
-        </tbody>
-      </table>
-		
-      <div class="table-footer">
-        <span>共 10 筆資料</span>
-        <div class="pager">
-          <button>‹</button>
-          <button class="active">1</button>
-          <button>›</button>
-        </div>
-      </div>
-
- 
-    </div>
-
     <!-- ============ PAGE: 填寫流程（Wizard） ============ -->
-    <div id="page-wizard" style="display:none;">
+    <div id="page-wizard" style="display:inline;">
       <div class="page-inner">
 
         <div class="page-header-row">
@@ -1427,21 +937,357 @@
 
   </div>
 </div>
-
-<!-- Tag selection modal -->
+	
+<!-- Tag 選擇標籤 -->
 <div class="tag-modal-overlay" id="tagModalOverlay">
   <div class="tag-modal-box">
     <div class="tag-modal-header">
       <h3>選擇標籤</h3>
       <button class="tag-modal-close" id="tagModalClose" type="button">✕</button>
     </div>
-    <div class="tag-modal-body" id="tagModalBody"></div>
+    <div class="tag-modal-body" id="tagModalBody">
+	  <div class="tag-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">產品分類</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div class="tag-pill"><span class="tag-pill-dot"></span><span>線上遊戲</span></div>
+		      <div class="tag-pill"><span class="tag-pill-dot"></span><span>網頁遊戲</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>手機遊戲</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>單機遊戲</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>會員</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>金流平台</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>直播交友</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>棋牌益智</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>動漫平台</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>娛樂命理</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>社群平台</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>遊戲平台</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>AI</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>工具軟體</span></div>
+		  </div>
+	  </div> 
+		
+	  <div class="tag-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">遊戲類型</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=tag-tpye01 class="tag-pill"><span class="tag-pill-dot"></span><span>動作冒險</span></div>
+			    <div id=tag-tpye01r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>動作冒險</span></div>
+		      <div id=tag-tpye02 class="tag-pill"><span class="tag-pill-dot"></span><span>棋牌益智</span></div>
+			    <div id=tag-tpye02r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>棋牌益智</span></div>
+			  <div id=tag-tpye03 class="tag-pill"><span class="tag-pill-dot"></span><span>休閒娛樂</span></div>
+			    <div id=tag-tpye03r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>休閒娛樂</span></div>
+			  <div id=tag-tpye04 class="tag-pill"><span class="tag-pill-dot"></span><span>電子書籍</span></div>
+			    <div id=tag-tpye04r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>電子書籍</span></div>
+			  <div id=tag-tpye05 class="tag-pill"><span class="tag-pill-dot"></span><span>家庭教育</span></div>
+			    <div id=tag-tpye05r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>家庭教育</span></div>
+			  <div id=tag-tpye06 class="tag-pill"><span class="tag-pill-dot"></span><span>音樂節奏</span></div>
+			    <div id=tag-tpye06r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>音樂節奏</span></div>
+			  <div id=tag-tpye07 class="tag-pill"><span class="tag-pill-dot"></span><span>社交互動</span></div>
+			    <div id=tag-tpye07r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>社交互動</span></div>
+			  <div id=tag-tpye08 class="tag-pill"><span class="tag-pill-dot"></span><span>運動競速</span></div>
+		    	<div id=tag-tpye08r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>運動競速</span></div>
+			  <div id=tag-tpye09 class="tag-pill"><span class="tag-pill-dot"></span><span>策略摸擬</span></div>
+			    <div id=tag-tpye09r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>策略摸擬</span></div>
+			  <div id=tag-tpye10 class="tag-pill"><span class="tag-pill-dot"></span><span>益智解謎</span></div>
+			    <div id=tag-tpye10r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>益智解謎</span></div>
+			  <div id=tag-tpye11 class="tag-pill"><span class="tag-pill-dot"></span><span>角色拌演</span></div>
+			    <div id=tag-tpye11r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>角色拌演</span></div>
+			  <div id=tag-tpye12 class="tag-pill"><span class="tag-pill-dot"></span><span>卡牌桌遊</span></div>
+			  <div id=tag-tpye13 class="tag-pill"><span class="tag-pill-dot"></span><span>平台點數</span></div>
+			    <div id=tag-tpye13r class="tag-pill-selected"><span class="tag-pill-dot"></span><span>平台點數</span></div>
+		  </div>
+	  </div>
+		
+	  <!--動作冒險-彈出tag選單-->	
+	  <div id="ACT" class="tag-category" id="act01">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">動作冒險</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=ACT-01 class="tag-pill"><span class="tag-pill-dot"></span><span>格鬥</span></div>
+		      <div id=ACT-02 class="tag-pill"><span class="tag-pill-dot"></span><span>打擊</span></div>
+			  <div id=ACT-03 class="tag-pill"><span class="tag-pill-dot"></span><span>射擊</span></div>
+			  <div id=ACT-04 class="tag-pill"><span class="tag-pill-dot"></span><span>生存</span></div>
+		  </div>
+	  </div>
+	  </div>
+		
+	  <!--棋牌益智-彈出tag選單-->	
+	  <div id="BC" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">棋牌益智</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=BC-01 class="tag-pill"><span class="tag-pill-dot"></span><span>麻將</span></div>
+		      <div id=BC-02 class="tag-pill"><span class="tag-pill-dot"></span><span>撲克</span></div>
+			  <div id=BC-03 class="tag-pill"><span class="tag-pill-dot"></span><span>骰子</span></div>
+			  <div id=BC-04 class="tag-pill"><span class="tag-pill-dot"></span><span>機台</span></div>
+			  <div id=BC-05 class="tag-pill"><span class="tag-pill-dot"></span><span>運彩</span></div>
+			  <div id=BC-06 class="tag-pill"><span class="tag-pill-dot"></span><span>賽馬</span></div>
+			  <div id=BC-07 class="tag-pill"><span class="tag-pill-dot"></span><span>捕魚</span></div>
+		  </div>
+	  </div>
+	  </div>
+		
+	  <!--休閒娛樂-彈出tag選單-->	
+	  <div id="LEISURE" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">休閒娛樂</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=LEISURE-01 class="tag-pill"><span class="tag-pill-dot"></span><span>釣魚</span></div>
+		      <div id=LEISURE-02 class="tag-pill"><span class="tag-pill-dot"></span><span>農場</span></div>
+			  <div id=LEISURE-03 class="tag-pill"><span class="tag-pill-dot"></span><span>開運</span></div>
+			  <div id=LEISURE-04 class="tag-pill"><span class="tag-pill-dot"></span><span>算命</span></div>
+			  <div id=LEISURE-05 class="tag-pill"><span class="tag-pill-dot"></span><span>影音</span></div>
+		  </div>
+	  </div>
+      </div>
+		
+	  <!--電子書籍-彈出tag選單-->	
+	  <div id="EBOOK" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">電子書籍</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=EBOOK-01 class="tag-pill"><span class="tag-pill-dot"></span><span>小說</span></div>
+		      <div id=EBOOK-02 class="tag-pill"><span class="tag-pill-dot"></span><span>電子書</span></div>
+			  <div id=EBOOK-03 class="tag-pill"><span class="tag-pill-dot"></span><span>漫畫</span></div>
+		  </div>
+	  </div>
+	  </div>
+ 		
+      <!--家庭教育-彈出tag選單-->	
+	  <div id="EDU" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">家庭教育</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=EDU-01 class="tag-pill"><span class="tag-pill-dot"></span><span>課程</span></div>
+		  </div>
+	  </div>
+	  </div>
+		  
+		
+	  <!--音樂節奏-彈出tag選單-->	
+	  <div id="MUSIC" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">音樂節奏</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=MUSIC-01 class="tag-pill"><span class="tag-pill-dot"></span><span>鈴聲</span></div>
+			  <div id=MUSIC-02 class="tag-pill"><span class="tag-pill-dot"></span><span>歌曲</span></div>
+			  <div id=MUSIC-03 class="tag-pill"><span class="tag-pill-dot"></span><span>音樂遊戲</span></div>
+		  </div>
+	  </div>
+	  </div>
+		
+	  <!--社交互動-彈出tag選單-->	
+	  <div id="SOCIAL" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">社交互動</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=SOCIAL-01 class="tag-pill"><span class="tag-pill-dot"></span><span>交友</span></div>
+			  <div id=SOCIAL-02 class="tag-pill"><span class="tag-pill-dot"></span><span>直播</span></div>
+			  <div id=SOCIAL-03 class="tag-pill"><span class="tag-pill-dot"></span><span>討論區</span></div>
+			  <div id=SOCIAL-04 class="tag-pill"><span class="tag-pill-dot"></span><span>BBS</span></div>
+			  <div id=SOCIAL-05 class="tag-pill"><span class="tag-pill-dot"></span><span>論壇</span></div>
+			  <div id=SOCIAL-06 class="tag-pill"><span class="tag-pill-dot"></span><span>通訊軟體</span></div>
+			  <div id=SOCIAL-07 class="tag-pill"><span class="tag-pill-dot"></span><span>Line</span></div>v
+		  </div>
+	  </div>
+	  </div>
+		
+	  <!--運動競速-彈出tag選單-->	
+	  <div id="SPG" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">運動競速</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=SPG-01 class="tag-pill"><span class="tag-pill-dot"></span><span>賽車</span></div>
+			  <div id=SPG-02 class="tag-pill"><span class="tag-pill-dot"></span><span>足球</span></div>
+			  <div id=SPG-03 class="tag-pill"><span class="tag-pill-dot"></span><span>籃球</span></div>
+			  <div id=SPG-04 class="tag-pill"><span class="tag-pill-dot"></span><span>棒球</span></div>
+			  <div id=SPG-05 class="tag-pill"><span class="tag-pill-dot"></span><span>撞球</span></div>
+			  <div id=SPG-06 class="tag-pill"><span class="tag-pill-dot"></span><span>網球</span></div>
+			  <div id=SPG-07 class="tag-pill"><span class="tag-pill-dot"></span><span>排球</span></div>
+		  </div>
+	  </div>
+	  </div>
+		  
+	  <!--策略摸擬-彈出tag選單-->	
+	  <div id="SLG" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">策略摸擬</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=SLG-01 class="tag-pill"><span class="tag-pill-dot"></span><span>塔防</span></div>
+			  <div id=SLG-02 class="tag-pill"><span class="tag-pill-dot"></span><span>經營</span></div>
+			  <div id=SLG-03 class="tag-pill"><span class="tag-pill-dot"></span><span>養成</span></div>
+			  <div id=SLG-04 class="tag-pill"><span class="tag-pill-dot"></span><span>造型</span></div>
+			  <div id=SLG-05 class="tag-pill"><span class="tag-pill-dot"></span><span>國戰</span></div>
+			  <div id=SLG-06 class="tag-pill"><span class="tag-pill-dot"></span><span>海盜</span></div>
+		  </div>
+	  </div>
+	  </div>
+		
+	  <!--益智解謎-彈出tag選單-->	
+	  <div id="PUZ" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">益智解謎</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=PUZ-01 class="tag-pill"><span class="tag-pill-dot"></span><span>棋類</span></div>
+			  <div id=PUZ-02 class="tag-pill"><span class="tag-pill-dot"></span><span>拚圖</span></div>
+			  <div id=PUZ-03 class="tag-pill"><span class="tag-pill-dot"></span><span>大富翁</span></div>
+			  <div id=PUZ-04 class="tag-pill"><span class="tag-pill-dot"></span><span>方塊</span></div>
+			  <div id=PUZ-05 class="tag-pill"><span class="tag-pill-dot"></span><span>泡泡</span></div>
+			  <div id=PUZ-06 class="tag-pill"><span class="tag-pill-dot"></span><span>彈珠</span></div>
+			  <div id=PUZ-07 class="tag-pill"><span class="tag-pill-dot"></span><span>問答</span></div>
+			  <div id=PUZ-08 class="tag-pill"><span class="tag-pill-dot"></span><span>迷宮</span></div>
+		  </div>
+	  </div>
+	  </div>
+		
+	  <!--卡牌桌遊-彈出tag選單-->	
+	  <div id="TABG" class="tag-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">卡牌桌遊</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+	  </div>
+		
+	  <!--角色拌演-彈出tag選單-->	
+	  <div id="RPG" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">角色拌演</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=RPG-01 class="tag-pill"><span class="tag-pill-dot"></span><span>日系</span></div>
+			  <div id=RPG-02 class="tag-pill"><span class="tag-pill-dot"></span><span>歐美系</span></div>
+			  <div id=RPG-03 class="tag-pill"><span class="tag-pill-dot"></span><span>韓系</span></div>
+		  </div>
+	  </div>
+	  </div>
+		
+	  <!--平台點數-彈出tag選單-->	
+	  <div id="PP" class="tag-category">
+	  <div class="tag-sub-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">平台點數</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div id=PP-01 class="tag-pill"><span class="tag-pill-dot"></span><span>NFT</span></div>
+			  <div id=PP-02 class="tag-pill"><span class="tag-pill-dot"></span><span>Metaverse</span></div>
+		  </div>
+	  </div>
+	  </div>
+		
+	  <div class="tag-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">故事題材</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div class="tag-pill"><span class="tag-pill-dot"></span><span>中國文化</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>三國</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>西遊</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>封神榜</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>布袋戲</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>日本文化</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>科幻</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>奇幻</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>喪屍</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>殭屍</span></div>
+              <div class="tag-pill"><span class="tag-pill-dot"></span><span>女性向</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>校園</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>戀愛</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>武俠</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>修仙</span></div>		 
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>金庸</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>古龍</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>黃易</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>宮廷</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>動漫</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>漫威</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>神話</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>驚悚</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>懸疑</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>古墓</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>尋寶</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>戰爭</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>歷史</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>末日</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>DC</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>部落</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>機甲</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>坦克</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>船艦</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>戰機</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>西方文化</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>'地下城</span></div>
+		  </div>
+	  </div> 
+		
+	  <div class="tag-category">
+		  <div class="tag-category-head">
+			  <span class="tag-category-name">遊戲玩法</span>
+			  <span class="tag-category-error" id="err-product"></span>
+		  </div>
+		  <div class="tag-pill-row">
+		      <div class="tag-pill"><span class="tag-pill-dot"></span><span>放置掛機</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>單機</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>轉珠相消</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>回合</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>戰棋</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>PVP</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>PVE</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>PvR</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>沙盒</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>純文字</span></div>
+              <div class="tag-pill"><span class="tag-pill-dot"></span><span>MOBA</span></div>
+			  <div class="tag-pill"><span class="tag-pill-dot"></span><span>MMO</span></div>
+		  </div>
+	  </div> 
+		  
+	</div>
     <div class="tag-modal-footer">
       <span class="tag-modal-status" id="tagModalStatus"></span>
       <button class="tag-modal-done" id="tagModalDone" type="button">完成</button>
     </div>
   </div>
 </div>
+
+
 
 <!-- Result modal (save / submit) -->
 <div class="modal-overlay" id="modalOverlay">
@@ -1832,7 +1678,7 @@
      ============================================================ */
   const TAG_CATEGORIES = [
     { key: 'product', name: '產品分類', options: ['線上遊戲','網頁遊戲','手機遊戲','單機遊戲','會員','金流平台','直播交友','棋牌益智','動漫平台','娛樂命理','社群平台','遊戲平台','AI','工具軟體'] },
-    { key: 'genre', name: '遊戲類型', options: ['動作冒險','棋牌益智','休閒娛樂','電子書籍','家庭教育','音樂節奏','社交互動','運動競速','策略摸擬','益智解謎','角色拌演','卡牌桌遊','平台點數'] },
+    { key: 'genre', name: '遊戲類型', options: ['動作冒險','棋牌益智','休閒娛樂','電子書籍','家庭教育','音樂節奏','社交互動','運動競速','策略排擬','益智解謎','角色拌演','卡牌桌遊','平台點數'] },
 	{ key: 'type', name: '動作冒險', options: ['格鬥','打擊','射擊','生存',] },
     { key: 'story', name: '故事題材', options: ['中國文化','三國','西遊','封神榜','布袋戲','日本文化','科幻','奇幻','喪屍','殭屍','女性向','校園','戀愛','武俠','修仙','金庸','古龍','黃易','宮廷','動漫','漫威','神話','驚悚','懸疑','古墓','尋寶','戰爭','歷史','末日','DC','部落','機甲','坦克','船艦','戰機','西方文化','地下城'] },
     { key: 'gameplay', name: '遊戲玩法', options: ['放置掛機','單機','轉珠相消','回合','戰棋','PVP','PVE','RvR','沙盒','純文字','MOBA','MMO'] }
