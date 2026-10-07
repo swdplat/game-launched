@@ -12,6 +12,27 @@
 <script src="js/manager.js"></script>
 <script src="js/step.js"></script>
 
+
+
+
+<style id="step2-done-style">
+/* 步驟完成後，右側／上方步驟名稱顯示綠色 */
+#stepper .step-node.done .step-label {
+  color: #22A06B !important;
+}
+#stepper .step-node.done .step-circle {
+  color: #22A06B;
+}
+</style>
+
+<style id="area-tag-selected-style">
+/* 顯示地區：可複選的選取狀態 */
+#game-intro .area-tag li.selected {
+  background: #398FE0;
+  color: #fff;
+}
+</style>
+
 </head>
 <body>
 
@@ -50,15 +71,15 @@
     <div id="page-home">
       <div class="page-header-row">
         <div class="page-header-text">
-          <div class="initial"><ol></ol></div><h1>維護您的遊戲資料</h1>
-          <p>自主填寫遊戲資料完成，審核過後即可讓您的遊戲資訊在官網曝光</p>
+          <div class="initial"><ol></ol></div><h1>遊戲管理</h1>
+          <p>集中管理遊戲資訊及上架進度，審核通過後於 MyCard 官網公開顯示</p>
         </div>
 		<!--<button class="btn-outbound" id="btnOutboard">↓ 匯出清單</button>-->
-        <button class="btn-add-game" id="btnAddGame">＋ 新增遊戲</button>		
+        <button type="button" class="btn-add-game" id="btnAddGame">＋ 新增遊戲</button>		
       </div>
 		
 	  <!--<div class="dynamic_row">
-		<div class="deal">
+		<div class="deal">語系內容
 		  <ul>
 			<h5>需要你的處理</h5>
 			<h6>優先完成以下事項，讓上架流程繼續往前</h6>
@@ -132,8 +153,8 @@
 
 
       <div class="list-header">
-        <h2>我的遊戲清單</h2>
-        <p>在這裡查看您所建立過的遊戲資料</p>
+        <h2>所有遊戲</h2>
+        <p>查看遊戲資料與目前上架狀態</p>
       
 		<ul>
 		  <div id="state_tab1" class="active">全部<dl>10</dl></div>
@@ -150,7 +171,7 @@
       
       <div class="search-row">
             <div class="search-box"><img src="images/search_icon.svg">
-            <input type="text" placeholder="搜尋遊戲名稱或 GameID"></div>
+            <input type="text" placeholder="搜尋遊戲名稱、ID或介接代號"></div>
             <button class="btn-search">搜尋</button>
           </div> 
       <table id="table" class="t1"><!--全部-->
@@ -158,101 +179,113 @@
           <tr>
             <th>遊戲名稱</th>
             <th></th>
-			<th>服務名稱/代號</th>
+            <th></th>
+	    <th>服務名稱/代號</th>
             <th>遊戲代號</th>
-			<th>狀態</th>
+            <th>狀態</th>
             <th>首次上架時間</th>
             <th>更新時間 ▾</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-			<td class="game-name"><img src="images/game_icon/icon01.webp"></td>
-			<td><a target="_self" href="#">星際爭霸戰：重生</a></td>
+	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon01.webp"></a></td>
+	    <td><a target="_self" href="#">星際爭霸戰：重生</a></td>
+            <td><span class="btn-copy">複製</span></td>
             <td>星際爭霸戰<br><span class="sub">starwar</span></td>
-			<td>GM10245</td>
-			<td><span class="badge">草稿</span></td>
+	    <td>GM10245</td>
+            <td><span class="badge">草稿</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">09:18:47</span></td>
           </tr>
           <tr>
-			<td class="game-name"><img src="images/game_icon/icon02.webp"></td>
+	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon02.webp"></a></td>
+
             <td><a target="_self" href="#">劍與魔法傳說</a></td>
+            <td><span class="btn-copy">複製</span></td>
             <td>小兵來對決<br><span class="sub">fight</span></td>
-			<td>GM10231</td>
+	    <td>GM10231</td>
             <td><span class="badge1">待審核</span></td>
-			<td>2026/07/11<br><span class="sub2">09:12:22</span></td>
+	    <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/10<br><span class="sub2">14:32:05</span></td>
           </tr>
           <tr>
-			  <td class="game-name"><img src="images/game_icon/icon03.webp"></td>
+	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon03.webp"></a></td>
             <td><a target="_self" href="#">勇者物語 Online</a></td>
+            <td><span class="btn-copy">複製</span></td>
             <td>勇者物語<br><span class="sub">hero</span></td>
-			<td>GM10198</td>
-			<td><span class="badge5">撤回</span></td>
+	    <td>GM10198</td>
+	    <td><span class="badge5">撤回</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
-            <td>2026/07/09<br><span class="sub2">21:05:12</span></td>
+            <td>2026/07/09<br><span class="sub2">21:05:12</span遊戲介紹></td>
           </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon04.webp"></td>
+          <tr>
+	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon04.webp"></a></td>
             <td><a target="_self" href="#">GAME01</a></td>
+            <td><span class="btn-copy">複製</span></td>
             <td>遊戲10001<br><span class="sub">test01</span></td>
-			<td>GM10001</td> 
-			<td><span class="badge2">待發佈</span></td>
+	    <td>GM10001</td> 
+	    <td><span class="badge2">待發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon05.webp"></td>
-            <td>GAME02</td>
-			<td>遊戲10002<br><span class="sub">test02</span></td>
+          <tr>
+            <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon05.webp"></a></td>
+            <td><a target="_self" href="#">GAME02</a></td>
+            <td><span class="btn-copy">複製</span></td>
+	    <td>遊戲10002<br><span class="sub">test02</span></td>
             <td>GM10002</td>
-			<td><span class="badge3">已發佈</span></td>
+	    <td><span class="badge3">已發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon06.webp"></td>
-            <td>GAME03</td>
-			<td>遊戲10003<br><span class="sub">test03</span></td>
+          <tr>
+	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon06.webp"></a></td>
+            <td><a target="_self" href="#">GAME03</a></td>
+            <td><span class="btn-copy">複製</span></td>  
+            <td>遊戲10003<br><span class="sub">test03</span></td>
             <td>GM10003</td>
-			<td><span class="badge6">未發佈</span></td>
+	    <td><span class="badge6">未發佈</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon07.webp"></td>
-            <td>GAME04</td>
-			<td>遊戲10004<br><span class="sub">test04</span></td>
+          <tr>
+	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon07.webp"></a></td>
+            <td><a target="_self" href="#">GAME04</a></td>
+            <td><span class="btn-copy">複製</span></td>
+	    <td>遊戲10004<br><span class="sub">test04</span></td>
             <td>GM10004</td>
-			<td><span class="badge7">不啟用</span></td>
+	    <td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon08.webp"></td>
-            <td>GAME05</td>
-			<td>遊戲10005<br><span class="sub">test05</span></td>
+	   <tr>
+	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon08.webp"></a></td>
+            <td><a target="_self" href="#">GAME05</a></td>
+            <td><span class="btn-copy">複製</span></td>
+            <td>遊戲10005<br><span class="sub">test05</span></td>
             <td>GM10005</td>
-			<td><span class="badge7">不啟用</span></td>
+	    <td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
-		  <tr>
-            <td class="game-name"><img src="images/game_icon/icon09.webp"></td>
-            <td>GAME06</td>
-			<td>遊戲10006<br><span class="sub">test06</span></td>
+	  <tr>
+  	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon09.webp"></a></td>
+           <td><a target="_self" href="#">GAME06</a></td>
+            <td><span class="btn-copy">複製</span></td>   
+	    <td>遊戲10006<br><span class="sub">test06</span></td>
             <td>GM10006</td>
-			<td><span class="badge7">不啟用</span></td>
+	    <td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
-		  <tr>
-			<td class="game-name"><img src="images/game_icon/icon10.webp"></td>
-            <td>GAME07</td>
-			<td>遊戲10007<br><span class="sub">test07</span></td>
+	  <tr>
+	    <td class="game-name"><a target="_self" href="#"><img src="images/game_icon/icon10.webp"></a></td>
+            <td><a target="_self" href="#">GAME07</a></td>
+            <td><span class="btn-copy">複製</span></td>
+            <td>遊戲10007<br><span class="sub">test07</span></td>
             <td>GM10007</td>
-			<td><span class="badge7">不啟用</span></td>
+	    <td><span class="badge7">不啟用</span></td>
             <td>2026/07/11<br><span class="sub2">09:12:22</span></td>
             <td>2026/07/11<br><span class="sub2">18:05:12</span></td>
           </tr>
@@ -542,10 +575,10 @@
 
         <div class="page-header-row">
           <div class="page-header-text">
-            <div class="initial"><ol></ol></div><h1>開始填寫您的遊戲資料</h1>
-            <p>您可以在這裡自行填寫及更新遊戲資料，完成後提交 MyCard 審核，審核通過後就會公開於官網首頁。跟著填寫流程完成 5 個區塊即可。</p>
-            <p class="notice-text">注意：填寫過程中如果需要先離開，記得先儲存目前資料；確認都填寫完成後，再送出審核。<br>
-                                   審核通過後，MyCard 將協助您將遊戲資料公開於官網。</p>
+            <div class="initial"><ol></ol></div><h1>新增遊戲</h1>
+            <p>分步完成資料。草稿只會保留在這次開啟的頁面中</p>
+            <p class="notice-text">注意：填寫過程中如果需要先離開，記得先儲存目前資料；確認都填寫完成後，再送出審核<br>
+                                   審核通過後，MyCard 將協助您將遊戲資料公開於官網</p>
           </div>
           <div class="header-actions">
             <button class="btn-ghost" id="btnWithdraw">撤回審核</button>
@@ -564,7 +597,7 @@
         <div class="stepper" id="stepper">
           <div class="step-node current" data-step="1">
             <div class="step-circle">1<span class="status-badge warn">!</span></div>
-            <span class="step-label">遊戲基本識別資料</span>
+            <span class="step-label">基本資料</span>
           </div>
 
           <div class="step-node" data-step="2">
@@ -601,13 +634,12 @@
 			    <button class="button-list-next" id="nextBtn1" style="display:inline;align-items:right;">下一步 ›</button>
 			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
 				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
-				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
 				<button class="btn-sub2 primary-ghost" id="btnDraft" style="display:inline;align-items:right;">儲存草稿</button>
 			    <div id="copyright">©Soft-World Corp. All Rights Reserved.</div>
               </div>
 			</div>
-            <h2 class="block-title">遊戲基本識別資料</h2>
-            <p class="block-desc">填寫遊戲所對應的公司、服務及遊戲代號</p>
+            <h2 class="block-title">基本資料</h2>
+            <p class="block-desc">填寫遊戲基本資訊，供 MyCard 進行資料確認及後續服務設定</p>
 
             <div class="field-group" id="field-company">
               <div class="field-label-row">
@@ -615,7 +647,7 @@
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">請填寫貴公司或工作室的正式名稱，用於後台核對身分，不會顯示於網站。</div>
+                  <div class="tooltip-popover">此資訊不會公開顯示</div>
                 </span>
               </div>
               <div class="field-caption">請填寫合約上的完整公司名稱</div>
@@ -625,30 +657,42 @@
 
             <div class="field-group">
               <div class="field-label-row">
-                <span class="field-label">服務名稱/代號</span>
+                <span class="field-label">介接代號</span>
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">由貴公司與 MyCard 合作窗口約定的服務代號，用於系統比對資料，如不清楚請洽合作窗口。</div>
+                  <div class="tooltip-popover">由貴公司與 MyCard 合作窗口約定的服務代號，用於系統比對資料，如不清楚請洽合作窗口</div>
                 </span>
               </div>
-              <div class="field-caption">選擇此遊戲所套用的 FacServiceId 及服務名稱，作為系統及帳務報表的識別資訊，不會顯示於網站。</div>
+              <div class="field-caption">參數名稱：FacServiceId</div>
               <div class="select-wrap">
-                <input class="field-input" type="text" id="field-service-input" placeholder="服務名稱/代號" readonly>
+                <input class="field-input" type="text" id="field-service-input" placeholder="介接代號" readonly>
               </div>
             </div>
 
             <div class="field-group">
               <div class="field-label-row">
-                <span class="field-label">遊戲代號</span>
+                <span class="field-label">遊戲 ID</span>
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">用於系統比對遊戲資料，請填寫正確的遊戲代號；若不清楚請洽 MyCard 窗口取得。</div>
+                  <div class="tooltip-popover">用於系統比對遊戲資料，請填寫正確的遊戲代號；若不清楚請洽 MyCard 窗口取得</div>
                 </span>
               </div>
-              <div class="field-caption">填寫此款遊戲代號，須與您在串接時回傳的 FacGameId 相同。此代號會顯示於網站專屬頁面的網址中。</div>
+              <div class="field-caption">參數名稱：FacGameId</div>
               <input class="field-input" type="text" id="field-gamecode-input" placeholder="遊戲代號">
+            </div>
+			  
+			<div class="field-group">
+              <div class="field-label-row">
+                <span class="field-label">遊戲官方名稱（繁體中文）</span>
+                <span class="required-star">*</span>
+                <span class="tooltip-wrap">
+                  <button class="tooltip-icon" type="button">?</button>
+                  <div class="tooltip-popover">請填寫遊戲官方繁體中文名稱</div>
+                </span>
+              </div>
+              <input class="field-input" type="text" id="field-gamecode-input" placeholder="遊戲官方名稱">
             </div>
           </div>
 
@@ -657,28 +701,31 @@
 			<div id="status"><span class="badge">草稿</span></div>
 			<div id="button_list">
               <a class="button-list-prev" id="prevBtn2" style="text-decoration:none;display:inline;align-items:left;">‹ 上一步</a>
-                <span class="step-count" id="Text">尚未儲存 · 僅供預覽</span>
+                <span class="step-count" id="Text">請先點擊「＋ 新增語系」選擇語系，再填寫遊戲名稱與文字介紹</span>
                 <div style="display:inline;align-items:center;gap:10px;">
                 <button class="btn-submit" id="btnSubmit" style="display:none;align-items:right;">送出審核</button>
 			    <button class="button-list-next" id="nextBtn2" style="display:inline;align-items:right;">下一步 ›</button>
 			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
 				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
-				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
-			    <button class="btn-sub2 primary-ghost" id="btnDraft" style="display:inline;align-items:right;">儲存草稿</button>
+			    <button class="btn-sub2 primary-ghost" id="btnDraft2" style="display:inline;align-items:right;">儲存草稿</button>
 			    <div id="copyright">©Soft-World Corp. All Rights Reserved.</div>
               </div>
 			</div>
             <h2 class="block-title">遊戲介紹</h2>
-            <p class="block-desc">提供遊戲名稱、圖片及文字介紹，供 MyCard 用戶於網站查看，支援依語系分別設定<br>
-繁體中文及English必填，其他語系遊戲名稱及文字介紹如未填寫則預設出現英文</p>
+            <p class="block-desc">填寫遊戲介紹及展示素材，讓玩家快速了解您的遊戲</p>
 			  
+<div id="game-intro">
+	<h5>語系內容</h5><h6>以下兩個欄位依語系分別填寫：先選語系 → 填寫名稱與介紹 → 選擇顯示地區</h6>
+	
             <div class="lang-tab-row">
               <div class="lang-tabs" id="langTabs">
-                <div class="lang-tab active" data-lang="zh">繁體中文(預設)<span class="required-star">*</span></div>
-                <div class="lang-tab" data-lang="en" data-label="English">English<span class="required-star">*</span> <span class="lang-tab-delete" data-lang="en">×</span></div>
+                <div class="lang-tab active displaynone" data-lang="zh">繁體中文<span class="required-star">*</span></div>
+ 
                 <div class="lang-tab-add-new" id="langAddBtn"><span class="plus-icon">+</span> 新增語系
                   <div class="lang-add-menu" id="langAddMenu">
-                    <div class="lang-add-item" data-lang="ja" data-label="简体中文">简体中文</div>
+					<div class="lang-add-item" data-lang="zh" data-label="繁體中文">繁體中文</div>
+					<div class="lang-add-item" data-lang="en" data-label="English">English</div>
+                    <div class="lang-add-item" data-lang="zhcn" data-label="简体中文">简体中文</div>
                     <div class="lang-add-item" data-lang="ja" data-label="日本語">日本語</div>
                     <div class="lang-add-item" data-lang="th" data-label="ภาษาไทย">ภาษาไทย</div>
                     <div class="lang-add-item" data-lang="vi" data-label="Bahasa Indonesia">Bahasa Indonesia</div>
@@ -686,15 +733,17 @@
                 </div>
               </div>
             </div>
-
-            <div class="lang-field-box">
+	<div class="not-ready">尚未新增語系，請點擊「＋ 新增語系」開始填寫（至少需新增一個語系）</div>     
+	        
+            <div class="lang-field-box" id="langFieldBox" style="display:none;">
               <div class="field-group">
+				<h4>語系</h4><h3 id="currentLangTitle">繁體中文</h3>
                 <div class="field-label-row">
                   <span class="field-label">遊戲名稱</span>
                   <span class="required-star">*</span>
                   <span class="tooltip-wrap">
                     <button class="tooltip-icon" type="button">?</button>
-                    <div class="tooltip-popover">填寫此語系下您希望公開的遊戲名稱，將顯示於官網頁面。</div>
+                    <div class="tooltip-popover">填寫此語系下您希望公開的遊戲名稱，將顯示於官網頁面</div>
                   </span>
                 </div>
                 <div class="field-caption">填寫您希望公開顯示的遊戲名稱。</div>
@@ -707,28 +756,41 @@
                   <span class="required-star">*</span>
                   <span class="tooltip-wrap">
                     <button class="tooltip-icon" type="button">?</button>
-                    <div class="tooltip-popover">建議 100–300 字，描述遊戲玩法與特色，將顯示於官網遊戲頁面。</div>
+                    <div class="tooltip-popover">介紹遊戲特色、玩法與世界觀</div>
                   </span>
                 </div>
-                <div class="field-caption">填寫遊戲介紹內容，供用戶了解您的遊戲。</div>
+                <div class="field-caption">填寫遊戲介紹內容，供用戶了解您的遊戲</div>
                 <div class="rt-toolbar">
                   <span><b>B</b></span><span><i>I</i></span><span><u>U</u></span><span><s>S</s></span><span>HTML</span><span>•</span><span>1.</span><span>&lt;&gt;</span>
                 </div>
                 <textarea class="rt-textarea" id="field-desc-input" placeholder="遊戲介紹內容"></textarea>
+				<div class="field-label-row">
+                  <span class="field-label">顯示地區</span>
+                  <span class="required-star">*</span><span class="multiple_select">可多選</span>
+                </div>
+                <div class="field-caption">選擇此語系要出現在哪些地區的網站，已被其他語系選用的地區會鎖定</div>
+				<div class="area-tag">
+					<li>台灣</li>
+					<li>Global</li>
+					<li>印尼</li>
+					<li>香港</li>
+					<li>馬來西亞</li>
+					<li>中國大陸</li>
+					<li>泰國</li>
+					<li>日本</li>
+				</div>
               </div>
             </div>
-			<div id="dashline-text">以上為遊戲名稱及文字介紹部分</div>
-            <div id="dashline"></div>
-			  
+</div>		  
             <div class="field-group">
               <div class="field-label-row">
                 <span class="field-label">遊戲簡稱</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">簡短好記的名稱，玩家可用此名稱快速搜尋到您的遊戲。</div>
+                  <div class="tooltip-popover">請填寫遊戲常用簡稱</div>
                 </span>
               </div>
-              <div class="field-caption">填寫遊戲簡稱，MyCard 用戶可透過此簡稱搜尋您的遊戲；如無簡稱，可不填寫。</div>
+              <div class="field-caption">無簡稱可不填</div>
               <input class="field-input" type="text" id="field-shortname-input" placeholder="遊戲簡稱">
             </div>
 
@@ -738,10 +800,10 @@
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">建議尺寸 512×512px，PNG格式，檔案大小 2MB 以內。</div>
+                  <div class="tooltip-popover">點擊或拖曳上傳圖示</div>
                 </span>
               </div>
-              <div class="field-caption">您上傳的遊戲 Icon 圖片將顯示於網站的遊戲選擇頁面。</div>
+              <div class="field-caption">JPG / PNG / WEBP，最大 5MB</div>
               <div class="upload-row">
                 <div class="upload-box" id="iconUpload">
 <!--ICON圖片上傳-->
@@ -822,10 +884,10 @@
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">建議尺寸 1280×720px，最多6張，至少上傳1張即可送出。</div>
+                  <div class="tooltip-popover">點擊或拖曳上傳圖示</div>
                 </span>
               </div>
-              <div class="field-caption">上傳您希望公開顯示的遊戲主視覺輪播圖片。</div>
+              <div class="field-caption">JPG / PNG / WEBP・最多 6 張・建議 16:9</div>
               <div class="upload-row" id="carouselRow">
 <!--6輪播圖上傳-->
 <div class="icu6-uploader" id="icu6Uploader">
@@ -1131,7 +1193,7 @@
 </div>
 			  
               </div>		 
-              <div class="upload-caption">至少上傳1張即可，不需要6張全部上傳</div>
+              <!--<div class="upload-caption">至少上傳1張即可，不需要6張全部上傳</div>-->
             </div>
 
             <div class="field-group">
@@ -1140,10 +1202,10 @@
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">選擇符合遊戲類型的標籤，最多可選5個。</div>
+                  <div class="tooltip-popover">方便玩家依標籤找到您的遊戲</div>
                 </span>
               </div>
-              <div class="field-caption">設定遊戲標籤，方便用戶依標籤找到您的遊戲。</div>
+              <div class="field-caption">設定遊戲標籤，方便用戶依標籤找到您的遊戲</div>
               <div class="tag-row">
                 <input class="field-input tag-input" type="text" id="field-tags-input" placeholder="遊戲標籤" readonly>
                 <button class="btn-tag-select" type="button" id="btnTagSelect">選擇標籤</button>
@@ -1156,17 +1218,17 @@
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">可複選，請勾選此遊戲支援的所有遊玩裝置。</div>
+                  <div class="tooltip-popover">可複選，請勾選此遊戲支援的所有遊玩裝置</div>
                 </span>
               </div>
-              <div class="field-caption">選擇您的遊戲支援的遊玩裝置。</div>
+              <div class="field-caption">請選擇遊戲支援的遊玩平台</div>
               <div class="checkbox-row">
                 <label class="checkbox-option"><input type="checkbox" name="playDevice" value="mobile"><span class="checkbox-box"></span><span>手機</span></label>
-                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="pc"><span class="checkbox-box"></span><span>電腦</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="pc"><span class="checkbox-box"></span><span>PC</span></label>
                 <label class="checkbox-option"><input type="checkbox" name="playDevice" value="xbox"><span class="checkbox-box"></span><span>Xbox</span></label>
                 <label class="checkbox-option"><input type="checkbox" name="playDevice" value="playstation"><span class="checkbox-box"></span><span>PlayStation</span></label>
-                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="switch"><span class="checkbox-box"></span><span>Switch/Switch2</span></label>
-                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="steam"><span class="checkbox-box"></span><span>Steam</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="Switch / Switch2 "><span class="checkbox-box"></span><span>Switch/Switch2</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="playDevice" value="Steam"><span class="checkbox-box"></span><span>Steam</span></label>
               </div>
             </div>
 
@@ -1176,10 +1238,10 @@
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">請依據數位發展部公告之遊戲分級標準選擇對應級別。</div>
+                  <div class="tooltip-popover">請依據數位發展部公告之遊戲分級標準選擇對應級別</div>
                 </span>
               </div>
-              <div class="field-caption">依據數位發展部相關規定，請選擇適用的遊戲分級。</div>
+              <div class="field-caption">請依台灣遊戲分級制度選擇適用的遊戲分級</div>
               <div class="select-wrap">
                 <select class="field-input" id="field-rating-select" required>
                   <option value="" disabled selected>遊戲分級</option>
@@ -1204,20 +1266,19 @@
 			    <button class="button-list-next" id="nextBtn3" style="display:inline;align-items:right;">下一步 ›</button>
 			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
 				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
-				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
-				<button class="btn-sub2 primary-ghost" id="btnDraft" style="display:inline;align-items:right;">儲存草稿</button>
+				<button class="btn-sub2 primary-ghost" id="btnDraft3" style="display:inline;align-items:right;">儲存草稿</button>
 			    <div id="copyright">©Soft-World Corp. All Rights Reserved.</div>
               </div>
 			</div>
             <h2 class="block-title">儲值入口</h2>
-            <p class="block-desc">提供玩家使用 MyCard 儲值所需的相關連結</p>
+            <p class="block-desc">選擇遊戲提供的 MyCard 儲值方式，並提供相關連結</p>
 
             <div class="field-group">
               <div class="field-label-row">
                 <span class="field-label">儲值方式</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">可複選，請勾選此遊戲提供的 MyCard 儲值方式，勾選後將顯示對應的填寫欄位。</div>
+                  <div class="tooltip-popover">可複選，請勾選此遊戲提供的 MyCard 儲值方式，勾選後將顯示對應的填寫欄位</div>
                 </span>
               </div>
               <div class="field-caption">選擇此遊戲提供的MyCard 儲值方式</div>
@@ -1239,7 +1300,7 @@
 
                   <span class="tooltip-wrap">
                     <button class="tooltip-icon" type="button">?</button>
-                    <div class="tooltip-popover">請貼上完整網址，需以 https:// 開頭。</div>
+                    <div class="tooltip-popover">請貼上完整網址，需以 https:// 開頭</div>
                   </span>
                 </div>
                 <div class="field-caption">提供含MyCard 儲值功能的網頁商店連結</div>
@@ -1258,7 +1319,7 @@
  
                   <span class="tooltip-wrap">
                     <button class="tooltip-icon" type="button">?</button>
-                    <div class="tooltip-popover">請提供可直接下載 APK 安裝檔的網址。</div>
+                    <div class="tooltip-popover">請提供可直接下載 APK 安裝檔的網址</div>
                   </span>
                 </div>
                 <div class="field-caption">提供含MyCard 儲值功能的APK安裝包供用戶下載</div>
@@ -1270,7 +1331,7 @@
                   <span class="field-label">iOS App Store 連結</span>
                   <span class="tooltip-wrap">
                     <button class="tooltip-icon" type="button">?</button>
-                    <div class="tooltip-popover">請貼上完整的 App Store 商店網址，需以 https:// 開頭。</div>
+                    <div class="tooltip-popover">請貼上完整的 App Store 商店網址，需以 https:// 開頭</div>
                   </span>
                 </div>
                 <div class="field-caption">如iOS 版提供MyCard儲值入口，請填寫App Store下載連結</div>
@@ -1303,10 +1364,10 @@
                 <span class="field-label">帳號不相通</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">請確認用戶是否可使用同一遊戲帳號，在不同裝置（如網頁／手機／PC）間繼續遊玩進度。</div>
+                  <div class="tooltip-popover">請確認用戶是否可使用同一遊戲帳號，在不同裝置（如網頁／手機／PC）間繼續遊玩進度</div>
                 </span>
               </div>
-              <div class="field-caption warn">注意！若您勾選"是"，代表用戶無法使用同一遊戲帳號在不同裝置遊玩</div>
+              <div class="field-caption warn">請依遊戲實際帳號規則選擇，供 MyCard 客服查詢玩家問題時參考</div>
               <div class="radio-row">
                 <label class="radio-option"><input type="radio" name="accountNotShared" value="yes"><span class="radio-dot"></span><span>是</span></label>
                 <label class="radio-option"><input type="radio" name="accountNotShared" value="no"><span class="radio-dot"></span><span>否</span></label>
@@ -1325,20 +1386,19 @@
 			    <button class="button-list-next" id="nextBtn4" style="display:inline;align-items:right;">下一步 ›</button>
 			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
 				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
-				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
-				<button class="btn-sub2 primary-ghost" id="btnDraft" style="display:inline;align-items:right;">儲存草稿</button>
+				<button class="btn-sub2 primary-ghost" id="btnDraft4" style="display:inline;align-items:right;">儲存草稿</button>
 			    <div id="copyright">©Soft-World Corp. All Rights Reserved.</div>
               </div>
 			</div>
             <h2 class="block-title">官方與社群連結</h2>
-            <p class="block-desc">提供用戶更多遊戲相關資訊及官方動態</p>
+            <p class="block-desc">提供遊戲官方網站及社群資訊，方便玩家取得最新消息</p>
 
             <div class="field-group">
               <div class="field-label-row">
                 <span class="field-label">官方網站連結</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">請貼上完整的官方網站網址，需以 https:// 開頭。</div>
+                  <div class="tooltip-popover">請貼上完整的官方網站網址，需以 https:// 開頭</div>
                 </span>
               </div>
               <div class="field-caption">提供遊戲官方網站連結，方便用戶查看遊戲相關資訊</div>
@@ -1350,7 +1410,7 @@
                 <span class="field-label">粉絲團連結</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">請貼上完整的粉絲專頁或社群網址，需以 https:// 開頭。</div>
+                  <div class="tooltip-popover">請貼上完整的粉絲專頁或社群網址，需以 https:// 開頭</div>
                 </span>
               </div>
               <div class="field-caption">提供遊戲官方粉絲團連結，方便用戶查看遊戲最新消息</div>
@@ -1366,14 +1426,13 @@
                 <span class="step-count" id="Text">尚未儲存 · 僅供預覽</span>
                 <button class="btn-submit button_list-submit" id="btnSubmit2" style="display:inline;align-items:right;">送出審核</button>
 			    <button class="button-list-next" id="nextBtn5" style="display:none!important;align-items:right;">下一步 ›</button>
-			    <button class="btn-sub primary-ghost" id="btnRetract" style="display:inline;align-items:right;">撤回審核</button>
+			    <button class="btn-sub primary-ghost" id="btnRetract5" style="display:inline;align-items:right;">撤回審核</button>
 				<button class="btn-sub primary-ghost" id="btnPPreview" style="display:inline;align-items:right;">預覽</button>
-				<button class="btn-sub primary-ghost" id="btnCopy" style="display:inline;align-items:right;">複製</button>
-				<button class="btn-sub2 primary-ghost" id="btnDraft" style="display:inline;align-items:right;">儲存草稿</button>
+				<button class="btn-sub2 primary-ghost" id="btnDraft5" style="display:inline;align-items:right;">儲存草稿</button>
 				<div id="copyright">©Soft-World Corp. All Rights Reserved.</div>			
 			</div>
-            <h2 class="block-title">期望上架時間</h2>
-            <p class="block-desc">填寫您期望的上架時間，供 MyCard 審核及安排上架作業時參考。</p>
+            <h2 class="block-title">上架時間</h2>
+            <p class="block-desc">設定預計上架時間，送出前請確認資料無誤</p>
 
             <div class="field-group">
               <div class="field-label-row">
@@ -1381,7 +1440,7 @@
  
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">點擊欄位開啟時間選擇器，選擇您期望曝光的日期與時間（精確到分鐘）。</div>
+                  <div class="tooltip-popover">點擊欄位開啟時間選擇器，選擇您期望曝光的日期與時間（精確到分鐘）</div>
                 </span>
               </div>
               <div class="datetime-wrap">
@@ -1455,6 +1514,16 @@
     <button class="modal-confirm-btn" id="modalConfirmBtn">確定</button>
   </div>
 </div>
+
+<!-- 送出審核成功 -->
+<div class="modal-overlay1">
+  <div class="modal-box1">
+	<div class="modal-icon-success">✓</div>
+    <p class="modal-message2">已收到您的審核資<br>將由運營為您審核</p>
+    <p class="modal-note2" id="modalNote"></p>
+    <button class="modal-confirm-btn1" id="modalConfirmBtn">確定</button>
+  </div>
+</div>
 	
 <!-- 送出審核失敗 -->
 <div class="modal-overlay2">
@@ -1478,7 +1547,7 @@
 
 <script>
   /* ============================================================
-     Page navigation state
+     Page navigation state / 5-step Wizard
      ============================================================ */
   let currentStep = 1;
   const TOTAL_STEPS = 5;
@@ -1499,130 +1568,233 @@
   }
 
   function showStepContent(step){
+    currentStep = Math.max(1, Math.min(step, TOTAL_STEPS));
+
     for(let i=1;i<=TOTAL_STEPS;i++){
-      document.getElementById('step-content-'+i).style.display = (i===step) ? '' : 'none';
+      const content = document.getElementById('step-content-'+i);
+      if(content) content.style.display = (i === currentStep) ? '' : 'none';
     }
-    document.getElementById('stepCountText').textContent = 'Step ' + step + ' of ' + TOTAL_STEPS;
-    document.getElementById('prevBtn').style.display = (step===1) ? 'none' : 'inline-flex';
-    document.getElementById('nextBtn').style.display = (step===TOTAL_STEPS) ? 'none' : '';
-    document.getElementById('btnSubmit').style.display = (step===TOTAL_STEPS) ? '' : 'none';
-    document.getElementById('btnPreview').style.display = (step===1) ? 'none' : 'inline-block';
-    document.getElementById('protoDemoToggleWrap').style.display = (step===TOTAL_STEPS) ? '' : 'none';
+
+    const stepCount = document.getElementById('stepCountText');
+    if(stepCount) stepCount.textContent = 'Step ' + currentStep + ' of ' + TOTAL_STEPS;
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('btnSubmit');
+    const previewBtn = document.getElementById('btnPreview');
+    const demoWrap = document.getElementById('protoDemoToggleWrap');
+
+    if(prevBtn) prevBtn.style.display = (currentStep === 1) ? 'none' : 'inline-flex';
+    if(nextBtn) nextBtn.style.display = (currentStep === TOTAL_STEPS) ? 'none' : 'inline-flex';
+    if(submitBtn) submitBtn.style.display = (currentStep === TOTAL_STEPS) ? '' : 'none';
+    if(previewBtn) previewBtn.style.display = (currentStep === 1) ? 'none' : 'inline-block';
+    if(demoWrap) demoWrap.style.display = (currentStep === TOTAL_STEPS) ? '' : 'none';
+
+    updateStepperUI();
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
   function updateStepperUI(){
     for(let i=1;i<=TOTAL_STEPS;i++){
       const node = document.querySelector('.step-node[data-step="'+i+'"]');
+      if(!node) continue;
+
       const badge = node.querySelector('.status-badge');
       node.classList.remove('current','done');
+
       if(i === currentStep) node.classList.add('current');
+
       if(stepComplete[i]){
         node.classList.add('done');
-        badge.classList.remove('warn');
-        badge.classList.add('ok');
-        badge.textContent = '✓';
+        if(badge){
+          badge.classList.remove('warn');
+          badge.classList.add('ok');
+          badge.textContent = '✓';
+        }
       } else {
-        badge.classList.remove('ok');
-        badge.classList.add('warn');
-        badge.textContent = '!';
+        if(badge){
+          badge.classList.remove('ok');
+          badge.classList.add('warn');
+          badge.textContent = '!';
+        }
       }
     }
+
+    // 若 HTML 有 step-line，已完成的步驟連線變綠色，未完成維持藍色
     const lines = document.querySelectorAll('#stepper .step-line');
     lines.forEach((line, idx)=>{
       const stepBefore = idx + 1;
-      line.style.background = stepComplete[stepBefore] ? 'var(--green)' : '#dcdde1';
+      line.classList.toggle('done', !!stepComplete[stepBefore]);
+      line.style.background = stepComplete[stepBefore] ? '#22A06B' : '#398FE0';
     });
   }
 
   /* ============================================================
-     Required-field completion checks per step
+     Required-field completion checks
      ============================================================ */
   function checkStep1Complete(){
-    const company = document.getElementById('field-company-input').value.trim();
-    const service = document.getElementById('field-service-input').value.trim();
-    const gamecode = document.getElementById('field-gamecode-input').value.trim();
+    const company = document.getElementById('field-company-input')?.value.trim();
+    const service = document.getElementById('field-service-input')?.value.trim();
+    const gamecode = document.getElementById('field-gamecode-input')?.value.trim();
     return !!(company && service && gamecode);
   }
 
   function checkStep2Complete(){
-    const zh = langData.zh;
-    const iconFilled = document.getElementById('iconUpload').classList.contains('filled');
-    const anyCarouselFilled = Array.from(document.querySelectorAll('.carousel-box')).some(b=>b.classList.contains('filled'));
-    const tagsFilled = document.getElementById('field-tags-input').value.trim();
-    const deviceFilled = Array.from(document.querySelectorAll('input[name="playDevice"]')).some(cb=>cb.checked);
-    const ratingFilled = document.getElementById('field-rating-select').value;
-    return !!(zh.name.trim() && zh.desc.trim() && iconFilled && anyCarouselFilled && tagsFilled && deviceFilled && ratingFilled);
-  }
+    // 儲存目前語系內容後再判斷
+    if(typeof saveCurrentLangData === 'function') saveCurrentLangData();
 
-  function checkStep5Complete(){
-    return !!document.getElementById('field-datetime-input').value.trim();
+    // 完成條件：除了「遊戲簡稱」外，語系內容只要有「任一語系」的
+    // 遊戲名稱＋文字介紹填寫完成即可，不要求所有語系都填寫。
+    const langsFilled = Object.values(langData).some(d =>
+      !!(d && d.name && d.name.trim() && d.desc && d.desc.trim())
+    );
+
+    // 注意：不檢查 #field-shortname-input（遊戲簡稱為非必填）
+
+    // 遊戲Icon圖片
+    const iconFilled = !!(
+      (typeof getIconImageFile === 'function' && getIconImageFile()) ||
+      document.getElementById('iconUpload')?.classList.contains('filled')
+    );
+
+    // 遊戲輪播圖片：至少上傳 1 張
+    const uploader = document.getElementById('icu6Uploader');
+    const carouselFilled = !!(uploader && typeof uploader.getAllImageFiles === 'function' &&
+      uploader.getAllImageFiles().some(item => !!item.file));
+
+    // 遊戲標籤
+    const tagsFilled = !!document.getElementById('field-tags-input')?.value.trim();
+
+    // 遊玩裝置：至少勾選 1 項
+    const deviceFilled = Array.from(
+      document.querySelectorAll('input[name="playDevice"]')
+    ).some(cb => cb.checked);
+
+    // 遊戲分級
+    const ratingFilled = !!document.getElementById('field-rating-select')?.value;
+
+    return langsFilled && iconFilled && carouselFilled &&
+           tagsFilled && deviceFilled && ratingFilled;
   }
 
   function checkStep3Complete(){
-    const wantsWeb = document.getElementById('topup-web').checked;
-    const wantsMobile = document.getElementById('topup-mobile').checked;
-    const wantsPC = document.getElementById('topup-pc').checked;
-
-    if(wantsWeb){
-      if(!document.getElementById('field-webshop-input').value.trim()) return false;
-    }
-    if(wantsMobile){
-      const apk = document.getElementById('field-androidapk-input').value.trim();
-      if(!apk) return false;
-    }
-    if(wantsPC){
-      if(!document.getElementById('field-pcstore-input').value.trim()) return false;
-    }
+    // Step 3「儲值入口」不設定必填條件。
+    // 只要離開 Step 3（點擊上一步、下一步或右側其他步驟），
+    // 即視為此步驟完成並顯示綠色。
     return true;
+  }
+
+  function checkStep4Complete(){
+    // 此區塊原本沒有必填欄位，因此視為完成
+    return true;
+  }
+
+  function checkStep5Complete(){
+    return !!document.getElementById('field-datetime-input')?.value.trim();
   }
 
   function evaluateStepComplete(step){
     if(step === 1) return checkStep1Complete();
-    if(step === 2){ saveCurrentLangData(); return checkStep2Complete(); }
+    if(step === 2) return checkStep2Complete();
     if(step === 3) return checkStep3Complete();
-    if(step === 4) return true;  // 本區塊皆為非必填
+    if(step === 4) return checkStep4Complete();
     if(step === 5) return checkStep5Complete();
     return false;
   }
 
+  function evaluateAndMarkStep(step){
+    stepComplete[step] = evaluateStepComplete(step);
+    updateStepperUI();
+    return stepComplete[step];
+  }
+
   function evaluateAndMarkCurrentStep(){
-    stepComplete[currentStep] = evaluateStepComplete(currentStep);
+    return evaluateAndMarkStep(currentStep);
+  }
+
+  function goToStep(step){
+    // 離開目前頁面前，先判斷目前頁是否完成
+    evaluateAndMarkCurrentStep();
+    currentStep = Math.max(1, Math.min(step, TOTAL_STEPS));
+    showStepContent(currentStep);
+    updateStepperUI();
   }
 
   /* ============================================================
-     Next / Prev / Stepper navigation
-     規則：不論該頁必填是否完成，都可以點擊上一步/下一步/流程節點切換頁面，
-     但流程圖上的圖示會依照當頁必填完成狀況顯示綠色打勾或橘色驚嘆號。
+     下方「上一步 / 下一步」與 5 個流程節點同步
      ============================================================ */
-  document.getElementById('nextBtn').addEventListener('click', ()=>{
-    evaluateAndMarkCurrentStep();
-    currentStep = Math.min(currentStep + 1, TOTAL_STEPS);
-    showStepContent(currentStep);
-    updateStepperUI();
+  document.getElementById('nextBtn')?.addEventListener('click', ()=>{
+    if(currentStep < TOTAL_STEPS){
+      goToStep(currentStep + 1);
+    }
   });
 
-  document.getElementById('prevBtn').addEventListener('click', ()=>{
-    evaluateAndMarkCurrentStep();
-    currentStep = Math.max(currentStep - 1, 1);
-    showStepContent(currentStep);
-    updateStepperUI();
+  document.getElementById('prevBtn')?.addEventListener('click', ()=>{
+    if(currentStep > 1){
+      goToStep(currentStep - 1);
+    }
   });
 
+  // 每一頁內容內的「上一步 / 下一步」也同步同一套 currentStep
+  for(let i=1;i<=TOTAL_STEPS;i++){
+    document.getElementById('prevBtn'+i)?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      if(currentStep > 1) goToStep(currentStep - 1);
+    });
+
+    document.getElementById('nextBtn'+i)?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      if(currentStep < TOTAL_STEPS) goToStep(currentStep + 1);
+    });
+  }
+
+  // 點擊右側/上方 5 個流程節點時，直接切換到對應頁
   document.querySelectorAll('.step-node').forEach(node=>{
     node.addEventListener('click', (e)=>{
       e.stopPropagation();
       const target = parseInt(node.getAttribute('data-step'), 10);
+      if(!target) return;
+
       if(target === currentStep){
-        document.querySelector('.content-card').scrollIntoView({behavior:'smooth', block:'start'});
+        document.querySelector('.content-card')?.scrollIntoView({
+          behavior:'smooth',
+          block:'start'
+        });
         return;
       }
-      evaluateAndMarkCurrentStep();
-      currentStep = target;
-      showStepContent(currentStep);
-      updateStepperUI();
+
+      goToStep(target);
     });
   });
+
+  // 任何表單內容變更時即時更新目前步驟的完成狀態
+  function bindCompletionListeners(){
+    const wizard = document.getElementById('page-wizard');
+    if(!wizard) return;
+
+    wizard.addEventListener('input', ()=>{
+      evaluateAndMarkCurrentStep();
+    });
+
+    wizard.addEventListener('change', ()=>{
+      evaluateAndMarkCurrentStep();
+    });
+
+    // 圖片上傳元件透過 CustomEvent 通知
+    document.getElementById('iconUploader')?.addEventListener('iconchange', ()=>{
+      evaluateAndMarkStep(2);
+    });
+
+    // 輪播圖實際派發的事件是 imagechange（上傳 / 清除時都會觸發）
+    document.getElementById('icu6Uploader')?.addEventListener('imagechange', ()=>{
+      evaluateAndMarkStep(2);
+    });
+    document.getElementById('icu6Uploader')?.addEventListener('carouselchange', ()=>{
+      evaluateAndMarkStep(2);
+    });
+  }
+
+  bindCompletionListeners();
 
   /* ============================================================
      Home -> Wizard entry / reset
@@ -1642,16 +1814,24 @@
     });
     document.getElementById('langAddMenu').innerHTML = LANG_ADD_MENU_DEFAULT_HTML;
     Object.keys(langData).forEach(k=>delete langData[k]);
-    langData.zh = {name:'', desc:''};
-    langData.en = {name:'', desc:''};
+    langData.zh = {name:'', desc:'', areas:[]};
+    langData.en = {name:'', desc:'', areas:[]};
     currentLang = 'zh';
     document.querySelectorAll('.lang-tab').forEach(t=>t.classList.remove('active'));
-    document.querySelector('.lang-tab[data-lang="zh"]').classList.add('active');
+    const resetZhTab = document.querySelector('.lang-tab[data-lang="zh"]');
+    if(resetZhTab){
+      resetZhTab.classList.add('active');
+      resetZhTab.classList.add('displaynone');
+    }
+    const resetLangFieldBox = document.getElementById('langFieldBox');
+    if(resetLangFieldBox) resetLangFieldBox.style.display = 'none';
     loadLangData('zh');
     document.getElementById('field-shortname-input').value = '';
 
     document.getElementById('iconUpload').classList.remove('filled');
-    document.querySelectorAll('.carousel-box').forEach(b=>b.classList.remove('filled'));
+    if(typeof clearIconImage === 'function') clearIconImage();
+    document.querySelectorAll('.icu6-card').forEach(b=>b.classList.remove('filled'));
+    if(typeof clearAllCarouselImages === 'function') clearAllCarouselImages();
     document.getElementById('field-tags-input').value = '';
     TAG_CATEGORIES.forEach(cat=>tagSelections[cat.key].clear());
     document.querySelectorAll('input[name="playDevice"]').forEach(cb=>cb.checked=false);
@@ -1714,7 +1894,7 @@
   /* ============================================================
      Step 2: Language tabs
      ============================================================ */
-  const langData = { zh:{name:'', desc:''}, en:{name:'', desc:''} };
+  const langData = { zh:{name:'', desc:'', areas:[]}, en:{name:'', desc:'', areas:[]} };
   let currentLang = 'zh';
   const LANG_ADD_MENU_DEFAULT_HTML = document.getElementById('langAddMenu').innerHTML;
 
@@ -1722,22 +1902,88 @@
   const shortInput = document.getElementById('field-shortname-input');
   const descInput = document.getElementById('field-desc-input');
 
-  function saveCurrentLangData(){
-    langData[currentLang] = { name: nameInput.value, desc: descInput.value };
+  function getCurrentAreaNames(){
+    const areaTag = document.querySelector('#game-intro .area-tag');
+    if(!areaTag) return [];
+    return Array.from(areaTag.querySelectorAll('li.selected')).map(item => item.dataset.areaName || item.textContent.trim().replace(/^✓\s*/, ''));
   }
+
+  function saveCurrentLangData(){
+    const old = langData[currentLang] || {};
+    langData[currentLang] = {
+      name: nameInput.value,
+      desc: descInput.value,
+      areas: getCurrentAreaNames()
+    };
+  }
+
+  function renderAreaSelection(lang){
+    const areaTag = document.querySelector('#game-intro .area-tag');
+    if(!areaTag) return;
+
+    const selectedAreas = new Set((langData[lang] && langData[lang].areas) || []);
+
+    areaTag.querySelectorAll('li').forEach(item => {
+      const areaName = item.dataset.areaName || item.textContent.trim().replace(/^✓\s*/, '');
+      item.dataset.areaName = areaName;
+      const selected = selectedAreas.has(areaName);
+      item.classList.toggle('selected', selected);
+      item.textContent = selected ? '✓ ' + areaName : areaName;
+    });
+  }
+
   function loadLangData(lang){
-    const d = langData[lang] || {name:'',desc:''};
+    const d = langData[lang] || {name:'',desc:'',areas:[]};
+    if(!d.areas) d.areas = [];
+    langData[lang] = d;
     nameInput.value = d.name;
     descInput.value = d.desc;
+    renderAreaSelection(lang);
   }
+
+  // 依目前選取的語系頁籤，同步更新「語系文字」標題
+  function updateLangTitle(lang){
+    const title = document.getElementById('currentLangTitle');
+    const targetTab = document.querySelector('.lang-tab[data-lang="'+lang+'"]');
+    if(!title) return;
+
+    const label = targetTab
+      ? (targetTab.getAttribute('data-label') || targetTab.textContent.replace('×','').trim())
+      : ({
+          zh: '繁體中文',
+          en: 'English',
+          zhcn: '简体中文',
+          ja: '日本語',
+          th: 'ภาษาไทย',
+          vi: 'Bahasa Indonesia'
+        }[lang] || lang);
+
+    title.textContent = label.replace(/\*+$/, '').trim();
+  }
+
   function switchLang(lang){
-    if(lang === currentLang) return;
+    if(lang === currentLang){
+      updateLangTitle(lang);
+      return;
+    }
     saveCurrentLangData();
     currentLang = lang;
     loadLangData(lang);
     document.querySelectorAll('.lang-tab').forEach(t=>t.classList.remove('active'));
     const targetTab = document.querySelector('.lang-tab[data-lang="'+lang+'"]');
     if(targetTab) targetTab.classList.add('active');
+    updateLangTitle(lang);
+    evaluateAndMarkStep(2);
+  }
+
+
+  /* ============================================================
+     Step 2: 語系內容顯示控制
+     初始不顯示任何語系內容；只有透過「＋ 新增語系」選擇語系後才顯示。
+     ============================================================ */
+  function showLangFieldBox(){
+    const box = document.getElementById('langFieldBox');
+    if(box) box.style.display = 'block';
   }
 
   document.getElementById('langTabs').addEventListener('click', (e)=>{
@@ -1754,6 +2000,7 @@
       if(currentLang === lang){
         currentLang = 'zh';
         loadLangData('zh');
+        updateLangTitle('zh');
         document.querySelectorAll('.lang-tab').forEach(t=>t.classList.remove('active'));
         document.querySelector('.lang-tab[data-lang="zh"]').classList.add('active');
       }
@@ -1767,27 +2014,67 @@
   const langAddMenu = document.getElementById('langAddMenu');
   langAddBtn.addEventListener('click', (e)=>{
     e.stopPropagation();
+
+    // 只有點擊「＋ 新增語系」並展開下拉選單，不隱藏尚未新增語系提示
     langAddMenu.classList.toggle('open');
   });
   langAddMenu.addEventListener('click', (e)=>{
     e.stopPropagation();
     const item = e.target.closest('.lang-add-item');
     if(!item) return;
+
     const lang = item.getAttribute('data-lang');
     const label = item.getAttribute('data-label');
     langAddMenu.classList.remove('open');
 
-    if(document.querySelector('.lang-tab[data-lang="'+lang+'"]')){
+    // 實際選擇語系並展開欄位後，才隱藏尚未新增語系提示
+    showLangFieldBox();
+    const notReady = document.querySelector('.not-ready');
+    if(notReady) notReady.style.display = 'none';
+
+    const existingTab = document.querySelector('.lang-tab[data-lang="'+lang+'"]');
+
+    /*
+     * 繁體中文特殊處理：
+     * HTML 原本已保留「繁體中文(預設)」Tab，但初始為 displaynone。
+     * 點擊「新增語系 → 繁體中文」時，需像 English 一樣：
+     * 1. 顯示繁體中文 Tab
+     * 2. 切換到繁體中文
+     * 3. 顯示並載入繁體中文的「遊戲名稱／文字介紹」欄位
+     * 4. 從新增語系選單移除「繁體中文」
+     */
+    if(lang === 'zh' && existingTab){
+      existingTab.classList.remove('displaynone');
+      existingTab.classList.add('active');
+
+      currentLang = 'zh';
+      loadLangData('zh');
+      updateLangTitle('zh');
+
+      document.querySelectorAll('.lang-tab').forEach(t=>{
+        if(t !== existingTab) t.classList.remove('active');
+      });
+
+      item.remove();
+      evaluateAndMarkStep(2);
+      return;
+    }
+
+    if(existingTab){
       switchLang(lang);
       return;
     }
+
     langData[lang] = {name:'', desc:''};
+
     const newTab = document.createElement('div');
     newTab.className = 'lang-tab';
     newTab.setAttribute('data-lang', lang);
     newTab.setAttribute('data-label', label);
     newTab.innerHTML = label + ' <span class="lang-tab-delete" data-lang="' + lang + '">×</span>';
+
     document.getElementById('langTabs').insertBefore(newTab, langAddBtn);
+
     switchLang(lang);
     item.remove();
   });
@@ -1935,7 +2222,9 @@
     if(hasError) return;
     const allTags = [];
     TAG_CATEGORIES.forEach(cat=>{ tagSelections[cat.key].forEach(t => allTags.push(t)); });
-    document.getElementById('field-tags-input').value = allTags.join('、');
+    const tagsInputEl = document.getElementById('field-tags-input');
+    tagsInputEl.value = allTags.join('、');
+    tagsInputEl.dispatchEvent(new Event('input', {bubbles:true}));
     closeTagModal();
   });
 
@@ -2091,6 +2380,9 @@
   /* ============================================================
      Initial render
      ============================================================ */
+  showPage('home');
+  currentStep = 1;
+  showStepContent(1);
   updateStepperUI();
 	
 /* =====================================
@@ -2157,6 +2449,7 @@
     // 隱藏初始畫面，顯示縮圖與重新選擇按鈕
     uploadContent.hidden = true;
     preview.hidden = false;
+    document.getElementById('iconUpload')?.classList.add('filled');
 
     // 通知外部程式圖片已變更
     uploader.dispatchEvent(
@@ -2230,6 +2523,7 @@
     preview.hidden = true;
     uploadContent.hidden = false;
     fileInput.value = "";
+    document.getElementById('iconUpload')?.classList.remove('filled');
     showError("");
 
     uploader.dispatchEvent(
@@ -2249,6 +2543,24 @@
     }
   });
 })();
+
+/* 清除六張輪播圖片 */
+window.clearAllCarouselImages = function(){
+  document.querySelectorAll('.icu6-card').forEach(card=>{
+    const input = card.querySelector('.icu6-file-input');
+    const empty = card.querySelector('.icu6-empty');
+    const preview = card.querySelector('.icu6-preview');
+    const image = card.querySelector('.icu6-preview-image');
+    const error = card.querySelector('.icu6-error');
+
+    if(input) input.value = '';
+    if(image) image.removeAttribute('src');
+    if(preview) preview.hidden = true;
+    if(empty) empty.hidden = false;
+    card.classList.remove('filled');
+    if(error) error.textContent = '';
+  });
+};
 
 /* ==========================================
    六張輪播圖片上傳功能
@@ -2450,6 +2762,60 @@
     });
   });
 })();
+</script>
+
+
+<script id="area-tag-multiselect">
+/* ============================================================
+   顯示地區 area-tag：8 個地區各自獨立記錄，可複選
+   - 每個語系都有自己獨立的 8 個地區選取狀態
+   - 點擊一次：加入 selected + 顯示 ✓
+   - 再點一次：取消 selected + 移除 ✓
+   - 切換語系：還原該語系自己的選取狀態
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+  const areaTag = document.querySelector('#game-intro .area-tag');
+  if (!areaTag) return;
+
+  areaTag.querySelectorAll('li').forEach(function (item) {
+    // 每個地區獨立保存自己的名稱與 data-area
+    if (!item.dataset.areaName) {
+      item.dataset.areaName = item.textContent.trim().replace(/^✓\s*/, '');
+    }
+    if (!item.dataset.area) {
+      item.dataset.area = item.dataset.areaName;
+    }
+
+    item.addEventListener('click', function () {
+      const lang = currentLang;
+      const areaName = item.dataset.areaName;
+
+      if (!langData[lang]) {
+        langData[lang] = { name: '', desc: '', areas: [] };
+      }
+      if (!Array.isArray(langData[lang].areas)) {
+        langData[lang].areas = [];
+      }
+
+      const index = langData[lang].areas.indexOf(areaName);
+
+      if (index === -1) {
+        langData[lang].areas.push(areaName);
+        item.classList.add('selected');
+        item.textContent = '✓ ' + areaName;
+      } else {
+        langData[lang].areas.splice(index, 1);
+        item.classList.remove('selected');
+        item.textContent = areaName;
+      }
+
+      evaluateAndMarkStep(2);
+    });
+  });
+
+  // 初始載入目前語系的 8 個地區狀態
+  renderAreaSelection(currentLang);
+});
 </script>
 
 </body>

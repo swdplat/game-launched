@@ -1384,6 +1384,30 @@ tbody tr:last-child td{border-bottom:none;}
 .tag-pill-selected.selected{border-color:#5b9ad1;background:##4b6ec0;color:#5b9ad1;font-weight:600;}
 .tag-pill-selected.selected .tag-pill-dot{border-color:#5b9ad1;background:#5b9ad1;}
 .tag-pill-selected.selected .tag-pill-dot::after{background:#fff;transform:scale(1);}
+/* 大標籤（已選取）：左側藍圈中間加白點 */
+.tag-pill-selected .tag-pill-dot{
+  position:relative;
+  background:#398FE0;
+  border-color:#398FE0;
+  box-sizing:border-box;
+}
+.tag-pill-selected .tag-pill-dot::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:40%;
+  height:40%;
+  background:#fff;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+
+
+
+/*小標籤*/
+.small_tag {padding:5px 8px!important;}
+
 
   .tag-modal-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-top:1px solid var(--border);flex-shrink:0;}
   .tag-modal-status{font-size:12.5px;color:#8a8a8e;}
@@ -1559,7 +1583,7 @@ tbody tr:last-child td{border-bottom:none;}
     color:#6b6b6f;
     border:none;
     border-radius:6px;
-    margin:16px 0 -58px 0;
+    margin:4px 0 -58px 0;
     padding:8px 16px 8px 16px;
     font-size:13px;
     font-weight:600;
@@ -1575,8 +1599,8 @@ tbody tr:last-child td{border-bottom:none;}
   }
 #button_list.button-list-prev.primary-ghost:hover{background:#a4d5fa;color:#333333;}
 #button_list .step-count{
-	position:relative;z-index:4;top:32px;width:31.5%;margin:-12px 56.5% 0 12%!important;padding:4px 12px;border-radius:40px;
-	font-size:13px;color:#8a8a8e;text-align:center;align-items: center;display:inline-block;;float:left;;
+	position:relative;z-index:4;top:32px;width:auto;margin:-24px 56.5% 0 12%!important;padding:4px 12px;border-radius:40px;
+	font-size:13px;color:#8a8a8e;text-align:left;align-items: center;display:inline-block;;float:left;;
 	background-color:#f9f9f9;
 }
 #button_list .button-list-next {

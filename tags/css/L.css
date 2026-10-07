@@ -1320,6 +1320,7 @@ tbody tr:last-child td{border-bottom:none;}
 /*sub category*/
 .tag-sub-category {background-color:#f4f7f9; width:96%;margin:-22px 0 -12px 0; padding:2% 2%;}
   .tag-pill-row{display:flex;flex-wrap:wrap;gap:10px;}
+/*大標籤*/
   .tag-pill{
     display:flex;
     align-items:center;
@@ -1353,7 +1354,6 @@ tbody tr:last-child td{border-bottom:none;}
   .tag-pill.selected{border-color:#5b9ad1;background:#e5eff8;color:#5b9ad1;font-weight:600;}
   .tag-pill.selected .tag-pill-dot{border-color:#5b9ad1;background:#5b9ad1;}
   .tag-pill.selected .tag-pill-dot::after{background:#fff;transform:scale(1);}
-
 .tag-pill-selected{
     display:flex;
     align-items:center;
@@ -1388,7 +1388,28 @@ tbody tr:last-child td{border-bottom:none;}
 .tag-pill-selected.selected{border-color:#5b9ad1;background:##4b6ec0;color:#5b9ad1;font-weight:600;}
 .tag-pill-selected.selected .tag-pill-dot{border-color:#5b9ad1;background:#5b9ad1;}
 .tag-pill-selected.selected .tag-pill-dot::after{background:#fff;transform:scale(1);}
+/* 大標籤（已選取）：左側藍圈中間加白點 */
+.tag-pill-selected .tag-pill-dot{
+  position:relative;
+  background:#398FE0;
+  border-color:#398FE0;
+  box-sizing:border-box;
+}
+.tag-pill-selected .tag-pill-dot::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:40%;
+  height:40%;
+  background:#fff;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
 
+
+/*小標籤*/
+.small_tag {padding:5px 8px!important;}
 
   .tag-modal-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-top:1px solid var(--border);flex-shrink:0;}
   .tag-modal-status{font-size:12.5px;color:#8a8a8e;}
@@ -1561,6 +1582,7 @@ tbody tr:last-child td{border-bottom:none;}
   .modal-confirm-btn3:hover{background:#395aa8;}
 
 
+
 /*下排按鈕群*/
 #button_list {
 	position:fixed;
@@ -1569,7 +1591,7 @@ tbody tr:last-child td{border-bottom:none;}
 	right:0;
 	width:49.6%;
 	margin:0 18.2% 0 0;
-	padding:4px 1% 4px 1%;
+	padding:12px 1% 4px 1%;
 	background:#ffffff;
 	border-radius: 10px 10px 0px 0px;
 	border-top:1px solid var(--border);
@@ -1588,7 +1610,7 @@ tbody tr:last-child td{border-bottom:none;}
     color:#6b6b6f;
     border:none;
     border-radius:6px;
-    margin:24px 0 -58px 0;
+    margin:4px 0 -58px 0;
     padding:8px 16px 8px 16px;
     font-size:13px;
     font-weight:600;
@@ -1604,7 +1626,7 @@ tbody tr:last-child td{border-bottom:none;}
   }
 #button_list.button-list-prev.primary-ghost:hover{background:#a4d5fa;color:#333333;}
 #button_list .step-count{
-	position:relative;z-index:4;top:32px;width:40%;margin:-4px 48% 0 12%!important;padding:4px 12px;border-radius:40px;
+	position:relative;z-index:4;top:32px;width:auto;margin:-24px 42% 0 12%!important;padding:4px 12px;border-radius:40px;
 	font-size:13px;color:#8a8a8e;text-align:center;align-items: center;display:inline-block;;float:left;;
 	background-color:#f9f9f9;
 }
@@ -1685,7 +1707,6 @@ tbody tr:last-child td{border-bottom:none;}
 	float:right;
 }
 #button_list .button_list-submit:hover{background:#395aa8;}
-
 
 /*拖曳ICON圖片上傳*/
 /* 上傳欄位外框 */

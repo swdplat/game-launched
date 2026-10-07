@@ -1,345 +1,165 @@
 // JavaScript Document
+// 標籤選單：大標籤(遊戲類型)展開小標籤面板；所有標籤可點擊切換選取，每組最多 3 個
 $(document).ready(function() {
 
-	$("#tag-modal-overlay").hide()
-	
-	$("#btnTagSelect").click(function(){
-      $(".tag-modal-overlay").addClass('open')
-	});
-	
-	$(".tag-modal-close").click(function(){
-      $(".tag-modal-overlay").removeClass('open')
-	});
-	
-	
-	$("#ACT").hide()
-	$("#BC").hide()
-	$("#LEISURE").hide()
-    $("#EBOOK").hide()
-	$("#EDU").hide()
-	$("#MUSIC").hide()
-	$("#SOCIAL").hide()
-	$("#SPG").hide()
-    $("#SLG").hide()
-	$("#PUZ").hide()
-	$("#TABG").hide()
-	$("#RPG").hide()
-	$("#PP").hide()
-	
-	$("#tag-tpye01r").hide()
-	$("#tag-tpye02r").hide()
-	$("#tag-tpye03r").hide()
-	$("#tag-tpye04r").hide()
-	$("#tag-tpye05r").hide()
-	$("#tag-tpye06r").hide()
-	$("#tag-tpye07r").hide()
-	$("#tag-tpye08r").hide()
-	$("#tag-tpye09r").hide()
-	$("#tag-tpye10r").hide()
-	$("#tag-tpye11r").hide()
-	$("#tag-tpye13r").hide()
-   
-	$("#tag-tpye01").click(function(){
-	  $("#tag-tpye01").hide()
-	  $("#tag-tpye01r").show()
-      $("#ACT").show('')
-	});
-	$("#tag-tpye01r").click(function(){
-	  $("#tag-tpye01").show()
-	  $("#tag-tpye01r").hide()
-      $("#ACT").hide('')
-	});
-	$("#ACT-01").click(function(){
-	  $("#ACT-01").addClass('selected')
-	});
-	$("#ACT-02").click(function(){
-	  $("#ACT-02").addClass('selected')
-	});
-	$("#ACT-03").click(function(){
-	  $("#ACT-03").addClass('selected')
-	});
-	$("#ACT-04").click(function(){
-	  $("#ACT-04").addClass('selected')
-	});
-		
-	
-	$("#tag-tpye02").click(function(){
-	  $("#tag-tpye02").hide()
-	  $("#tag-tpye02r").show()
-      $("#BC").show('')
-	});
-	$("#tag-tpye02r").click(function(){
-	  $("#tag-tpye02").show()
-	  $("#tag-tpye02r").hide()
-      $("#BC").hide('')
-	});
-	$("#BC-01").click(function(){
-	  $("#BC-01").addClass('selected')
-	});
-	$("#BC-02").click(function(){
-	  $("#BC-02").addClass('selected')
-	});
-	$("#BC-03").click(function(){
-	  $("#BC-03").addClass('selected')
-	});
-	$("#BC-04").click(function(){
-	  $("#BC-04").addClass('selected')
-	});
-	$("#BC-05").click(function(){
-	  $("#BC-05").addClass('selected')
-	});
-	$("#BC-06").click(function(){
-	  $("#BC-06").addClass('selected')
-	});
-	$("#BC-07").click(function(){
-	  $("#BC-07").addClass('selected')
-	});
-	
-	$("#tag-tpye03").click(function(){
-	  $("#tag-tpye03").hide()
-	  $("#tag-tpye03r").show()
-      $("#LEISURE").show('')
-	});
-	$("#tag-tpye03r").click(function(){
-	  $("#tag-tpye03").show()
-	  $("#tag-tpye03r").hide()
-      $("#LEISURE").hide('')
-	});
-	$("#LEISURE-01").click(function(){
-	  $("#LEISURE-01").addClass('selected')
-	});
-	$("#LEISURE-02").click(function(){
-	  $("#LEISURE-02").addClass('selected')
-	});
-	$("#LEISURE-03").click(function(){
-	  $("#LEISURE-03").addClass('selected')
-	});
-	$("#LEISURE-04").click(function(){
-	  $("#LEISURE-04").addClass('selected')
-	});
-	$("#LEISURE-05").click(function(){
-	  $("#LEISURE-05").addClass('selected')
-	});
-	
-	$("#tag-tpye04").click(function(){
-	  $("#tag-tpye04").hide()
-	  $("#tag-tpye04r").show()
-      $("#EBOOK").show('')
-	});	
-	$("#tag-tpye04r").click(function(){
-	  $("#tag-tpye04").show()
-	  $("#tag-tpye04r").hide()
-      $("#EBOOK").hide('')
-	});
-	$("#EBOOK-01").click(function(){
-	  $("#EBOOK-01").addClass('selected')
-	});
-	$("#EBOOK-02").click(function(){
-	  $("#EBOOK-02").addClass('selected')
-	});
-	$("#EBOOK-03").click(function(){
-	  $("#EBOOK-03").addClass('selected')
-	});
-	
-	
-	$("#tag-tpye05").click(function(){
-	  $("#tag-tpye05").hide()
-	  $("#tag-tpye05r").show()
-      $("#EDU").show('')
-	});	
-	$("#tag-tpye05r").click(function(){
-	  $("#tag-tpye05").show()
-	  $("#tag-tpye05r").hide()
-      $("#EDU").hide('')
-	});
-	$("#EDU-01").click(function(){
-	  $("#EDU-01").addClass('selected')
-	});
-	
-	$("#tag-tpye06").click(function(){
-	  $("#tag-tpye06").hide()
-	  $("#tag-tpye06r").show()
-      $("#MUSIC").show('')
-	});	
-	$("#tag-tpye06r").click(function(){
-	  $("#tag-tpye06").show()
-	  $("#tag-tpye06r").hide()
-      $("#MUSIC").hide('')
-	});
-	$("#MUSIC-01").click(function(){
-	  $("#MUSIC-01").addClass('selected')
-	});
-	$("#MUSIC-02").click(function(){
-	  $("#MUSIC-02").addClass('selected')
-	});
-	$("#MUSIC-03").click(function(){
-	  $("#MUSIC-03").addClass('selected')
-	});
-	
-	$("#tag-tpye07").click(function(){
-	  $("#tag-tpye07").hide()
-	  $("#tag-tpye07r").show()
-      $("#SOCIAL").show('')
-	});	
-	$("#tag-tpye07r").click(function(){
-	  $("#tag-tpye07").show()
-	  $("#tag-tpye07r").hide()
-      $("#SOCIAL").hide('')
-	});
-	$("#SOCIAL-01").click(function(){
-	  $("#SOCIAL-01").addClass('selected')
-	});
-	$("#SOCIAL-02").click(function(){
-	  $("#SOCIAL-02").addClass('selected')
-	});
-	$("#SOCIAL-03").click(function(){
-	  $("#SOCIAL-03").addClass('selected')
-	});
-	$("#SOCIAL-04").click(function(){
-	  $("#SOCIAL-04").addClass('selected')
-	});
-	$("#SOCIAL-05").click(function(){
-	  $("#SOCIAL-05").addClass('selected')
-	});
-	$("#SOCIAL-06").click(function(){
-	  $("#SOCIAL-06").addClass('selected')
-	});
-	$("#SOCIAL-07").click(function(){
-	  $("#SOCIAL-07").addClass('selected')
-	});
-	
-	$("#tag-tpye08").click(function(){
-	  $("#tag-tpye08").hide()
-	  $("#tag-tpye08r").show()
-      $("#SPG").show('')
-	});	
-	$("#tag-tpye08r").click(function(){
-	  $("#tag-tpye08").show()
-	  $("#tag-tpye08r").hide()
-      $("#SPG").hide('')
-	});
-	$("#SPG-01").click(function(){
-	  $("#SPG-01").addClass('selected')
-	});
-	$("#SPG-02").click(function(){
-	  $("#SPG-02").addClass('selected')
-	});
-	$("#SPG-03").click(function(){
-	  $("#SPG-03").addClass('selected')
-	});
-	$("#SPG-04").click(function(){
-	  $("#SPG-04").addClass('selected')
-	});
-	$("#SPG-05").click(function(){
-	  $("#SPG-05").addClass('selected')
-	});
-	$("#SPG-06").click(function(){
-	  $("#SPG-06").addClass('selected')
-	});
-	$("#SPG-07").click(function(){
-	  $("#SPG-07").addClass('selected')
-	});
-	
-	$("#tag-tpye09").click(function(){
-	  $("#tag-tpye09").hide()
-	  $("#tag-tpye09r").show()
-      $("#SLG").show('')
-	});
-	$("#tag-tpye09r").click(function(){
-	  $("#tag-tpye09").show()
-	  $("#tag-tpye09r").hide()
-      $("#SLG").hide('')
-	});
-	$("#SLG-01").click(function(){
-	  $("#SLG-01").addClass('selected')
-	});
-	$("#SLG-02").click(function(){
-	  $("#SLG-02").addClass('selected')
-	});
-	$("#SLG-03").click(function(){
-	  $("#SLG-03").addClass('selected')
-	});
-	$("#SLG-04").click(function(){
-	  $("#SLG-04").addClass('selected')
-	});
-	$("#SLG-05").click(function(){
-	  $("#SLG-05").addClass('selected')
-	});
-	$("#SLG-06").click(function(){
-	  $("#SLG-06").addClass('selected')
-	});
-	
-	$("#tag-tpye10").click(function(){
-	  $("#tag-tpye10").hide()
-	  $("#tag-tpye10r").show()
-      $("#PUZ").show('')
-	});	
-	$("#tag-tpye10r").click(function(){
-	  $("#tag-tpye10").show()
-	  $("#tag-tpye10r").hide()
-      $("#PUZ").hide('')
-	});
-	$("#PUZ-01").click(function(){
-	  $("#PUZ-01").addClass('selected')
-	});
-	$("#PUZ-02").click(function(){
-	  $("#PUZ-02").addClass('selected')
-	});
-	$("#PUZ-03").click(function(){
-	  $("#PUZ-03").addClass('selected')
-	});
-	$("#PUZ-04").click(function(){
-	  $("#PUZ-04").addClass('selected')
-	});
-	$("#PUZ-05").click(function(){
-	  $("#PUZ-05").addClass('selected')
-	});
-	$("#PUZ-06").click(function(){
-	  $("#PUZ-02").addClass('selected')
-	});
-	$("#PUZ-07").click(function(){
-	  $("#PUZ-07").addClass('selected')
-	});
-	$("#PUZ-08").click(function(){
-	  $("#PUZ-08").addClass('selected')
-	});
-	
-	$("#tag-tpye11").click(function(){
-	  $("#tag-tpye11").hide()
-	  $("#tag-tpye11r").show()
-      $("#RPG").show('')
-	});
-	$("#tag-tpye11r").click(function(){
-	  $("#tag-tpye11").show()
-	  $("#tag-tpye11r").hide()
-      $("#RPG").hide('')
-	});
-	$("#RPG-01").click(function(){
-	  $("#RPG-01").addClass('selected')
-	});
-	$("#RPG-02").click(function(){
-	  $("#RPG-02").addClass('selected')
-	});
-	$("#RPG-03").click(function(){
-	  $("#RPG-03").addClass('selected')
-	});
-	
-	$("#tag-tpye13").click(function(){
-	  $("#tag-tpye13").hide()
-	  $("#tag-tpye13r").show()
-      $("#PP").show('')
-	});	
-	$("#tag-tpye13r").click(function(){
-	  $("#tag-tpye31").show()
-	  $("#tag-tpye31r").hide()
-      $("#PP").hide('')
-	});
-	$("#PP-01").click(function(){
-	  $("#PP-01").addClass('selected')
-	});
-	$("#PP-02").click(function(){
-	  $("#PP-02").addClass('selected')
-	});
-	
-});
+	var MAX_PER_GROUP = 3;
+	var MSG_MAX   = '每項標籤類別最多' + MAX_PER_GROUP + '項';
+	var MSG_EMPTY = '至少需要選擇1個標籤選項';
 
+	var $overlay = $('#tagModalOverlay');
+	var $body    = $('#tagModalBody');
+
+	/* ---------- 開啟 / 關閉彈窗 ---------- */
+	$('#btnTagSelect').on('click', function(){ $overlay.addClass('open'); });
+	$('.tag-modal-close').on('click', function(){ $overlay.removeClass('open'); });
+	$overlay.on('click', function(e){
+		if (e.target === this) $overlay.removeClass('open');
+	});
+
+	/* ---------- 初始狀態：隱藏小標籤面板與「已選取」版大標籤 ---------- */
+	$('.tag-pill[data-panel]').each(function(){
+		$('#' + $(this).data('panel')).hide();
+	});
+	$('.tag-pill-selected[data-panel]').hide().removeClass('on');
+
+	/* ---------- 小工具 ---------- */
+	function pillText($el){
+		return $.trim($el.find('span').last().text());
+	}
+
+	function setError($scope, msg){
+		$scope.find('.tag-category-error').first()
+			.text(msg)
+			.toggleClass('show', !!msg);
+	}
+
+	// 取得某個分類(產品分類 / 遊戲類型 / 故事題材 / 遊戲玩法)目前選了幾個
+	function groupCount($group){
+		if ($group.data('group') === 'genre') {
+			return $group.find('.tag-pill-selected.on').length;   // 大標籤
+		}
+		return $group.find('.tag-pill.selected').length;
+	}
+
+	function updateStatus(){
+		var allFilled = true;
+		$('[data-group]').each(function(){
+			if (groupCount($(this)) === 0) allFilled = false;
+		});
+		$('#tagModalStatus')
+			.text(allFilled ? '已完成所有分類的標籤選擇' : '請至少為每個分類選擇1個標籤')
+			.toggleClass('ok', allFilled);
+	}
+
+	// 一般切換：已選 → 取消；未選 → 若未達上限就選取，否則顯示錯誤
+	function toggleLimited($pill, $scope){
+		if ($pill.hasClass('selected')) {
+			$pill.removeClass('selected');
+			setError($scope, '');
+		} else if ($scope.find('.tag-pill.selected').length >= MAX_PER_GROUP) {
+			setError($scope, MSG_MAX);
+		} else {
+			$pill.addClass('selected');
+			setError($scope, '');
+		}
+		updateStatus();
+	}
+
+	/* ---------- 大標籤（遊戲類型）：選取 → 展開小標籤面板 ---------- */
+	$body.on('click', '.tag-pill[data-panel]', function(){
+		var $white = $(this);
+		var $group = $white.closest('[data-group]');
+		if (groupCount($group) >= MAX_PER_GROUP) {
+			setError($group, MSG_MAX);
+			return;
+		}
+		var panel = $white.data('panel');
+		$white.hide();
+		$('#' + $white.attr('id') + 'r').addClass('on').show();
+		$('#' + panel).show();
+		setError($group, '');
+		updateStatus();
+	});
+
+	/* ---------- 大標籤（已選取版）：再點 → 取消並收起面板 ---------- */
+	$body.on('click', '.tag-pill-selected[data-panel]', function(){
+		var $blue  = $(this);
+		var $group = $blue.closest('[data-group]');
+		var panel  = $blue.data('panel');
+		var $panel = $('#' + panel);
+
+		$blue.removeClass('on').hide();
+		$('#' + $blue.attr('id').replace(/r$/, '')).show();
+
+		// 收起面板時，一併清除裡面已選的小標籤，避免隱藏的選項被送出
+		$panel.find('.tag-pill.selected').removeClass('selected');
+		$panel.find('.tag-category-error').text('').removeClass('show');
+		$panel.hide();
+
+		setError($group, '');
+		updateStatus();
+	});
+
+	/* ---------- 小標籤（small_tag）：點一下選取(藍)，再點一次取消(白)，每個小分類最多 3 個 ---------- */
+	$body.on('click', '.tag-pill.small_tag', function(){
+		var $pill = $(this);
+		toggleLimited($pill, $pill.closest('.tag-sub-category'));
+	});
+
+	/* ---------- 其他分類的一般標籤（產品分類 / 故事題材 / 遊戲玩法）：同樣可多選、最多 3 個 ---------- */
+	$body.on('click', '[data-group] .tag-pill:not([data-panel])', function(){
+		var $pill = $(this);
+		toggleLimited($pill, $pill.closest('[data-group]'));
+	});
+
+	/* ---------- 完成：檢查每個分類至少 1 個，並把結果寫進「遊戲標籤」欄位 ---------- */
+	$('#tagModalDone').on('click', function(){
+		var hasError = false;
+		$('[data-group]').each(function(){
+			var $g = $(this);
+			if (groupCount($g) === 0) {
+				setError($g, MSG_EMPTY);
+				hasError = true;
+			}
+		});
+		if (hasError) return;
+
+		var tags = [];
+		$('[data-group]').each(function(){
+			var $g = $(this);
+			if ($g.data('group') === 'genre') {
+				$g.find('.tag-pill-selected.on').each(function(){
+					var $big = $(this);
+					tags.push(pillText($big));
+					$('#' + $big.data('panel')).find('.tag-pill.selected').each(function(){
+						tags.push(pillText($(this)));
+					});
+				});
+			} else {
+				$g.find('.tag-pill.selected').each(function(){
+					tags.push(pillText($(this)));
+				});
+			}
+		});
+
+		var input = document.getElementById('field-tags-input');
+		if (input) {
+			input.value = tags.join('、');
+			// 通知第 2 步的完成度檢查重新計算
+			input.dispatchEvent(new Event('input', { bubbles: true }));
+		}
+		$overlay.removeClass('open');
+	});
+
+	/* ---------- 供「重設表單」呼叫：清空所有標籤選取 ---------- */
+	window.resetTagSelections = function(){
+		$('.tag-pill.selected').removeClass('selected');
+		$('.tag-pill-selected[data-panel]').removeClass('on').hide();
+		$('.tag-pill[data-panel]').show();
+		$('.tag-pill[data-panel]').each(function(){ $('#' + $(this).data('panel')).hide(); });
+		$('.tag-category-error').text('').removeClass('show');
+		updateStatus();
+	};
+
+	updateStatus();
+});

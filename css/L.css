@@ -489,7 +489,7 @@
     font-size:15px;
 	float:left;
   }
-  .search-box input{border:none;outline:none;flex:1;font-size:13.5px;color:#333;background:transparent;}
+  .search-box input{width:90%;border:none;outline:none;flex:1;font-size:13.5px;color:#333;background:transparent;}
   .btn-search{
 	  width:7%;
     background:#95bfe4;
@@ -953,7 +953,7 @@ tbody tr:last-child td{border-bottom:none;}
     color:#fff;
     border:none;
   }
-  .status-badge.warn{background:#d96fa3;}
+  .status-badge.warn{background:#d96fa3!important;}
   .status-badge.ok{background:var(--green);}
   .step-label{font-size:16px;line-height:24px; color:#8a8a8e;white-space:nowrap;}
 .step-node.current .step-label{color:#5b9ad1;font-weight:700;}
@@ -964,9 +964,9 @@ tbody tr:last-child td{border-bottom:none;}
   .block-title{font-size:20px;font-weight:700;color:#1f2023;margin:0 0 4px 0;}
   .block-desc{font-size:14px;color:var(--text-sub);margin:0 0 26px 0;}
 
-  .field-group{margin-bottom:26px;}
+  .field-group{margin:4px 0 26px 0;}
   .field-group:last-child{margin-bottom:0;}
-.field-label-row{display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;width:100%;}
+.field-label-row{display:inline-flex;align-items:center;gap:6px;margin:16px 0 8px 0;width:100%;}
   .field-label{font-size:16px;font-weight:700;color:#333;}
   .required-star{color:#d96fa3;font-weight:700;}
   .tooltip-wrap{position:relative;display:inline-flex;}
@@ -1107,14 +1107,128 @@ tbody tr:last-child td{border-bottom:none;}
 
   .footer-note{text-align:center;color:#aaa;font-size:12px;margin-top:40px;}
 
+  /* 遊戲介紹-切換語系 */
+#game-intro {
+    width:100%;
+	margin:-5px 0 40px 0;
+	padding:20px 20px 12px 20px;
+	background-color:#ffffff;
+	border:1px solid var(--border);
+	border-radius:8px;
+}
+#game-intro h5 {
+	width:auto;
+	margin:0 8px 0 0;
+	padding:2px 10px;
+	background:#cccccc;
+	border-radius:50px;
+	font-size:15px;
+    color:#fff;
+	font-weight: bold;
+	display:inline;
+}
+#game-intro h6 {
+	width:auto;
+	margin:0 0 0 0;
+	padding:2px 0px;
+	font-size:14px;
+	font-weight: normal;
+    color:var(--text-sub);
+	display:inline;
+}
+.displaynone {display:none!important;}
+#game-intro h4 {
+	 position:relative;
+	top:-2px;
+	width:auto;
+	margin:-2px 4px 20px 0;
+	padding:2px 10px;
+	background:#cccccc;
+	border-radius:50px;
+	font-size:12px;
+    color:#fff;
+	font-weight: bold;
+	display:inline;
+}
+#game-intro h3 {
+	width:auto;
+	margin:0px 0 10px 0;
+	padding:3px 10px;
+	font-size:18px;
+	line-height:22px;
+    color:#666;
+	font-weight: bold;
+	display:inline-block;
+}
+#game-intro .multiple_select  {
+	 position:relative;
+	top:-2px;
+	width:auto;
+	margin:2px 4px 0 0;
+	padding:2px 10px;
+	background:#cccccc;
+	border-radius:50px;
+	font-size:12px;
+    color:#fff;
+	font-weight: bold;
+	display:inline;
+}
+#game-intro .not-ready {
+	width:100%;
+	margin:10px 0 20px 0;
+	padding:70px 0;
+	background:#fafafa;
+	font-size:14px;
+	line-height:15px;
+    color:#999;
+	font-weight: bold;
+	text-align:center;
+}
+#game-intro .area-tag {
+	width:100%;
+	margin:10px 0 10px 0;
+	padding:0px 0;
+	display:flex;
+	}
+#game-intro li {
+	width:auto;
+	margin:0 1% 0 0;
+	padding:0.6% 2%;
+	background-color:#fff;
+	border:1px solid #5b9ad1;
+	border-radius:40px;
+	list-style: none;
+	color: #5b9ad1;
+	font-size:15px;
+	font-weight: normal;
+	display:inline;
+}
+#game-intro li:hover {
+	width:auto;
+	margin:0 1% 0 0;
+	padding:0.6% 2%;
+	background-color:#e5eff8;
+	border:1px solid #4b6ec0;
+	list-style: none;
+	color: #4b6ec0;
+	font-size:15px;
+	font-weight: normal;
+	display:inline;
+	cursor:pointer;
+}
+#game-intro li .selected {
+    color: #ffffff;
+	background-color:#5b9ad1;
+	border:1px solid #4b6ec0;
+}
   /* Language tabs */
-  .lang-tab-row{display:flex;align-items:center;margin-bottom:24px;border-bottom:1px solid var(--border);padding-bottom:0;}
+  .lang-tab-row{display:flex;align-items:center;margin:25px 0 24px 0;border-bottom:1px solid var(--border);padding-bottom:0;}
   .lang-tabs{display:flex;align-items:center;gap:4px;}
   .lang-tab{
     display:flex;
     align-items:center;
     gap:8px;
-    padding:10px 14px;
+    padding:10px 12px;
     font-size:15px;
     color:#8a8a8e;
     cursor:pointer;
@@ -1147,7 +1261,7 @@ tbody tr:last-child td{border-bottom:none;}
     border-radius:7px;
     cursor:pointer;
     white-space:nowrap;
-    margin-left:6px;
+    margin:0 0 2px 6px;
     font-weight:600;
     position:relative;
   }
@@ -1260,6 +1374,14 @@ tbody tr:last-child td{border-bottom:none;}
     white-space:nowrap;
   }
   .btn-tag-select:hover{background:#e2e5e9;}
+/*小標籤*/
+.small_tag {padding:5px 8px!important;}
+
+  .tag-modal-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-top:1px solid var(--border);flex-shrink:0;}
+  .tag-modal-status{font-size:12.5px;color:#8a8a8e;}
+  .tag-modal-status.ok{color:var(--green);font-weight:600;}
+  .tag-modal-done{background:#00aeef;color:#fff;border:none;border-radius:7px;padding:10px 26px;font-size:13.5px;font-weight:700;cursor:pointer;}
+  .tag-modal-done:hover{background:#178de0;}
 
   /* Checkbox row */
   .checkbox-row{display:flex;flex-wrap:wrap;gap:12px 26px;}
@@ -1471,6 +1593,31 @@ tbody tr:last-child td{border-bottom:none;}
 ;color:#fff;border:none;border-radius:8px;padding:11px 0;width:100%;font-size:14px;font-weight:700;cursor:pointer;}
   .modal-confirm-btn:hover{background:#178de0;}
 
+
+/*送出審核成功*/
+.modal-overlay1{display:none;position:fixed;inset:0;background:rgba(20,24,34,.45);z-index:100;align-items:center;justify-content:center;}
+.modal-overlay1.open{display:flex;}
+.modal-box1{background:#fff;border-radius:14px;padding:36px 40px 30px 40px;width:380px;max-width:90vw;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25);}
+
+ .modal-icon-fail{
+    width:64px;height:64px;
+    border-radius:50%;
+    margin:0 auto 20px auto;
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;
+    font-weight:700;
+    color:#fff;
+	background:#d96fa3;
+	border:4px solid #e7a0c8;
+  }
+  .modal-message1{font-size:15px;font-weight:700;color:#666;margin:0 0 8px 0;line-height:1.6;}
+  .modal-note1{font-size:12.5px;color:#8a8a8e;margin:0 0 24px 0;line-height:1.7;}
+  .modal-note1:empty{margin:0 0 16px 0;}
+  .modal-note1 b{color:#d96fa3;font-weight:700;}
+  .modal-confirm-btn1{background:#4b6ec0
+;color:#fff;border:none;border-radius:8px;padding:11px 0;width:100%;font-size:14px;font-weight:700;cursor:pointer;}
+  .modal-confirm-btn1:hover{background:#395aa8;}
+
 /*送出審核失敗*/
 .modal-overlay2{display:none;position:fixed;inset:0;background:rgba(20,24,34,.45);z-index:100;align-items:center;justify-content:center;}
 .modal-overlay2.open{display:flex;}
@@ -1527,11 +1674,11 @@ tbody tr:last-child td{border-bottom:none;}
 	z-index:9;
 	bottom:0;
 	right:0;
-	width:49.6%;
-	margin:0 18.2% 0 0;
-	padding:4px 1% 4px 1%;
+	width:100%;
+	margin:0 0% 0 0;
+	padding:12px 25% 4px 25%;
 	background:#ffffff;
-	border-radius: 10px 10px 0px 0px;
+	border-radius: 0;
 	border-top:1px solid var(--border);
 	border-leftx solid var(--border);
 	border-right solid var(--border);
@@ -1548,8 +1695,8 @@ tbody tr:last-child td{border-bottom:none;}
     color:#6b6b6f;
     border:none;
     border-radius:6px;
-    margin:24px 0 -58px 0;
-    padding:8px 16px 8px 16px;
+    margin:6px 0 -58px 0;
+    padding:10px 16px 10px 16px;
     font-size:13px;
     font-weight:600;
     cursor:pointer;
@@ -1564,7 +1711,7 @@ tbody tr:last-child td{border-bottom:none;}
   }
 #button_list.button-list-prev.primary-ghost:hover{background:#a4d5fa;color:#333333;}
 #button_list .step-count{
-	position:relative;z-index:4;top:32px;width:40%;margin:-4px 48% 0 12%!important;padding:4px 12px;border-radius:40px;
+	position:relative;z-index:4;top:32px;width:auto;margin:-24px 42% 0 12%!important;padding:4px 12px;border-radius:40px;
 	font-size:13px;color:#8a8a8e;text-align:center;align-items: center;display:inline-block;;float:left;;
 	background-color:#f9f9f9;
 }
@@ -1988,7 +2135,7 @@ rgba(255, 255, 255, 0.7)
 }
 
 .icu6-reselect-button:hover {
-  color:##398fe0;
+  color:#398fe0;
   background: #f7fbff;
   border:1px solid #398fe0;
 }
@@ -2033,7 +2180,7 @@ rgba(255, 255, 255, 0.7)
 #dashline {
     width:100%;
 	height:1px;
-	margin:0 0 40px 0;
+	margin:0 0 0px 0;
 	padding:0 0;
 	border-bottom:1px dashed #cccccc;
 }

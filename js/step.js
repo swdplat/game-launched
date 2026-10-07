@@ -73,8 +73,16 @@ $(document).ready(function() {
 	  $("#step-content-5").hide()
 	});	
 	
-	$("#btnSubmit2").click(function(){
+	$("#btnRetract5").click(function(){
       $(".modal-overlay2").addClass('open')
+	});	
+	
+	$(".modal-confirm-btn1").click(function(){
+      $(".modal-overlay1").removeClass('open')
+	});	
+	
+	$("#btnSubmit2").click(function(){
+      $(".modal-overlay1").addClass('open')
 	});	
 	
 	$(".modal-confirm-btn2").click(function(){
@@ -87,6 +95,22 @@ $(document).ready(function() {
 	
 	$(".modal-confirm-btn3").click(function(){
       $(".modal-overlay3").removeClass('open')
+	});
+	
+	$("#btnDraft2").click(function(){
+      $(".modal-overlay3").addClass('open')
+	});
+	
+	$("#btnDraft3").click(function(){
+      $(".modal-overlay3").addClass('open')
+	});
+	
+	$("#btnDraft4").click(function(){
+      $(".modal-overlay3").addClass('open')
+	});
+	
+	$("#btnDraft5").click(function(){
+      $(".modal-overlay3").addClass('open')
 	});
 
 });
