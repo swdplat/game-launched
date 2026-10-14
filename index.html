@@ -12,34 +12,6 @@
 <script src="js/manager.js"></script>
 <script src="js/step.js"></script>
 
-
-
-<style id="step2-done-style">
-/* 步驟完成後，右側／上方步驟名稱顯示綠色 */
-#stepper .step-node.done .step-label {
-  color: #22A06B !important;
-}
-#stepper .step-node.done .step-circle {
-  color: #22A06B;
-}
-</style>
-
-<style id="area-tag-selected-style">
-#game-intro .area-tag li.selected {
-  background: #5b9ad1;
-  color: #fff;
-}
-#game-intro .area-tag li.locked {
-  background: #dddddd !important;
-  color: #888 !important;
-  cursor: not-allowed !important;
-  pointer-events: none;
-}
-</style>
-
-
-
-
 </head>
 <body>
 
@@ -650,10 +622,10 @@
                 <span class="required-star">*</span>
                 <span class="tooltip-wrap">
                   <button class="tooltip-icon" type="button">?</button>
-                  <div class="tooltip-popover">此資訊不會公開顯示</div>
+                  <div class="tooltip-popover">請填寫合約上的完整公司名稱</div>
                 </span>
               </div>
-              <div class="field-caption">請填寫合約上的完整公司名稱</div>
+              <div class="field-caption">此資訊不會公開顯示</div>
               <input class="field-input" type="text" id="field-company-input" placeholder="玩客數位科技有限公司">
               <div class="field-error-msg" style="display:none;">⚠ 公司名稱為必填</div>
             </div>
@@ -669,7 +641,7 @@
               </div>
               <div class="field-caption">參數名稱：FacServiceId</div>
               <div class="select-wrap">
-                <input class="field-input" type="text" id="field-service-input" placeholder="請選擇介接代號" readonly>
+                <input class="field-input" type="text" id="field-service-input" placeholder="請選擇 FacServiceId" readonly>
               </div>
             </div>
 
@@ -682,8 +654,8 @@
                   <div class="tooltip-popover">用於系統比對遊戲資料，請填寫正確的遊戲代號；若不清楚請洽 MyCard 窗口取得</div>
                 </span>
               </div>
-              <div class="field-caption">參數名稱：FacGameId</div>
-              <input class="field-input" type="text" id="field-gamecode-input" placeholder="範例：sword001">
+              <div class="field-caption">參數名稱：FacGameId / 範例：sword001</div>
+              <input class="field-input" type="text" id="field-gamecode-input" placeholder="請填寫 API 傳送的遊戲 ID">
             </div>
 			  
 			<div class="field-group">
@@ -695,7 +667,7 @@
                   <div class="tooltip-popover">請填寫遊戲官方繁體中文名稱</div>
                 </span>
               </div>
-              <input class="field-input" type="text" id="field-gamecode-input" placeholder="範例：劍與魔法傳說">
+              <input class="field-input" type="text" id="field-gamecode-input" placeholder="請填寫遊戲官方繁體中文名稱">
             </div>
           </div>
 
@@ -717,7 +689,7 @@
             <p class="block-desc">填寫遊戲介紹及展示素材，讓玩家快速了解您的遊戲</p>
 			  
 <div id="game-intro">
-	<h5>語系內容</h5><h6>以下兩個欄位依語系分別填寫：先選語系 → 填寫名稱與介紹 → 選擇顯示地區</h6>
+	<h5>多語系設定</h5><h6>以下兩個欄位依語系分別填寫：先選語系 → 填寫名稱與介紹 → 選擇顯示地區</h6>
 	
             <div class="lang-tab-row">
               <div class="lang-tabs" id="langTabs">
@@ -765,12 +737,12 @@
                 <div class="rt-toolbar">
                   <span><b>B</b></span><span><i>I</i></span><span><u>U</u></span><span><s>S</s></span><span>HTML</span><span>•</span><span>1.</span><span>&lt;&gt;</span>
                 </div>
-                <textarea class="rt-textarea" id="field-desc-input" placeholder="遊戲介紹內容"></textarea>
+                <textarea class="rt-textarea" id="field-desc-input" placeholder="介紹遊戲特色、玩法與世界觀"></textarea>
 				<div class="field-label-row">
                   <span class="field-label">顯示地區</span>
                   <span class="required-star">*</span><span class="multiple_select">可多選</span>
                 </div>
-                <div class="field-caption">選擇此語系要出現在哪些地區的網站，已被其他語系選用的地區會鎖定</div>
+                <div class="field-caption">選擇此語系要在哪些地區的 MyCard 官網顯示，已被其他語系選擇的地區將無法再次選擇</div>
 				<div class="area-tag">
 					<li>台灣</li>
 					<li>Global</li>
@@ -793,7 +765,7 @@
                 </span>
               </div>
               <div class="field-caption">無簡稱可不填</div>
-              <input class="field-input" type="text" id="field-shortname-input" placeholder="遊戲簡稱">
+              <input class="field-input" type="text" id="field-shortname-input" placeholder="請填寫遊戲常用簡稱">
             </div>
 
             <div class="field-group">
@@ -923,9 +895,9 @@
                   <div class="tooltip-popover">方便玩家依標籤找到您的遊戲</div>
                 </span>
               </div>
-              <div class="field-caption">設定遊戲標籤，方便用戶依標籤找到您的遊戲</div>
+              <div class="field-caption">每個分類至少選擇 1 個標籤，最多選擇 3 個。請完成各分類的標籤選擇。</div>
               <div class="tag-row">
-                <input class="field-input tag-input" type="text" id="field-tags-input" placeholder="遊戲標籤" readonly>
+                <input class="field-input tag-input" type="text" id="field-tags-input" placeholder="" readonly>
                 <button class="btn-tag-select" type="button" id="btnTagSelect">選擇標籤</button>
               </div>
             </div>
@@ -1022,7 +994,7 @@
                   </span>
                 </div>
                 <div class="field-caption">提供含MyCard 儲值功能的網頁商店連結</div>
-                <input class="field-input" type="text" id="field-webshop-input" placeholder="https://">
+                <input class="field-input" type="text" id="field-webshop-input" placeholder="請填寫遊戲商城連結">
               </div>
             </div>
 
@@ -1041,7 +1013,7 @@
                   </span>
                 </div>
                 <div class="field-caption">提供含MyCard 儲值功能的APK安裝包供用戶下載</div>
-                <input class="field-input" type="text" id="field-androidapk-input" placeholder="https://">
+                <input class="field-input" type="text" id="field-androidapk-input" placeholder="請填寫 APK 下載連結">
               </div>
 
               <div class="field-group">
@@ -1053,7 +1025,7 @@
                   </span>
                 </div>
                 <div class="field-caption">如iOS 版提供MyCard儲值入口，請填寫App Store下載連結</div>
-                <input class="field-input" type="text" id="field-iosappstore-input" placeholder="https://">
+                <input class="field-input" type="text" id="field-iosappstore-input" placeholder="如 iOS 版本提供 MyCard 儲值入口，請填寫 App Store 下載連結">
               </div>
             </div>
 
@@ -1072,7 +1044,7 @@
                   </span>
                 </div>
                 <div class="field-caption">提供支援 MyCard 儲值的 PC 版遊戲安裝連結</div>
-                <input class="field-input" type="text" id="field-pcstore-input" placeholder="https://">
+                <input class="field-input" type="text" id="field-pcstore-input" placeholder="請填寫 PC 版下載連結">
               </div>
             </div>
 
@@ -1159,6 +1131,7 @@
                   <div class="tooltip-popover">點擊欄位開啟時間選擇器，選擇您期望曝光的日期與時間（精確到分鐘）</div>
                 </span>
               </div>
+			   <div class="field-caption">實際上架時間依審核結果為準</div>
               <div class="datetime-wrap">
                 <input class="field-input" type="text" id="field-datetime-input" placeholder="2026/09/11 15:30" readonly>
                 <div class="dt-picker" id="dtPicker">
@@ -2568,38 +2541,108 @@ function renderAreaSelection(lang) {
 })();
 </script>
 
+<!-- 返回遊戲管理確認彈窗 -->
+<div class="return-confirm-overlay" id="returnConfirmOverlay" aria-hidden="true">
+  <div class="return-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="returnConfirmTitle" aria-describedby="returnConfirmSubtitle">
+    <button type="button" class="return-confirm-close" id="returnConfirmClose" aria-label="關閉彈窗">×</button>
+    <h3 id="returnConfirmTitle">返回遊戲管理</h3>
+    <p id="returnConfirmSubtitle">資料已儲存為草稿</p>
+    <div class="return-confirm-actions">
+      <button type="button" class="return-confirm-submit" id="returnConfirmSubmit">返回遊戲列表</button>
+    </div>
+  </div>
+</div>
+
+<style id="return-confirm-modal-style">
+.return-confirm-overlay{
+  position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;
+  padding:20px;background:rgba(20,29,48,.48);
+}
+.return-confirm-overlay.is-open{display:flex}
+.return-confirm-modal{
+  position:relative;width:min(100%,480px);padding:28px 28px 22px;background:#fff;border:1px solid #e6eaf0;
+  border-radius:16px;box-shadow:0 24px 70px rgba(18,35,65,.24);color:#202b3c;
+}
+.return-confirm-modal h3{margin:0 36px 8px 0;font-size:20px;line-height:1.4;font-weight:700}
+.return-confirm-modal p{margin:0;color:#68758a;font-size:14px;line-height:1.7}
+.return-confirm-close{
+  position:absolute;right:16px;top:14px;width:32px;height:32px;border:0;border-radius:8px;
+  background:transparent;color:#7b8798;font-size:24px;line-height:1;cursor:pointer;
+}
+.return-confirm-close:hover{background:#f1f4f8;color:#27364d}
+.return-confirm-actions{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:28px}
+.return-confirm-cancel,.return-confirm-submit{
+  min-height:40px;padding:9px 18px;border-radius:8px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;
+}
+.return-confirm-cancel{border:1px solid #d8deea;background:#fff;color:#46536a}
+.return-confirm-cancel:hover{background:#f5f7fa}
+.return-confirm-submit{border:1px solid #2868d8;background:#4b6ec0;color:#fff}
+.return-confirm-submit:hover{background:#395aa8;border-color:#1f56b8}
+@media(max-width:520px){.return-confirm-modal{padding:24px 20px 20px}.return-confirm-actions{gap:8px}.return-confirm-submit{padding:9px 12px}}
+</style>
+
 <script id="return-to-game-management">
 document.addEventListener('DOMContentLoaded', function () {
-  // 所有頁面標題區中的「返回遊戲管理」都回到最初的遊戲管理列表
-  document.querySelectorAll('.page-header-text').forEach(function (header) {
-    header.querySelectorAll('a, button, [role="button"]').forEach(function (control) {
-      if ((control.textContent || '').replace(/\s/g, '').includes('返回遊戲管理')) {
-        control.addEventListener('click', function (event) {
-          event.preventDefault();
-          var home = document.getElementById('page-home');
-          var wizard = document.getElementById('page-wizard');
-          if (home) home.style.display = '';
-          if (wizard) wizard.style.display = 'none';
+  var overlay = document.getElementById('returnConfirmOverlay');
+  var closeBtn = document.getElementById('returnConfirmClose');
+  var submitBtn = document.getElementById('returnConfirmSubmit');
+  var returnLink = document.querySelector('#return-list a');
 
-          // 回到初始的「全部」遊戲列表狀態
-          var searchInput = document.getElementById('searchInput');
-          if (searchInput) {
-            searchInput.value = '';
-            searchInput.dispatchEvent(new Event('input', { bubbles: true }));
-          }
-          var filterChip = document.getElementById('filterChip');
-          if (filterChip) filterChip.hidden = true;
-          var filterMenu = document.getElementById('filterMenu');
-          if (filterMenu) filterMenu.hidden = true;
-          var filterBtn = document.getElementById('filterBtn');
-          if (filterBtn) filterBtn.classList.remove('on');
+  function openReturnConfirm(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (!overlay) return;
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    if (submitBtn) submitBtn.focus();
+  }
 
-          var allTab = document.getElementById('state_tab1');
-          if (allTab) allTab.click();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
+  function closeReturnConfirm() {
+    if (!overlay) return;
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function returnToGameList() {
+    closeReturnConfirm();
+    var home = document.getElementById('page-home');
+    var wizard = document.getElementById('page-wizard');
+    if (home) home.style.display = '';
+    if (wizard) wizard.style.display = 'none';
+
+    // 返回遊戲管理列表時，重設為「全部」列表狀態
+    var searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    var filterChip = document.getElementById('filterChip');
+    if (filterChip) filterChip.hidden = true;
+    var filterMenu = document.getElementById('filterMenu');
+    if (filterMenu) filterMenu.hidden = true;
+    var filterBtn = document.getElementById('filterBtn');
+    if (filterBtn) filterBtn.classList.remove('on');
+
+    var allTab = document.getElementById('state_tab1');
+    if (allTab) allTab.click();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  if (returnLink) returnLink.addEventListener('click', openReturnConfirm);
+  if (closeBtn) closeBtn.addEventListener('click', closeReturnConfirm);
+  if (submitBtn) submitBtn.addEventListener('click', returnToGameList);
+
+  if (overlay) {
+    overlay.addEventListener('click', function (event) {
+      if (event.target === overlay) closeReturnConfirm();
     });
+  }
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && overlay && overlay.classList.contains('is-open')) {
+      closeReturnConfirm();
+    }
   });
 });
 </script>

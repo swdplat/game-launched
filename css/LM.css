@@ -1011,6 +1011,27 @@ tbody tr:last-child td{border-bottom:none;}
   .step-label{font-size:14px;line-height:24px; color:#8a8a8e;white-space:nowrap;}
 .step-node.current .step-label{color:#5b9ad1;font-weight:700;}
   .step-line{flex:1;height:1px;background:#dcdde1;margin:0 2px;min-width:4px;}
+/* 步驟完成後，右側／上方步驟名稱顯示綠色 */
+#stepper .step-node.done .step-label {
+  color: #22A06B !important;
+}
+#stepper .step-node.done .step-circle {
+  color: #22A06B;
+}
+</style>
+
+<style id="area-tag-selected-style">
+#game-intro .area-tag li.selected {
+  background: #5b9ad1;
+  color: #fff;
+}
+#game-intro .area-tag li.locked {
+  background: #dddddd !important;
+  color: #888 !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
 
   /* Content card */
   .content-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:32px 36px 36px 36px;}
